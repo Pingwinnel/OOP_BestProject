@@ -6,7 +6,7 @@ public class Employee extends User{
 	
 
 	private double salary;
-	Date hireDate;
+	private Date hireDate;
 	
 	public Employee() {}
 	
