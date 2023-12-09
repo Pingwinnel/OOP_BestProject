@@ -13,11 +13,12 @@ public class Employee extends User{
 	public Employee(int id, String surname, String name, String corparateEmail, String password, double salary) {
 		super(id, surname, name, corparateEmail, password);
 		this.salary = salary;
+		this.hireDate = new Date();
 	}
 	
 	@Override
 	public String toString() {
-		return super.toString()+" Employee [salary=" + salary + ", hireDate=" + hireDate + "]";
+		return super.toString()+", salary: " + salary + ", hire date: " + hireDate;
 	}
 
 	public double getSalary() {
