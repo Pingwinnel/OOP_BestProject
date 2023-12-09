@@ -8,18 +8,19 @@ public class Employee extends User{
 	
 
 	private double salary;
-	Date hireDate;
+	private Date hireDate;
 	
 	public Employee() {}
 	
 	public Employee(int id, String surname, String name, String corparateEmail, String password, double salary) {
 		super(id, surname, name, corparateEmail, password);
 		this.salary = salary;
+		this.hireDate = new Date();
 	}
 	
 	@Override
 	public String toString() {
-		return super.toString()+" Employee [salary=" + salary + ", hireDate=" + hireDate + "]";
+		return super.toString()+", salary: " + salary + ", hire date: " + hireDate;
 	}
 
 	public double getSalary() {
@@ -28,5 +29,6 @@ public class Employee extends User{
 
 	public void setSalary(double salary) {
 		this.salary = salary;
-	}	
+	
+	}
 }
