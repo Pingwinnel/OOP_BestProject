@@ -1,7 +1,7 @@
 package Staff;
 
 public class Manager extends Employee {
-	managerType type;
+	private managerType type;
 	
 	public Manager() {
 		// TODO Auto-generated constructor stub
