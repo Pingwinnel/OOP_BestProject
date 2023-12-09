@@ -1,4 +1,4 @@
-package wproject;
+package Main;
 
 import java.io.Serializable;
 import java.util.Objects;

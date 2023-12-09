@@ -1,4 +1,4 @@
-package wproject;
+package Student;
 
 public class Student {
 	

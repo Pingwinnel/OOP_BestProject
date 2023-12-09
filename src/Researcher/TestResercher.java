@@ -1,4 +1,7 @@
-package wproject;
+package Researcher;
+
+import Staff.Employee;
+import Student.Student;
 
 public class TestResercher {
 

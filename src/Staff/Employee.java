@@ -1,6 +1,8 @@
-package wproject;
+package Staff;
 
 import java.util.Date;
+import Main.User;
+
 
 public class Employee extends User{
 	
@@ -26,7 +28,5 @@ public class Employee extends User{
 
 	public void setSalary(double salary) {
 		this.salary = salary;
-	}
-	
-	
+	}	
 }

@@ -1,5 +1,8 @@
 package wproject;
 
+import Main.Admin;
+import Staff.Employee;
+
 public class Test {
 
 	public static void main(String[] args) throws Exception {

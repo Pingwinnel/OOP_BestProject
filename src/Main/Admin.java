@@ -1,6 +1,8 @@
-package wproject;
+package Main;
 
 import java.util.Vector;
+import Staff.Employee;
+
 
 public class Admin extends Employee{
 	DataSingleton s = DataSingleton.getInstance();

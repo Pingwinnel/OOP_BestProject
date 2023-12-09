@@ -1,4 +1,6 @@
-package wproject;
+package Researcher;
+
+import Staff.Employee;
 
 public class Researcher extends Employee implements CanBeResearcher{
 	

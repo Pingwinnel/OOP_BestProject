@@ -1,4 +1,4 @@
-package wproject;
+package Researcher;
 
 public abstract class ResearchDecorator implements CanBeResearcher{
 	protected final CanBeResearcher decoratedResearcher;
