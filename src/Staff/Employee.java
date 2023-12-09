@@ -30,4 +30,7 @@ public class Employee extends User{
 		this.salary = salary;
 	
 	}
+	public void setHireDate(Date hireDate) {
+		this.hireDate=hireDate;
+	}
 }

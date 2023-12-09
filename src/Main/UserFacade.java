@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 public class UserFacade extends User {
-	public static void userSetter() throws IOException {
+	public static User userSetter() throws IOException {
 		User user=new User();
 		Vector<String> vector  = new Vector<String>();
 		vector.add("id");
@@ -32,7 +32,7 @@ public class UserFacade extends User {
 				System.out.println("You  input wrong");
 			}
 		}
-		System.out.println(user);
+		return user;
 	}
 }
 

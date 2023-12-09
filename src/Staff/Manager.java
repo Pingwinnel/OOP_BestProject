@@ -11,4 +11,7 @@ public class Manager extends Employee {
 		super(id, surname, name, corparateEmail, password, salary);
 		this.type = type;
 	}
+	public void setType(managerType type1) {
+		this.type=type1;
+	}
 }
