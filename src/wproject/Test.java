@@ -12,8 +12,8 @@ public class Test {
 		Admin a = new Admin();
 		a.addUser(e);
 		a.addUser(e1);
-		
 		a.removeUser(e);
+		a.removeUser(e1);
 		System.out.println("----------");
 		System.out.println(a.getUsers());
 		

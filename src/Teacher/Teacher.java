@@ -1,5 +1,7 @@
 package Teacher;
 
-public class Teacher {
+import Staff.Employee;
+
+public class Teacher extends Employee{
 
 }

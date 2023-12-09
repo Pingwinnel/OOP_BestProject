@@ -32,6 +32,7 @@ public final class DataSingleton{
 	public static Vector<User> readUsers() throws Exception {
 		FileInputStream fis = new FileInputStream("data.ser");
 		ObjectInputStream ois = new ObjectInputStream(fis);
+		@SuppressWarnings("unchecked")
 		Vector<User> users = (Vector<User>)ois.readObject();
 		fis.close(); ois.close();
 		return users;

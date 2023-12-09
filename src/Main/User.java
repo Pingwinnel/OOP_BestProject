@@ -23,7 +23,7 @@ public class User implements Serializable{
 	@Override
 	public String toString() {
 		return "User [id=" + getId() + ", surname=" + getSurname() + ", name=" + getName() + ", corparateEmail=" + getCorparateEmail()
-				+ "]";
+				+ ", password="+getPassword()+"]";
 	}
 
 	@Override

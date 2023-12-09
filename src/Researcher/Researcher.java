@@ -8,6 +8,9 @@ public class Researcher extends Employee implements CanBeResearcher{
 		super(id, surname, name, corparateEmail, password, salary);
 	}
 
+	public Researcher() {
+	}
+
 	@Override
 	public String toString() {
 		return super.toString() + "I am a Researcher";
