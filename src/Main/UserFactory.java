@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Date;
 
+import Researcher.EmployeeResearcher;
 import Researcher.Researcher;
 import Staff.Dean;
 import Staff.Employee;
@@ -14,13 +15,14 @@ import Staff.managerType;
 import Student.Student;
 import Teacher.Teacher;
 
-public class UserFactory {
+public  class  UserFactory {
 @SuppressWarnings("deprecation")
-public User getUser(String userType) throws IOException {
+public static User getUser(String userType) throws IOException {
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	if(userType.equals("User")) return UserFacade.userSetter() ;
 	if(userType.equals("Employee")) { 
-		User u1=UserFacade.userSetter();
+		User u1=new Employee();
+		u1=UserFacade.userSetter();
 		Employee e1=(Employee)u1;
 		System.out.println("Please enter salary:");
 		e1.setSalary(Double.parseDouble( br.readLine()));
@@ -28,8 +30,8 @@ public User getUser(String userType) throws IOException {
 		e1.setHireDate( new Date(br.readLine()));
 		return e1;
 		}
-	if(userType.equals("Researcher")) { 
-		return (Researcher)UserFacade.userSetter();
+	if(userType.equals("Employee Researcher")) { 
+		return (EmployeeResearcher)UserFacade.userSetter();
 	
 	}
 	if(userType.equals("Dean")) {
@@ -50,7 +52,7 @@ public User getUser(String userType) throws IOException {
 	}
 	if(userType.equals("Teacher")) { 
 		User u3=UserFacade.userSetter();
-		Employee e1=(Employee)u1;
+		Employee e1=(Employee)u3;
 		System.out.println("Please enter salary:");
 		e1.setSalary(Double.parseDouble( br.readLine()));
 		System.out.println("Please enter hire date:");

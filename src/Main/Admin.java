@@ -16,8 +16,8 @@ public class Admin extends Employee{
 		
 	}
 	
-	public void addUser(User u) throws Exception {
-		s.addUser(u);
+	public void addUser(String userType) throws Exception {
+		s.addUser(userType);
 	}
 	
 	public Vector<User> getUsers() throws Exception {

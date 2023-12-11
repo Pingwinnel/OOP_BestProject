@@ -10,6 +10,7 @@ import java.util.Vector;
 public final class DataSingleton{
 	private static final DataSingleton DB = new DataSingleton();
 	private static Vector<User> users;
+	private static UserFactory userFactory;
 	private DataSingleton() {
 		
 	}
@@ -45,7 +46,8 @@ public final class DataSingleton{
 		oos.close(); fos.close();
 	}
 	
-	public void addUser(User u) throws Exception {
+	public void addUser(String userType) throws Exception {
+		User u= userFactory.getUser(userType);
 		users.add(u);
 		saveUsers();
 		
