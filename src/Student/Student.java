@@ -2,6 +2,8 @@ package Student;
 
 import java.util.Date;
 import Main.User;
+import Teacher.Teacher;
+
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Vector;
@@ -51,6 +53,12 @@ public class Student extends User {
 	public HashMap<Course, Mark> getMarks() {
 		return this.marks;
 	}
+	public void setMarks(Mark m,Course c) {
+	if(marks.containsKey(c)) {
+		Mark numGrade=marks.get(c);
+		marks.replace(c, numGrade, m);
+	}
+	}
 	
 	public int getYearOfStudy() {
 		return this.yearOfStudy;
@@ -93,6 +101,7 @@ public class Student extends User {
 	}
 	
 	public DataSingleton viewTranscript() {
+		return null;
 		
 	}
 	
@@ -109,6 +118,7 @@ public class Student extends User {
 	}
 	
 	public Vector<Course> getCoursesForRegistration() {
+		return null;
 		
 	}
 	

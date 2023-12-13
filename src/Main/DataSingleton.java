@@ -7,10 +7,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Vector;
 
+import Student.Course;
+
 public final class DataSingleton{
 	private static final DataSingleton DB = new DataSingleton();
 	private static Vector<User> users;
 	private static UserFactory userFactory;
+	private static Vector<Course> courses;
 	private DataSingleton() {
 		
 	}

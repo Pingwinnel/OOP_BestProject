@@ -53,4 +53,22 @@ public class GraduateStudent extends Student {
 		return "GraduateStudent [" + super.toString() + ", degree=" + this.degree + ", research supervisor=" + this.researchSupervisor + ", papers=" + this.papers + "]";
 	}
 	
+	private class Supervisor implements Researcher{
+		public Supervisor() {
+			
+		}
+
+		@Override
+		public void printPapers() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public int calculateHIndex(Vector<ResearchPaper> papers) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+	}
+	
 }
