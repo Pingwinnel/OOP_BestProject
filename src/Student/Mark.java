@@ -1,19 +1,22 @@
 package Student;
 
 import java.io.Serializable;
+import java.util.HashMap;
+
+import utilities.transformMark;
 
 /**
 * @generated
 */
+
 public class Mark implements Serializable{
+	
 	public Mark() {
 		
 	}
 	public Mark(double mark) {
 		this.digitGrades=mark;
-	}
-	public Mark(String charGrade) {
-		this.letterGrades=charGrade;
+		this.letterGrades=transformMark.transform(mark);
 	}
     
     /**
@@ -52,173 +55,57 @@ public class Mark implements Serializable{
     private double fullAtt;
     
     
-    
 
-    /**
-    * @generated
-    */
-    private int getScore() {
-        return this.score;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setScore(Integer score) {
-        this.score = score;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    private String getLetterGrades1() {
-        return this.letterGrades;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setLetterGrades(String letterGrades) {
-        this.letterGrades = letterGrades;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    private double getDigitGrades1() {
-        return this.digitGrades;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setDigitGrades(double digitGrades) {
-        this.digitGrades = digitGrades;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    private double getFirstAtt1() {
-        return this.firstAtt;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setFirstAtt(double firstAtt) {
-        this.firstAtt = firstAtt;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    private double getSecondAtt1() {
-        return this.secondAtt;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setSecondAtt(double secondAtt) {
-        this.secondAtt = secondAtt;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    private double getFinalExamScore1() {
-        return this.finalExamScore;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setFinalExamScore(double finalExamScore) {
-        this.finalExamScore = finalExamScore;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    private double getFullAtt1() {
-        return this.fullAtt;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setFullAtt(double fullAtt) {
-        this.fullAtt = fullAtt;
-    }
-    
-    
-    
-    
-
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
     public String toString() {
         //TODO
         return "";
     }
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	public String getLetterGrades() {
+		return letterGrades;
+	}
+	public void setLetterGrades(String letterGrades) {
+		this.letterGrades = letterGrades;
+	}
+	public double getDigitGrades() {
+		return digitGrades;
+	}
+	public void setDigitGrades(double digitGrades) {
+		this.digitGrades = digitGrades;
+	}
+	public double getFirstAtt() {
+		return firstAtt;
+	}
+	public void setFirstAtt(double firstAtt) {
+		this.firstAtt = firstAtt;
+	}
+	public double getSecondAtt() {
+		return secondAtt;
+	}
+	public void setSecondAtt(double secondAtt) {
+		this.secondAtt = secondAtt;
+	}
+	public double getFinalExamScore() {
+		return finalExamScore;
+	}
+	public void setFinalExamScore(double finalExamScore) {
+		this.finalExamScore = finalExamScore;
+	}
+	public double getFullAtt() {
+		return fullAtt;
+	}
+	public void setFullAtt(double fullAtt) {
+		this.fullAtt = fullAtt;
+	}
     
-    /**
-    * @generated
-    */
-    public String getLetterGrades() {
-        //TODO
-        return "";
-    }
     
-    /**
-    * @generated
-    */
-    public double getDigitGrades() {
-        //TODO
-        return (Double) null;
-    }
     
-    /**
-    * @generated
-    */
-    public double getFirstAtt() {
-        //TODO
-        return (Double) null;
-    }
     
-    /**
-    * @generated
-    */
-    public double getSecondAtt() {
-        //TODO
-        return (Double) null;
-    }
-    
-    /**
-    * @generated
-    */
-    public double getFinalExamScore() {
-        //TODO
-        return (Double) null;
-    }
-    
-    /**
-    * @generated
-    */
-    public double getFullAtt() {
-        //TODO
-        return (Double) null;
-    }
     
     
 }

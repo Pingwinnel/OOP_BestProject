@@ -21,8 +21,7 @@ public static User getUser(String userType) throws IOException {
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	if(userType.equals("User")) return UserFacade.userSetter() ;
 	if(userType.equals("Employee")) { 
-		User u1=new Employee();
-		u1=UserFacade.userSetter();
+		User u1=UserFacade.userSetter();
 		Employee e1=(Employee)u1;
 		System.out.println("Please enter salary:");
 		e1.setSalary(Double.parseDouble( br.readLine()));
