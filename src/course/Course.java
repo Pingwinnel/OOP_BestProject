@@ -72,7 +72,7 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Course name: " + name + ", code: " + code + ", school: " + school + ", credits: " + credits;
+		return "Course name: " + name + ", code: " + code + ", school: " + school + ", credits: " + credits+" ";
 	}
 	
 	
