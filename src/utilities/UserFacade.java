@@ -9,6 +9,7 @@ import java.util.Vector;
 
 import staff.User;
 
+@SuppressWarnings("serial")
 public class UserFacade extends User   {
 	public static User userSetter() throws IOException {
 		User user;
