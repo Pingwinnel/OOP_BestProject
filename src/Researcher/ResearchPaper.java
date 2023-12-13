@@ -1,12 +1,12 @@
-package Researcher;
+package researcher;
 
 import java.util.Date;
 import java.util.Vector;
 
-public class ResearchPaper {
+public class ResearchPaper implements Comparable<ResearchPaper>{
 
 	private String name;
-	private Vector<Researcher> participants;
+	private Vector<Researcher> participants = new Vector<Researcher>();
 	private int pages;
 	private Date date;
 	private int citations;
@@ -30,7 +30,7 @@ public class ResearchPaper {
 	}
 	
 	public Vector<Researcher> getParticipants() {
-		return this.participants;
+		return participants;
 	}
 	
 	public int getPages() {
@@ -80,7 +80,15 @@ public class ResearchPaper {
 	}
 	
 	public String toString() {	
-		return "ResearchPaper [name=" + this.name + ", participants=" + this.participants + ", pages=" + this.pages + ", date=" + this.date + ", citations=" + this.citations + ", doi=" + this.doi + "]";
+		return "ResearchPaper's name: " + this.name + ", participants: " + this.participants + ", pages: " + this.pages + ", date: " + this.date + ", citations: " + this.citations + ", doi: " + this.doi;
 	}
 	
+
+	@Override
+	public int compareTo(ResearchPaper r) {
+		// TODO Auto-generated method stub
+		if(this.citations > r.citations) return -1;
+		if(this.citations < r.citations) return 1;
+		return 0;
+	}
 }

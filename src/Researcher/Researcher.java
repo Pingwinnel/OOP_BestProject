@@ -1,4 +1,4 @@
-package Researcher;
+package researcher;
 
 import java.util.Vector;
 

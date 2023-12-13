@@ -1,10 +1,9 @@
-package Researcher;
+package researcher;
 
+import java.util.Collections;
 import java.util.Vector;
 
-import Main.User;
-
-public class EmployeeResearcher extends User implements Researcher {
+public class EmployeeResearcher implements Researcher {
 
 	private Vector<ResearchPaper> papers;
 
@@ -21,16 +20,17 @@ public class EmployeeResearcher extends User implements Researcher {
 	@Override
 	public int calculateHIndex(Vector<ResearchPaper> papers) {
 		// TODO Auto-generated method stub
-		int hIndex = 0;
+		// maybe separate class with this static method 
+		Collections.sort(papers);
+		int hIndex = 0, citation = 0;
         for (int i = 0; i < papers.size(); i++) {
-            int citations = papers.get(i).getCitations();
-            int papersWithCitations = papers.size() - i;
-            if (citations >= papersWithCitations) {
-                hIndex = papersWithCitations;
-                break;
+            while(papers.get(i).getCitations()>=i) {
+            	citation = papers.get(i).getCitations();
+            	hIndex = i;
+            	i++;
             }
         }
-        return hIndex;
+        return hIndex+1;
 	}
 
 }

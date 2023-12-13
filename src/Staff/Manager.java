@@ -1,17 +1,87 @@
-package Staff;
+package staff;
 
-public class Manager extends Employee {
-	private managerType type;
+import java.util.Objects;
+
+import course.Course;
+import student.Student;
+import utilities.News;
+
+public class Manager extends Employee{
+	private ManagerType type;
+	
 	
 	public Manager() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Manager(int id, String surname, String name, String corparateEmail, String password, double salary) {
+	public Manager(int id, String surname, String name, String corparateEmail, String password, double salary, ManagerType type) {
 		super(id, surname, name, corparateEmail, password, salary);
 		this.type = type;
 	}
-	public void setType(managerType type1) {
-		this.type=type1;
+
+	public ManagerType getType() {
+		return type;
 	}
+
+	public void setType(ManagerType type) {
+		this.type = type;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(type);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!super.equals(obj)) return false;
+		Manager other = (Manager) obj;
+		return type == other.type;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "I am manager " + type;
+	}
+	
+	public void addCoursesForRegis(Course crs) {
+		
+	}
+	
+	public void deleteCoursesForRegis(Course crs) {
+		
+	}
+	
+	public void approveRegistration(Student s) {
+		
+	}
+	
+	public void addNews(News n) {
+		
+	}
+	
+	public void viewInfoStudents() {
+		
+	}
+	
+	public void viewInfoTeacher() {
+		
+	}
+
+	public void createReport() {
+		
+	}
+	
+	public void viewStudentsSortedByGpa(){
+		
+	}
+	
+	public void viewStudentsSortedByAlphabetically() {
+		
+	}
+	
+	
 }

@@ -1,4 +1,4 @@
-package Researcher;
+package researcher;
 
 public class CanNotJoinToProjectException extends Exception {
 

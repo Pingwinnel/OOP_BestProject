@@ -1,18 +1,22 @@
-package Student;
+package student;
 
 import java.util.Vector;
 
-import Researcher.ResearchPaper;
+import researcher.ResearchPaper;
 
 public class DiplomaProject {
 
 	private String title;
-	private Vector<Student> members;
 	private StudentDegree type;
+	private Vector<Student> members;
 	private Vector<ResearchPaper> papers;
 	
 	public DiplomaProject() {
 		
+	}
+	public DiplomaProject(String title, StudentDegree type) {
+		this.title = title;
+		this.type = type;
 	}
 	
 	public String getTitle() {
@@ -21,6 +25,10 @@ public class DiplomaProject {
 	
 	public Vector<Student> getMembers() {
 		return this.members;
+	}
+	
+	public void addMember(Student s) {
+		members.add(s);
 	}
 	
 	public StudentDegree getType() {
@@ -40,7 +48,7 @@ public class DiplomaProject {
 	}
 	
 	public String toString() {
-		return "DiplomaProject [title=" + this.title + ", members=" + this.members + ", type=" + this.type + "papers=" + this.papers + "]";
+		return "DiplomaProject's title: " + this.title + ", members: " + this.members + ", type: " + this.type + "papers: " + this.papers;
 	}
 	
 }

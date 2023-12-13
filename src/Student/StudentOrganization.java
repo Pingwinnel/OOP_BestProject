@@ -1,4 +1,4 @@
-package Student;
+package student;
 
 import java.util.Vector;
 
@@ -12,6 +12,11 @@ public class StudentOrganization {
 		
 	}
 	
+	public StudentOrganization(String studOrgName, Student head) {
+		this.studOrgName = studOrgName;
+		this.head = head;
+	}
+
 	public String getStudOrgName() {
 		return this.studOrgName;
 	}

@@ -1,4 +1,4 @@
-package Student;
+package student;
 
 public enum Schools {
 	SITE, SAM, BS;

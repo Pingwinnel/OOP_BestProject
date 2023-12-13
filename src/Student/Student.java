@@ -1,24 +1,22 @@
-package Student;
-
-import java.util.Date;
-import Main.User;
-import Teacher.Teacher;
+package student;
 
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Vector;
 
-import Main.DataSingleton;
+import course.Course;
+import utilities.Mark;
+import researcher.ResearchPaper;
+import researcher.Researcher;
+import staff.User;
 
 public class Student extends User {
-	
 	private Schools school;
 	private String speciality;
 	private double gpa;
 	private HashMap<Course, Mark> marks;
 	private int yearOfStudy;
-	private DiplomaProject diplomaProject;
-	private Date graduationDate;
+//	private DiplomaProject diplomaProject;
 	
 	public Student() {
 		
@@ -28,36 +26,24 @@ public class Student extends User {
 		super(id, surname, name, corparateEmail, password);
 	}
 	
-	public Student(int id, String surname, String name, String corparateEmail, String password, Schools school, String speciality, double gpa, int yearOfStudy, DiplomaProject diplomaProject, Date graduationDate) {
+	public Student(int id, String surname, String name, String corparateEmail, String password, Schools school, String speciality, double gpa, int yearOfStudy) {
 		super(id, surname, name, corparateEmail, password);
 		this.school = school;
 		this.speciality = speciality;
 		this.gpa = gpa;
 		this.yearOfStudy = yearOfStudy;
-		this.diplomaProject = diplomaProject;
-		this.graduationDate = graduationDate;
 	}
 	
 	public Schools getSchool() {
-		return this.school;
+		return school;
 	}
 	
 	public String getSpeciality() {
-		return this.speciality;
+		return speciality;
 	}
 	
 	public double getGpa() {
-		return this.gpa;
-	}
-	
-	public HashMap<Course, Mark> getMarks() {
-		return this.marks;
-	}
-	public void setMarks(Mark m,Course c) {
-	if(marks.containsKey(c)) {
-		Mark numGrade=marks.get(c);
-		marks.replace(c, numGrade, m);
-	}
+		return gpa;
 	}
 	
 	public int getYearOfStudy() {
@@ -65,12 +51,9 @@ public class Student extends User {
 	}
 	
 	public DiplomaProject getDiplomaProject() {
-		return this.diplomaProject;
+		return null; //from database
 	}
 	
-	public Date getGraduationDate() {
-		return this.graduationDate;
-	}
 	
 	public void setSchool(Schools school) {
 		this.school = school;
@@ -89,23 +72,19 @@ public class Student extends User {
 	}
 	
 	public void setDiplomaProject(DiplomaProject diplomaProject) {
-		this.diplomaProject = diplomaProject;
+		//add to db
 	}
-	
-	public void setGraduationDate(Date graduationDate) {
-		this.graduationDate = graduationDate;
-	}
+
 	
 	public void viewMark(Course course) {
 		
 	}
 	
-	public DataSingleton viewTranscript() {
-		return null;
+	public void viewTranscript() {
 		
 	}
 	
-	public void viewTeacherInfo(Teacher teacher) {
+	public void viewTeacherInfo(Course course) {
 		
 	}
 	
@@ -113,27 +92,47 @@ public class Student extends User {
 		
 	}
 	
-	public void rateTeacher(Teacher teacher) {
-		
+	public void rateTeachers() {
+		//only those teachers which teach a student
 	}
 	
 	public Vector<Course> getCoursesForRegistration() {
 		return null;
-		
+	}
+	
+	public HashMap<Course, Mark> getMarks() {
+		return marks;
 	}
 	
 	public String toString() {
-		return "Student [" + super.toString() + ", school= " + this.school + ", speciality= " + this.speciality + ", gpa= " + this.gpa + ", marks= " + this.marks + ", year of study= " + this.yearOfStudy + ", diploma project= " + this.diplomaProject + ", graduation date= " + this.graduationDate + "]"; 
+		return "Student [" + super.toString() + ", school= " + this.school + ", speciality= " + this.speciality + ", gpa= " + this.gpa + ", year of study= " + this.yearOfStudy + "]"; 
 	}
 	
 	public boolean equals(Object o) {
 		if(!super.equals(o)) return false;
 		Student s = (Student) o;
-		return this.gpa == s.gpa && this.yearOfStudy == s.yearOfStudy && this.speciality.equals(s.speciality) && this.school.equals(s.school) && this.marks.equals(s.marks) && this.diplomaProject.equals(s.diplomaProject) && this.graduationDate.equals(s.graduationDate);
+		return this.gpa == s.gpa && this.yearOfStudy == s.yearOfStudy && this.speciality.equals(s.speciality) && this.school.equals(s.school);
 	}
 	
 	public int hashCode() {
-		return Objects.hash(getCorparateEmail(), getId(), getName(), getPassword(), getSurname(), getSchool(), getSpeciality(), getGpa(), getMarks(), getYearOfStudy(), getDiplomaProject(), getGraduationDate());
+		return Objects.hash(getCorparateEmail(), getId(), getName(), getPassword(), getSurname(), getSchool(), getSpeciality(), getGpa(), getYearOfStudy());
 	}
+	
+	
+	class ResearcherStudent implements Researcher{
+		public void printPapers() {
+			System.out.println("papers");
+		}
+		public String toString() {
+			return "I am a student researcher, my name is " + getName();
+		}
+		@Override
+		public int calculateHIndex(Vector<ResearchPaper> papers) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+	}
+
+	
 	
 }

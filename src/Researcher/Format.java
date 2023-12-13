@@ -1,4 +1,4 @@
-package Researcher;
+package researcher;
 
 public enum Format {
 	PlainTeX, BibTeX;

@@ -1,11 +1,9 @@
-package Student;
-
-import java.util.Date;
+package student;
 
 import java.util.Vector;
 
-import Researcher.Researcher;
-import Researcher.ResearchPaper;
+import researcher.Researcher;
+import researcher.ResearchPaper;
 
 public class GraduateStudent extends Student {
 
@@ -13,27 +11,27 @@ public class GraduateStudent extends Student {
 	private Researcher researchSupervisor;
 	private Vector<ResearchPaper> papers;
 	
+	
 	public GraduateStudent() {
 		super();
 	}
 	
-	public GraduateStudent(int id, String surname, String name, String corparateEmail, String password, Schools school, String speciality, double gpa, int yearOfStudy, DiplomaProject diplomaProject, Date graduationDate) {
-		super(id, surname, name, corparateEmail, password, school, speciality, gpa, yearOfStudy, diplomaProject, graduationDate);
+	public GraduateStudent(int id, String surname, String name, String corparateEmail, String password, Schools school, String speciality, double gpa, int yearOfStudy) {
+		super(id, surname, name, corparateEmail, password, school, speciality, gpa, yearOfStudy);
 	}
 	
-	public GraduateStudent(int id, String surname, String name, String corparateEmail, String password, Schools school, String speciality, double gpa, int yearOfStudy, DiplomaProject diplomaProject, Date graduationDate, GraduateStudentDegree degree, Researcher researchSupervisor) {
-		super(id, surname, name, corparateEmail, password, school, speciality, gpa, yearOfStudy, diplomaProject, graduationDate);
+	public GraduateStudent(int id, String surname, String name, String corparateEmail, String password, Schools school, String speciality, double gpa, int yearOfStudy, GraduateStudentDegree degree) {
+		super(id, surname, name, corparateEmail, password, school, speciality, gpa, yearOfStudy);
 		this.degree = degree;
-		this.researchSupervisor = researchSupervisor;
 		
 	}
 	
 	public GraduateStudentDegree getDegree() {
-		return this.degree;
+		return degree;
 	}
 	
 	public Researcher getResearchSupervisor() {
-		return this.researchSupervisor;
+		return researchSupervisor;
 	}
 	
 	public Vector<ResearchPaper> getPapers() {
@@ -51,24 +49,6 @@ public class GraduateStudent extends Student {
 	
 	public String toString() {
 		return "GraduateStudent [" + super.toString() + ", degree=" + this.degree + ", research supervisor=" + this.researchSupervisor + ", papers=" + this.papers + "]";
-	}
-	
-	private class Supervisor implements Researcher{
-		public Supervisor() {
-			
-		}
-
-		@Override
-		public void printPapers() {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public int calculateHIndex(Vector<ResearchPaper> papers) {
-			// TODO Auto-generated method stub
-			return 0;
-		}
 	}
 	
 }

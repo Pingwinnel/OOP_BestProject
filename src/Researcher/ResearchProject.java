@@ -1,8 +1,8 @@
-package Researcher;
+package researcher;
 
 import java.util.Vector;
-import Main.User;
 
+import staff.User;
 
 public class ResearchProject {
 	
@@ -44,7 +44,7 @@ public class ResearchProject {
 	}
 	
 	public String toString() {
-		return "ResearchProject [title=" + this.title + ", members=" + this.members + ", papers=" + this.papers + "]";
+		return "Research Project's title: " + title + ", members: " + members + ", papers: " + papers;
 	}
 
 }

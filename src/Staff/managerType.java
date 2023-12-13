@@ -1,5 +1,5 @@
-package Staff;
+package staff;
 
-public enum managerType {
-	OR, Department, Faculty;
+public enum ManagerType {
+	OR, DEPARTMENT, SCHOOL
 }
