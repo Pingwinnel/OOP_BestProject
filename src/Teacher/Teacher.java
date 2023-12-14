@@ -60,7 +60,7 @@ public class Teacher extends Employee{
 	}
 	
 	public void putMark(Course c, Student s, Mark m) {
-		
+		s.getMarks().replace(c, m);
 	}
 	
 	public Vector<Student> viewStudentInfo(){

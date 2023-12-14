@@ -14,7 +14,7 @@ public class Employee extends User{
 	public Employee() {}
 	
 	public Employee(int id, String surname, String name, String corparateEmail, String password, double salary) {
-		super(id, surname, name, corparateEmail, password);
+		super(id, surname, name);
 		this.salary = salary;
 		this.hireDate = new Date();
 	}
@@ -58,6 +58,11 @@ public class Employee extends User{
 			} 
 		}
 		return null;
+	}
+
+	public void setHireDate(Date date) {
+		this.hireDate=date;
+		
 	}
 	
 	

@@ -3,7 +3,9 @@ package researcher;
 import java.util.Collections;
 import java.util.Vector;
 
-public class EmployeeResearcher implements Researcher {
+import staff.User;
+
+public class EmployeeResearcher extends User implements Researcher  {
 
 	private Vector<ResearchPaper> papers;
 
