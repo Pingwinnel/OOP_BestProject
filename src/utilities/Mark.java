@@ -43,7 +43,8 @@ public class Mark {
 	}
 	@Override
 	public String toString() {
-		return "att1: " + att1 + ", att2: " + att2 + ", finalExamScore: " + finalExamScore;
+		return "att1: " + att1 + ", att2: " + att2 + ", finalExamScore: " + finalExamScore +
+				", Letter Grade: "+letterGrade +", score: "+score;
 	}
 	@Override
 	public int hashCode() {
