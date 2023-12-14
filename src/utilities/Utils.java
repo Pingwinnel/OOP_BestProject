@@ -1,7 +1,6 @@
 package utilities;
 
 import java.security.SecureRandom;
-import java.util.Random;
 
 import staff.Employee;
 import staff.User;

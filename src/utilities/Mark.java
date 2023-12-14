@@ -6,8 +6,23 @@ public class Mark {
 	private int att1;
 	private int att2;
 	private int finalExamScore;
+	private int score;
+	private String letterGrade;
+	
 	//all the rest fields write them!!!
 	
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	public String getLetterGrade() {
+		return letterGrade;
+	}
+	public void setLetterGrade(String letterGrade) {
+		this.letterGrade = letterGrade;
+	}
 	public int getAtt1() {
 		return att1;
 	}
