@@ -12,8 +12,8 @@ public class Dean extends Employee {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Dean(int id, String surname, String name, String corparateEmail, String password, double salary, Schools faculty) {
-		super(id, surname, name, corparateEmail, password, salary);
+	public Dean(String surname, String name, double salary, Schools faculty) {
+		super(surname, name, salary);
 		this.faculty = faculty;
 	}
 	

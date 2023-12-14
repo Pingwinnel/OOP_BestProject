@@ -25,12 +25,14 @@ public class Teacher extends Employee{
 	}
 	
 	public Teacher() {}
-	public Teacher(int id, String surname, String name, String corparateEmail, String password, double salary) {
-		super(id, surname, name, corparateEmail, password, salary);
+	public Teacher(String surname, String name, double salary, School school) {
+		super(surname, name, salary);
+		this.academicDegree = Degree.TUTOR;
+		this.school = school;
 	}
 	
-	public Teacher(int id, String surname, String name, String corparateEmail, String password, double salary, School school, Degree academicDegree) {
-		super(id, surname, name, corparateEmail, password, salary);
+	public Teacher(String surname, String name, double salary, School school, Degree academicDegree) {
+		super(surname, name, salary);
 		this.setAcademicDegree(academicDegree);
 		this.setSchool(school);
 	}
@@ -61,6 +63,7 @@ public class Teacher extends Employee{
 	
 	public void putMark(Course c, Student s, Mark m) {
 		s.getMarks().replace(c, m);
+		//really there must be another way to do it?
 	}
 	
 	public Vector<Student> viewStudentInfo(){

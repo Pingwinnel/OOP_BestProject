@@ -8,10 +8,9 @@ public class TechSupportSpecialist extends Employee {
 		// TODO Auto-generated constructor stub
 	}
 
-	public TechSupportSpecialist(int id, String surname, String name, String corparateEmail, String password,
-			double salary) {
-		super(id, surname, name, corparateEmail, password, salary);
-		// TODO Auto-generated constructor stub
+	public TechSupportSpecialist(String surname, String name, double salary) {
+		super(surname, name, salary);
+		
 	}
 
 	public boolean acceptOrders() {
@@ -36,6 +35,6 @@ public class TechSupportSpecialist extends Employee {
     }
     
     public String toString() {
-        return "TechSupportSpecialist{" + super.toString() + "}";
+        return "TechSupportSpecialist {" + super.toString() + "}";
     }
 }

@@ -3,21 +3,27 @@ package staff;
 import java.io.Serializable;
 import java.util.Objects;
 
+import utilities.Utils;
+
 public abstract class User implements Serializable{
 	private int id;
+	private static int cnt;
 	private String surname;
 	private String name;
 	private String corparateEmail;
 	private String password;
 	
+	static {
+		cnt++;
+	}
 	public User() {}
 	
-	public User(int id, String surname, String name, String corparateEmail, String password) {
-		this.setId(id);
+	public User(String surname, String name) {
+		this.id = cnt;
 		this.setSurname(surname);
 		this.setName(name);
-		this.setCorparateEmail(corparateEmail);
-		this.setPassword(password);
+		this.corparateEmail = Utils.generateCorparateEmail(this);
+		this.password = Utils.generatePassword();
 	}
 
 	public int getId() {

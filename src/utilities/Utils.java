@@ -14,8 +14,7 @@ public class Utils {
         String numbers = "1234567890";
         String combinedChars = capitalCaseLetters + lowerCaseLetters + specialCharacters + numbers;
       
-      
-        
+
         SecureRandom random = new SecureRandom();
         StringBuilder password = new StringBuilder();
         
