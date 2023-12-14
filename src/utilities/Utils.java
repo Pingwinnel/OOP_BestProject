@@ -30,9 +30,9 @@ public class Utils {
 	public static String generateCorparateEmail(User u) {
 		String email = "@kbtu.kz";
 		if(u instanceof Employee) {
-			return u.getName().charAt(0)+"."+u.getSurname()+email;
+			return u.getName().toLowerCase().charAt(0)+"."+u.getSurname().toLowerCase()+email;
 		} 
-		return u.getName().charAt(0)+"_"+u.getSurname()+email;
+		return u.getName().toLowerCase().charAt(0)+"_"+u.getSurname().toLowerCase()+email;
 		
 	}
 }
