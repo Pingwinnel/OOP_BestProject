@@ -84,7 +84,14 @@ public final class DataSingleton{
 	public void addResearchPapers(ResearchPaper researchPaper) {
 		researchPapers.add(researchPaper);
 	}
+	
+	//course
 	public void addCourse(Course c) {
 		courses.add(c);
 	}
+	public Vector<Course> getCourse(){
+		return courses;
+	}
+	
+	
 }

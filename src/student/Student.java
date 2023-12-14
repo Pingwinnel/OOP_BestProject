@@ -15,7 +15,7 @@ public class Student extends User {
 	private String speciality;
 	private double gpa;
 	private HashMap<Course, Mark> marks;
-	private int yearOfStudy;
+	private int yearOfStudy = 1;
 //	private DiplomaProject diplomaProject;
 	
 	public Student() {
@@ -126,7 +126,7 @@ public class Student extends User {
 	}
 	
 	
-	class ResearcherStudent implements Researcher{
+	public class ResearcherStudent implements Researcher{
 		public void printPapers() {
 			System.out.println("papers");
 		}

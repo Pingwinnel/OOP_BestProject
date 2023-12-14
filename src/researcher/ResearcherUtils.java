@@ -1,9 +1,13 @@
 package researcher;
 
+
 import java.util.Collections;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
-public class CalculationOfHIndex {
+import utilities.DataSingleton;
+
+public class ResearcherUtils {
 	public static int calculateHIndex(Vector<ResearchPaper> papers) {
 		Collections.sort(papers);
 		int hIndex = 0;
@@ -14,5 +18,9 @@ public class CalculationOfHIndex {
             }
         }
         return hIndex+1;
+	}
+	public static Vector<ResearchPaper> printPapers(Researcher researcher){
+		Vector<ResearchPaper> papers = (Vector<ResearchPaper>) DataSingleton.getInstance().getResearchPapers().stream().filter(n->n.getAuthors().contains(researcher)).collect(Collectors.toList());
+		return papers;
 	}
 }

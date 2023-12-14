@@ -6,7 +6,7 @@ import java.util.Vector;
 
 import course.Course;
 import course.School;
-import researcher.CalculationOfHIndex;
+import researcher.ResearcherUtils;
 import researcher.ResearchPaper;
 import researcher.Researcher;
 import staff.Employee;
@@ -112,13 +112,8 @@ public class Teacher extends Employee{
 		public int calculateHIndex(Vector<ResearchPaper> papers) {
 			// TODO Auto-generated method stub
 			//get from db only ResearchPapers of this
-			Vector<ResearchPaper> realPapers = new Vector<ResearchPaper>();
-			for(ResearchPaper r: db.getResearchPapers()) {
-				if(r.getParticipants().contains(this)) {
-					realPapers.add(r);
-				}
-			}
-			return CalculationOfHIndex.calculateHIndex(realPapers);
+			
+			return ResearcherUtils.calculateHIndex(papers);
 			
 		}
 		

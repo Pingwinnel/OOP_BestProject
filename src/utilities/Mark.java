@@ -9,8 +9,7 @@ public class Mark {
 	private int score;
 	private String letterGrade;
 	
-	//all the rest fields write them!!!
-	
+
 	public int getScore() {
 		return score;
 	}
@@ -20,8 +19,16 @@ public class Mark {
 	public String getLetterGrade() {
 		return letterGrade;
 	}
+	
 	public void setLetterGrade(String letterGrade) {
 		this.letterGrade = letterGrade;
+	}
+
+	public Mark(int att1, int att2, int finalExamScore) {
+		this.att1 = att1;
+		this.att2 = att2;
+		this.finalExamScore = finalExamScore;
+
 	}
 	public int getAtt1() {
 		return att1;

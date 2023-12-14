@@ -3,19 +3,22 @@ package researcher;
 import java.util.Collections;
 import java.util.Vector;
 
+import staff.Employee;
 import staff.User;
 
-public class EmployeeResearcher extends User implements Researcher  {
-
-	private Vector<ResearchPaper> papers;
-
+public class EmployeeResearcher extends Employee implements Researcher  {
+	
+	public EmployeeResearcher() {
+		
+	}
+	
+	public EmployeeResearcher(String name, String surname, double salary) {
+		super(name, surname, salary);
+	}
+	
 	@Override
 	public void printPapers() {
-		// TODO Auto-generated method stub
-		System.out.println("Employee Researcher's papers:");
-		for (ResearchPaper paper : papers) {
-            System.out.println(paper);
-        }
+		
 		
 	}
 
