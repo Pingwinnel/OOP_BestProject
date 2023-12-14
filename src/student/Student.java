@@ -22,12 +22,19 @@ public class Student extends User {
 		
 	}
 	
-	public Student(int id, String surname, String name, String corparateEmail, String password) {
-		super(id, surname, name, corparateEmail, password);
+	public Student(String surname, String name) {
+		super(surname, name);
 	}
 	
-	public Student(int id, String surname, String name, String corparateEmail, String password, Schools school, String speciality, double gpa, int yearOfStudy) {
-		super(id, surname, name, corparateEmail, password);
+	public Student(String surname, String name, Schools school, String speciality, int yearOfStudy) {
+		super(surname, name);
+		this.school = school;
+		this.speciality = speciality;
+		this.yearOfStudy = yearOfStudy;
+	}
+	
+	public Student(String surname, String name, Schools school, String speciality, double gpa, int yearOfStudy) {
+		super(surname, name);
 		this.school = school;
 		this.speciality = speciality;
 		this.gpa = gpa;

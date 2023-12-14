@@ -8,11 +8,11 @@ public class Admin extends Employee{
 	DataSingleton s = DataSingleton.getInstance();
 	
 	public Admin() {
-		super();
+		
 	}
 	
-	public Admin(int id, String surname, String name, String corparateEmail, String password, double salary) {
-		super(id, surname, name, corparateEmail, password, salary);
+	public Admin(String surname, String name, double salary) {
+		super(surname, name, salary);
 		
 	}
 	

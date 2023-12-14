@@ -6,15 +6,15 @@ import java.util.Objects;
 import utilities.DataSingleton;
 import utilities.Message;
 
-public class Employee extends User{
+public abstract class Employee extends User{
 	DataSingleton db = DataSingleton.getInstance();
 	private double salary;
 	private Date hireDate;
 	
 	public Employee() {}
 	
-	public Employee(int id, String surname, String name, String corparateEmail, String password, double salary) {
-		super(id, surname, name);
+	public Employee(String surname, String name, double salary) {
+		super(surname, name);
 		this.salary = salary;
 		this.hireDate = new Date();
 	}

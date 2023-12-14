@@ -16,12 +16,13 @@ public class GraduateStudent extends Student {
 		super();
 	}
 	
-	public GraduateStudent(int id, String surname, String name, String corparateEmail, String password, Schools school, String speciality, double gpa, int yearOfStudy) {
-		super(id, surname, name, corparateEmail, password, school, speciality, gpa, yearOfStudy);
+	public GraduateStudent(String surname, String name, Schools school, String speciality, double gpa, int yearOfStudy) {
+		super(surname, name, school, speciality, gpa, yearOfStudy);
+		this.degree = GraduateStudentDegree.MASTER;
 	}
 	
-	public GraduateStudent(int id, String surname, String name, String corparateEmail, String password, Schools school, String speciality, double gpa, int yearOfStudy, GraduateStudentDegree degree) {
-		super(id, surname, name, corparateEmail, password, school, speciality, gpa, yearOfStudy);
+	public GraduateStudent(String surname, String name, Schools school, String speciality, double gpa, int yearOfStudy, GraduateStudentDegree degree) {
+		super(surname, name, school, speciality, gpa, yearOfStudy);
 		this.degree = degree;
 		
 	}
