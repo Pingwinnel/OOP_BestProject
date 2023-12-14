@@ -84,4 +84,7 @@ public final class DataSingleton{
 	public void addResearchPapers(ResearchPaper researchPaper) {
 		researchPapers.add(researchPaper);
 	}
+	public void addCourse(Course c) {
+		courses.add(c);
+	}
 }

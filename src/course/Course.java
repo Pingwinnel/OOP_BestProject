@@ -1,9 +1,10 @@
 package course;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 
-public class Course {
+public class Course implements Serializable{
 	private String name;
 	private String code;
 	private School school;
