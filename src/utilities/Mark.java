@@ -1,21 +1,20 @@
 package utilities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Mark {
-	private int att1;
-	private int att2;
-	private int finalExamScore;
-	private int score;
+public class Mark implements Serializable{
+	private double att1;
+	private double att2;
+	private double finalExamScore;
+	private double score;
 	private String letterGrade;
 	
 
-	public int getScore() {
+	public double getScore() {
 		return score;
 	}
-	public void setScore(int score) {
-		this.score = score;
-	}
+	
 	public String getLetterGrade() {
 		return letterGrade;
 	}
@@ -24,34 +23,28 @@ public class Mark {
 		this.letterGrade = letterGrade;
 	}
 
-	public Mark(int att1, int att2, int finalExamScore) {
-		this.att1 = att1;
-		this.att2 = att2;
-		this.finalExamScore = finalExamScore;
-
-	}
-	public int getAtt1() {
+	public double getAtt1() {
 		return att1;
 	}
-	public void setAtt1(int att1) {
+	public void setAtt1(double att1) {
 		this.att1 = att1;
 	}
-	public int getAtt2() {
+	public double getAtt2() {
 		return att2;
 	}
-	public void setAtt2(int att2) {
+	public void setAtt2(double att2) {
 		this.att2 = att2;
 	}
-	public int getFinalExamScore() {
+	public double getFinalExamScore() {
 		return finalExamScore;
 	}
-	public void setFinalExamScore(int finalExamScore) {
+	public void setFinalExamScore(double finalExamScore) {
 		this.finalExamScore = finalExamScore;
 	}
 	@Override
 	public String toString() {
 		return "att1: " + att1 + ", att2: " + att2 + ", finalExamScore: " + finalExamScore +
-				", Letter Grade: "+letterGrade +", score: "+score;
+				", Letter Grade: "+letterGrade +", score: "+ (att1 + att2 + finalExamScore);
 	}
 	@Override
 	public int hashCode() {

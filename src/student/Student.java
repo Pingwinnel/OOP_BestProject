@@ -5,9 +5,11 @@ import java.util.Objects;
 import java.util.Vector;
 
 import course.Course;
+import utilities.DataSingleton;
 import utilities.Mark;
 import researcher.ResearchPaper;
 import researcher.Researcher;
+import researcher.ResearcherUtils;
 import staff.User;
 
 public class Student extends User {
@@ -15,8 +17,8 @@ public class Student extends User {
 	private String speciality;
 	private double gpa;
 	private HashMap<Course, Mark> marks;
-	private int yearOfStudy = 1;
-//	private DiplomaProject diplomaProject;
+	private int yearOfStudy;
+
 	
 	public Student() {
 		
@@ -26,18 +28,17 @@ public class Student extends User {
 		super(surname, name);
 	}
 	
+	public Student(String surname, String name, Schools school, String speciality) {
+		super(surname, name);
+		this.school = school;
+		this.speciality = speciality;
+		this.yearOfStudy = 1;
+	}
+	
 	public Student(String surname, String name, Schools school, String speciality, int yearOfStudy) {
 		super(surname, name);
 		this.school = school;
 		this.speciality = speciality;
-		this.yearOfStudy = yearOfStudy;
-	}
-	
-	public Student(String surname, String name, Schools school, String speciality, double gpa, int yearOfStudy) {
-		super(surname, name);
-		this.school = school;
-		this.speciality = speciality;
-		this.gpa = gpa;
 		this.yearOfStudy = yearOfStudy;
 	}
 	
@@ -83,8 +84,8 @@ public class Student extends User {
 	}
 
 	
-	public void viewMark(Course course) {
-		
+	public Mark viewMark(Course course) {
+		return getMarks().get(course);
 	}
 	
 	public void viewTranscript() {
@@ -101,10 +102,12 @@ public class Student extends User {
 	
 	public void rateTeachers() {
 		//only those teachers which teach a student
+		
 	}
 	
 	public Vector<Course> getCoursesForRegistration() {
 		return null;
+		//return DataSingleton.getInstance().getCourse().stream().filter(n->n.);
 	}
 	
 	public HashMap<Course, Mark> getMarks() {
@@ -127,17 +130,23 @@ public class Student extends User {
 	
 	
 	public class ResearcherStudent implements Researcher{
-		public void printPapers() {
-			System.out.println("papers");
-		}
 		public String toString() {
 			return "I am a student researcher, my name is " + getName();
 		}
+
 		@Override
-		public int calculateHIndex(Vector<ResearchPaper> papers) {
+		public Vector<ResearchPaper> printPapers() {
 			// TODO Auto-generated method stub
-			return 0;
+			return ResearcherUtils.printPapers(this);
 		}
+
+		@Override
+		public int calculateHIndex() {
+			// TODO Auto-generated method stub
+			return ResearcherUtils.calculateHIndex(this);
+		}
+
+		
 	}
 
 	

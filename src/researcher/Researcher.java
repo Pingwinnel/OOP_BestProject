@@ -4,6 +4,6 @@ import java.util.Vector;
 
 public interface Researcher {
 
-	void printPapers();
-	int calculateHIndex(Vector<ResearchPaper> papers);
+	Vector<ResearchPaper> printPapers();
+	int calculateHIndex();
 }
