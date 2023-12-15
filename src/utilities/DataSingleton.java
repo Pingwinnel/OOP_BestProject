@@ -18,6 +18,8 @@ public final class DataSingleton{
 	private static Vector<Message> messages = new Vector<Message>();
 	private static Vector<Course> courses = new Vector<Course>();
 	private static Vector<ResearchPaper> researchPapers = new Vector<ResearchPaper>();
+	private static Vector<ResearchProject> researchProjects = new Vector<ResearchProject>();
+	private static HashMap<String, Vector<String>> facultyComplaints = new HashMap<>();
 	// private static Vector<Student> students;
 	static File dataFile = new File("data.ser");
 	private DataSingleton() {
@@ -85,6 +87,13 @@ public final class DataSingleton{
 		researchPapers.add(researchPaper);
 	}
 	
+	public Vector<ResearchProject> getResearchProject() {
+		return researchProjects;
+	}
+	
+	public void addResearchProjects(ResearchProject researchProjects) {
+		researchProjects.add(researchProject);
+	}
 	//course
 	public void addCourse(Course c) {
 		courses.add(c);
@@ -93,5 +102,15 @@ public final class DataSingleton{
 		return courses;
 	}
 	
+	public void addComplaint(String faculty, String complaint) {
+        if (!facultyComplaints.containsKey(faculty)) {
+            facultyComplaints.put(faculty, new Vector<>());
+        }
+        facultyComplaints.get(faculty).add(complaint);
+    }
+
+    public Vector<String> getComplaintsByFaculty(String faculty) {
+        return facultyComplaints.getOrDefault(faculty, new Vector<>());
+    }
 	
 }
