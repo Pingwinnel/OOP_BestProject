@@ -17,13 +17,13 @@ public class GraduateStudent extends Student implements Researcher{
 		super();
 	}
 	
-	public GraduateStudent(String surname, String name, Schools school, String speciality) {
-		super(surname, name, school, speciality);
+	public GraduateStudent(String surname, String name, Schools school, Major major) {
+		super(surname, name, school, major);
 		this.degree = GraduateStudentDegree.MASTER;
 	}
 	
-	public GraduateStudent(String surname, String name, Schools school, String speciality, GraduateStudentDegree degree) {
-		super(surname, name, school, speciality);
+	public GraduateStudent(String surname, String name, Schools school, Major major, GraduateStudentDegree degree) {
+		super(surname, name, school, major);
 		this.degree = degree;
 		
 	}

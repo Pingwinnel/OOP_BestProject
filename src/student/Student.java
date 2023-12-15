@@ -14,7 +14,7 @@ import staff.User;
 
 public class Student extends User {
 	private Schools school;
-	private String speciality;
+	private Major major;
 	private double gpa;
 	private HashMap<Course, Mark> marks;
 	private int yearOfStudy;
@@ -28,17 +28,17 @@ public class Student extends User {
 		super(surname, name);
 	}
 	
-	public Student(String surname, String name, Schools school, String speciality) {
+	public Student(String surname, String name, Schools school, Major major) {
 		super(surname, name);
 		this.school = school;
-		this.speciality = speciality;
+		this.major = major;
 		this.yearOfStudy = 1;
 	}
 	
-	public Student(String surname, String name, Schools school, String speciality, int yearOfStudy) {
+	public Student(String surname, String name, Schools school, Major major, int yearOfStudy) {
 		super(surname, name);
 		this.school = school;
-		this.speciality = speciality;
+		this.major = major;
 		this.yearOfStudy = yearOfStudy;
 	}
 	
@@ -46,8 +46,8 @@ public class Student extends User {
 		return school;
 	}
 	
-	public String getSpeciality() {
-		return speciality;
+	public Major getMajor() {
+		return major;
 	}
 	
 	public double getGpa() {
@@ -67,8 +67,8 @@ public class Student extends User {
 		this.school = school;
 	}
 	
-	public void setSpeciality(String speciality) {
-		this.speciality = speciality;
+	public void setMajor(Major major) {
+		this.major = major;
 	}
 	
 	public void setGpa(double gpa) {
@@ -115,17 +115,17 @@ public class Student extends User {
 	}
 	
 	public String toString() {
-		return "Student [" + super.toString() + ", school= " + this.school + ", speciality= " + this.speciality + ", gpa= " + this.gpa + ", year of study= " + this.yearOfStudy + "]"; 
+		return "Student [" + super.toString() + ", school= " + this.school + ", speciality= " + this.major + ", gpa= " + this.gpa + ", year of study= " + this.yearOfStudy + "]"; 
 	}
 	
 	public boolean equals(Object o) {
 		if(!super.equals(o)) return false;
 		Student s = (Student) o;
-		return this.gpa == s.gpa && this.yearOfStudy == s.yearOfStudy && this.speciality.equals(s.speciality) && this.school.equals(s.school);
+		return this.gpa == s.gpa && this.yearOfStudy == s.yearOfStudy && this.major.equals(s.major) && this.school.equals(s.school);
 	}
 	
 	public int hashCode() {
-		return Objects.hash(getCorparateEmail(), getId(), getName(), getPassword(), getSurname(), getSchool(), getSpeciality(), getGpa(), getYearOfStudy());
+		return Objects.hash(getCorparateEmail(), getId(), getName(), getPassword(), getSurname(), getSchool(), getMajor(), getGpa(), getYearOfStudy());
 	}
 	
 	
