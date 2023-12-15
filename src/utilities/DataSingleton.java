@@ -5,10 +5,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.HashMap;
 import java.util.Vector;
 
 import course.Course;
 import researcher.ResearchPaper;
+import researcher.ResearchProject;
 import staff.User;
 
 
@@ -91,7 +93,7 @@ public final class DataSingleton{
 		return researchProjects;
 	}
 	
-	public void addResearchProjects(ResearchProject researchProjects) {
+	public void addResearchProjects(ResearchProject researchProject) {
 		researchProjects.add(researchProject);
 	}
 	//course

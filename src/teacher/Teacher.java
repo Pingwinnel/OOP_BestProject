@@ -71,7 +71,7 @@ public class Teacher extends Employee{
 	}
 	
 	public void sendComplaint(String s, UrgencyLevel level) {
-		Schools faculty = this.school.name(); 
+		String faculty = this.school.name(); 
 		String complaint = "Urgency Level: " + level + "\n" + s;
         db.addComplaint(faculty, complaint); 
 	}
