@@ -1,9 +1,10 @@
 package utilities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class News {
+public class News implements Serializable {
 	private String title;
 	private int priority;
 	private String text;

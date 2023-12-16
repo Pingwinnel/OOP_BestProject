@@ -1,21 +1,19 @@
 package utilities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Mark {
+public class Mark implements Serializable {
 	private int att1;
 	private int att2;
 	private int finalExamScore;
 	private int score;
 	private String letterGrade;
 	
-	//all the rest fields write them!!!
 	
 	public int getScore() {
-		return score;
-	}
-	public void setScore(int score) {
-		this.score = score;
+		score=att1+att2+finalExamScore;
+		return score ;
 	}
 	public String getLetterGrade() {
 		return letterGrade;

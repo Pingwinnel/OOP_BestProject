@@ -3,11 +3,12 @@ package utilities;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.Date;
 
 import staff.Employee;
 
-public class Message {
+public class Message implements Serializable{
 	private Employee sender;
 	private Employee receiver;
 	private String message;

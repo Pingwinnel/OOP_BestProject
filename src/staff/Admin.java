@@ -20,7 +20,7 @@ public class Admin extends Employee{
 		s.addUser(u);
 	}
 	
-	public Vector<User> getUsers() throws Exception {
+	public DataSingleton getUsers() throws Exception {
 		return s.getUsers();
 	}
 	
