@@ -21,7 +21,7 @@ public class ResearcherUtils {
         return hIndex+1;
 	}
 	public static Vector<ResearchPaper> printPapers(Researcher researcher){
-		Vector<ResearchPaper> papers = (Vector<ResearchPaper>) DataSingleton.getInstance().getResearchPapers().stream().filter(n->n.getAuthors().contains(researcher)).collect(Collectors.toList());
+		Vector<ResearchPaper> papers = (Vector<ResearchPaper>) DataSingleton.INSTANCE.getResearchPapers().stream().filter(n->n.getAuthors().contains(researcher)).collect(Collectors.toList());
 		return papers;
 	}
 }
