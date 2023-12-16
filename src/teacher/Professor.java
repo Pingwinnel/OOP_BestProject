@@ -5,6 +5,7 @@ import java.util.Vector;
 import course.School;
 import researcher.ResearchPaper;
 import researcher.Researcher;
+import researcher.ResearcherUtils;
 
 public class Professor extends Teacher implements Researcher{
 
@@ -20,15 +21,13 @@ public class Professor extends Teacher implements Researcher{
 
 
 	@Override
-	public void printPapers() {
-		// TODO Auto-generated method stub
-		
+	public Vector<ResearchPaper> printPapers() {
+		return ResearcherUtils.printPapers(this);
 	}
 
 	@Override
-	public int calculateHIndex(Vector<ResearchPaper> papers) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int calculateHIndex() {
+		return ResearcherUtils.calculateHIndex(this);
 	}
 	
 

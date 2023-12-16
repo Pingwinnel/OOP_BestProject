@@ -1,18 +1,16 @@
 package teacher;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Vector;
 
 import course.Course;
 import course.School;
-import researcher.CalculationOfHIndex;
+import researcher.ResearcherUtils;
 import researcher.ResearchPaper;
 import researcher.Researcher;
 import staff.Employee;
 import student.Student;
 import utilities.DataSingleton;
-import utilities.Mark;
 
 public class Teacher extends Employee{
 	private School school;
@@ -61,9 +59,11 @@ public class Teacher extends Employee{
 		courses.add(course);
 	}
 	
-	public void putMark(Course c, Student s, Mark m) {
-		s.getMarks().replace(c, m);
-		//really there must be another way to do it?
+	public void putMark(Course c, Student s, Double score, int week) {
+		if(week <= 8) s.getMarks().get(c).setAtt1(score);
+		else if (week>8) s.getMarks().get(c).setAtt2(score);
+		else s.getMarks().get(c).setFinalExamScore(score);
+		
 	}
 	
 	public Vector<Student> viewStudentInfo(){
@@ -71,7 +71,9 @@ public class Teacher extends Employee{
 	}
 	
 	public void sendComplaint(String s, UrgencyLevel level) {
-		
+		String faculty = this.school.name(); 
+		String complaint = "Urgency Level: " + level + "\n" + s;
+        db.addComplaint(faculty, complaint); 
 	}
 
 	@Override
@@ -103,22 +105,14 @@ public class Teacher extends Employee{
 	public class TeacherResearcher implements Researcher{
 
 		@Override
-		public void printPapers() {
-			// TODO Auto-generated method stub
+		public Vector<ResearchPaper> printPapers() {
+			return ResearcherUtils.printPapers(this);
 			
 		}
 
 		@Override
-		public int calculateHIndex(Vector<ResearchPaper> papers) {
-			// TODO Auto-generated method stub
-			//get from db only ResearchPapers of this
-			Vector<ResearchPaper> realPapers = new Vector<ResearchPaper>();
-			for(ResearchPaper r: db.getResearchPapers()) {
-				if(r.getParticipants().contains(this)) {
-					realPapers.add(r);
-				}
-			}
-			return CalculationOfHIndex.calculateHIndex(realPapers);
+		public int calculateHIndex() {
+			return ResearcherUtils.calculateHIndex(this);
 			
 		}
 		

@@ -6,14 +6,22 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+<<<<<<< HEAD
 import java.io.Serializable;
+=======
+import java.util.HashMap;
+>>>>>>> 679e6757646f56875dc48e8263c9b4466286d1a8
 import java.util.Vector;
 
 import course.Course;
 import researcher.ResearchPaper;
+<<<<<<< HEAD
 import researcher.Researcher;
 import staff.Manager;
 import staff.TechSupportSpecialist;
+=======
+import researcher.ResearchProject;
+>>>>>>> 679e6757646f56875dc48e8263c9b4466286d1a8
 import staff.User;
 import student.Student;
 import teacher.Teacher;
@@ -25,6 +33,7 @@ public class DataSingleton implements Serializable{
 	private static Vector<Message> messages = new Vector<Message>();
 	private static Vector<Course> courses = new Vector<Course>();
 	private static Vector<ResearchPaper> researchPapers = new Vector<ResearchPaper>();
+<<<<<<< HEAD
 	private static Vector<Student> students=new Vector<Student>();
 	private static Vector<Manager> managers=new Vector<Manager>();
 	private static Vector<Researcher> researchers=new Vector<Researcher>();
@@ -33,6 +42,11 @@ public class DataSingleton implements Serializable{
 	
 	
 	
+=======
+	private static Vector<ResearchProject> researchProjects = new Vector<ResearchProject>();
+	private static HashMap<String, Vector<String>> facultyComplaints = new HashMap<>();
+	// private static Vector<Student> students;
+>>>>>>> 679e6757646f56875dc48e8263c9b4466286d1a8
 	static File dataFile = new File("data.ser");
 	private DataSingleton() {
 		
@@ -135,7 +149,31 @@ public class DataSingleton implements Serializable{
 	public void addResearchPapers(ResearchPaper researchPaper) {
 		researchPapers.add(researchPaper);
 	}
+	
+	public Vector<ResearchProject> getResearchProject() {
+		return researchProjects;
+	}
+	
+	public void addResearchProjects(ResearchProject researchProject) {
+		researchProjects.add(researchProject);
+	}
+	//course
 	public void addCourse(Course c) {
 		courses.add(c);
 	}
+	public Vector<Course> getCourse(){
+		return courses;
+	}
+	
+	public void addComplaint(String faculty, String complaint) {
+        if (!facultyComplaints.containsKey(faculty)) {
+            facultyComplaints.put(faculty, new Vector<>());
+        }
+        facultyComplaints.get(faculty).add(complaint);
+    }
+
+    public Vector<String> getComplaintsByFaculty(String faculty) {
+        return facultyComplaints.getOrDefault(faculty, new Vector<>());
+    }
+	
 }

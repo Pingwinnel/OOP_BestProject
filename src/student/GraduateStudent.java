@@ -3,9 +3,10 @@ package student;
 import java.util.Vector;
 
 import researcher.Researcher;
+import researcher.ResearcherUtils;
 import researcher.ResearchPaper;
 
-public class GraduateStudent extends Student {
+public class GraduateStudent extends Student implements Researcher{
 
 	private GraduateStudentDegree degree;
 	private Researcher researchSupervisor;
@@ -16,13 +17,13 @@ public class GraduateStudent extends Student {
 		super();
 	}
 	
-	public GraduateStudent(String surname, String name, Schools school, String speciality, double gpa, int yearOfStudy) {
-		super(surname, name, school, speciality, gpa, yearOfStudy);
+	public GraduateStudent(String surname, String name, Schools school, Major major) {
+		super(surname, name, school, major);
 		this.degree = GraduateStudentDegree.MASTER;
 	}
 	
-	public GraduateStudent(String surname, String name, Schools school, String speciality, double gpa, int yearOfStudy, GraduateStudentDegree degree) {
-		super(surname, name, school, speciality, gpa, yearOfStudy);
+	public GraduateStudent(String surname, String name, Schools school, Major major, GraduateStudentDegree degree) {
+		super(surname, name, school, major);
 		this.degree = degree;
 		
 	}
@@ -43,13 +44,26 @@ public class GraduateStudent extends Student {
 		this.degree = degree;
 	}
 	
-	public void setResearchSupervisor(Researcher researchSupervisor) {
-		//exception condition, how to calculate h index
-		this.researchSupervisor = researchSupervisor;
+	public void setResearchSupervisor(Researcher researchSupervisor) throws CanNotBeSupervisorException {
+		if(researchSupervisor.calculateHIndex()>=3)
+			this.researchSupervisor = researchSupervisor;
+		else throw new CanNotBeSupervisorException("This researcher has h-index less than 3");
 	}
 	
 	public String toString() {
 		return "GraduateStudent [" + super.toString() + ", degree=" + this.degree + ", research supervisor=" + this.researchSupervisor + ", papers=" + this.papers + "]";
+	}
+
+	@Override
+	public Vector<ResearchPaper> printPapers() {
+		// TODO Auto-generated method stub
+		return ResearcherUtils.printPapers(this);
+	}
+
+	@Override
+	public int calculateHIndex() {
+		// TODO Auto-generated method stub
+		return ResearcherUtils.calculateHIndex(this);
 	}
 	
 }

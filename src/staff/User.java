@@ -13,7 +13,7 @@ public abstract class User implements Serializable{
 	private String corparateEmail;
 	private String password;
 	
-	static {
+	{
 		cnt++;
 	}
 	public User() {}

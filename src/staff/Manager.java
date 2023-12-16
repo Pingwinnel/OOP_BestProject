@@ -4,9 +4,11 @@ import java.util.Objects;
 
 import course.Course;
 import student.Student;
+import utilities.DataSingleton;
 import utilities.News;
 
 public class Manager extends Employee{
+	DataSingleton data = DataSingleton.getInstance();
 	private ManagerType type;
 	
 	
@@ -48,7 +50,7 @@ public class Manager extends Employee{
 	}
 	
 	public void addCoursesForRegis(Course crs) {
-		
+		data.addCourse(crs);
 	}
 	
 	public void deleteCoursesForRegis(Course crs) {

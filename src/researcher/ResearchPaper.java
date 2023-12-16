@@ -5,8 +5,11 @@ import java.util.Vector;
 
 public class ResearchPaper implements Comparable<ResearchPaper>{
 
+	// res paper - list of authors
+	// pakita - rese
+// Data.papers().stream().filter(n->n.participants.contains(pakita).collect(Collectors.toList());
 	private String name;
-	private Vector<Researcher> participants = new Vector<Researcher>();
+	private Vector<Researcher> authors = new Vector<Researcher>(); //authors
 	private int pages;
 	private Date date;
 	private int citations;
@@ -16,11 +19,10 @@ public class ResearchPaper implements Comparable<ResearchPaper>{
 		
 	}
 	
-	public ResearchPaper(String name, Vector<Researcher> participants, int pages, Date date, int citations, String doi) {
+	public ResearchPaper(String name, int pages, int citations, String doi) {
 		this.name = name;
-		this.participants = participants;
 		this.pages = pages;
-		this.date = date;
+		this.date = new Date();
 		this.citations = citations;
 		this.doi = doi;
 	}
@@ -29,8 +31,11 @@ public class ResearchPaper implements Comparable<ResearchPaper>{
 		return this.name;
 	}
 	
-	public Vector<Researcher> getParticipants() {
-		return participants;
+	public Vector<Researcher> getAuthors() {
+		return authors;
+	}
+	public void addAuthor(Researcher r) {
+		authors.add(r);
 	}
 	
 	public int getPages() {
@@ -71,16 +76,16 @@ public class ResearchPaper implements Comparable<ResearchPaper>{
 	
 	public String getCitation(Format format) {
 		if(format == Format.PlainTeX) {
-			return String.format("%s et al., \"%s\", %tY, pages: %d, doi: %s", this.participants, this.name, this.date, this.pages, this.doi);
+			return String.format("%s et al., \"%s\", %tY, pages: %d, doi: %s", this.authors, this.name, this.date, this.pages, this.doi);
 		}
 		if(format == Format.BibTeX) {
-			return String.format("@article{author={%s}, title={%s}, year={%tY}, , pages={%d}, doi={%s}}", this.participants, this.name, this.date, this.pages, this.doi);
+			return String.format("@article{author={%s}, title={%s}, year={%tY}, , pages={%d}, doi={%s}}", this.authors, this.name, this.date, this.pages, this.doi);
 		}
 		return "Unsupported format";
 	}
 	
 	public String toString() {	
-		return "ResearchPaper's name: " + this.name + ", participants: " + this.participants + ", pages: " + this.pages + ", date: " + this.date + ", citations: " + this.citations + ", doi: " + this.doi;
+		return "ResearchPaper's name: " + this.name + ", authors: " + this.authors + ", pages: " + this.pages + ", date: " + this.date + ", citations: " + this.citations + ", doi: " + this.doi;
 	}
 	
 

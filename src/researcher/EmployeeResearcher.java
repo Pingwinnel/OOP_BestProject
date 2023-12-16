@@ -1,38 +1,27 @@
 package researcher;
 
-import java.util.Collections;
 import java.util.Vector;
+import staff.Employee;
 
-import staff.User;
 
-public class EmployeeResearcher extends User implements Researcher  {
-
-	private Vector<ResearchPaper> papers;
-
-	@Override
-	public void printPapers() {
-		// TODO Auto-generated method stub
-		System.out.println("Employee Researcher's papers:");
-		for (ResearchPaper paper : papers) {
-            System.out.println(paper);
-        }
+public class EmployeeResearcher extends Employee implements Researcher  {
+	
+	public EmployeeResearcher() {
 		
+	}
+	
+	public EmployeeResearcher(String name, String surname, double salary) {
+		super(name, surname, salary);
+	}
+	
+	@Override
+	public Vector<ResearchPaper> printPapers() {
+		return ResearcherUtils.printPapers(this);
 	}
 
 	@Override
-	public int calculateHIndex(Vector<ResearchPaper> papers) {
-		// TODO Auto-generated method stub
-		// maybe separate class with this static method 
-		Collections.sort(papers);
-		int hIndex = 0, citation = 0;
-        for (int i = 0; i < papers.size(); i++) {
-            while(papers.get(i).getCitations()>=i) {
-            	citation = papers.get(i).getCitations();
-            	hIndex = i;
-            	i++;
-            }
-        }
-        return hIndex+1;
+	public int calculateHIndex() {
+		return ResearcherUtils.calculateHIndex(this);
 	}
 
 }

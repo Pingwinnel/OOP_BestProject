@@ -1,8 +1,10 @@
 package course;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
+import student.Major;
 
 public class Course implements Serializable{
 	private String name;
@@ -10,6 +12,7 @@ public class Course implements Serializable{
 	private School school;
 	private int credits;
 	private HashSet<Course> prerequisites;
+	private HashMap<Major, CourseType> obligation;
 	
 	{
 		prerequisites = new HashSet<Course>();
