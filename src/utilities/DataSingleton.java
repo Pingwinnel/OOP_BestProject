@@ -36,9 +36,9 @@ public final class DataSingleton{
 	private static Vector<Researcher> researchers=new Vector<Researcher>();
 	private static Vector<Teacher> teachers=new Vector<Teacher>();
 	private static Vector<TechSupportSpecialist> techSupportSpecialists=new Vector<TechSupportSpecialist>();
-    private static Vector<News> news = new Vector<News>();
-    private static Vector<StudentOrganization> studOrg = new Vector<StudentOrganization>();
-    private static Vector<DiplomaProject> dipProj = new Vector<DiplomaProject>();
+    	private static Vector<News> news = new Vector<News>();
+    	private static Vector<StudentOrganization> studOrg = new Vector<StudentOrganization>();
+    	private static Vector<DiplomaProject> dipProj = new Vector<DiplomaProject>();
 	static File dataFile = new File("data.ser");
 	private DataSingleton() {
 		
