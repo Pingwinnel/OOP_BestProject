@@ -2,8 +2,11 @@ package staff;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Vector;
 
+import utilities.News;
 import utilities.Utils;
+import utilities.*;
 
 public abstract class User implements Serializable{
 	private int id;
@@ -24,6 +27,10 @@ public abstract class User implements Serializable{
 		this.setName(name);
 		this.corparateEmail = Utils.generateCorparateEmail(this);
 		this.password = Utils.generatePassword();
+	}
+
+	public User(String name) {
+		this.name = name;
 	}
 
 	public int getId() {
@@ -87,6 +94,8 @@ public abstract class User implements Serializable{
 				&& Objects.equals(getSurname(), other.getSurname());
 	}
 	
-	
+	public Vector<News> viewNews() {
+		return DataSingleton.getNews();
+	}
 	
 }

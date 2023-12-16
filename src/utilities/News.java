@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class News implements Serializable {
+public class News implements Serializable{
 	private String title;
 	private int priority;
 	private String text;
