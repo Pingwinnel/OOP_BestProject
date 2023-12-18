@@ -71,9 +71,6 @@ public class Manager extends Employee{
 		data.addNews(n);
 	}
 	
-	public void viewInfoStudents() {
-		
-	}
 	
 	public List<User> viewInfoTeacher() throws Exception {
 		List<User> teachers = DataSingleton.INSTANCE.getUsers().stream().filter(n->n instanceof Teacher).collect(Collectors.toList());

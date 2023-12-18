@@ -12,7 +12,7 @@ public class Course implements Serializable{
 	private School school;
 	private int credits;
 	private HashSet<Course> prerequisites;
-	private HashMap<Major, CourseType> obligation;
+	private HashMap<Major, CourseType> obligation = new HashMap<Major, CourseType>();
 	
 	{
 		prerequisites = new HashSet<Course>();

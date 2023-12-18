@@ -17,13 +17,15 @@ public class TestNews {
         News news3 = new News("Other News", UrgencyLevel.LOW, "Text 3", null);
 
         // Добавляем данные в DataSingleton (предполагается, что у вас есть DataSingleton.INSTANCE)
-        DataSingleton.INSTANCE.addNews(news1);
-        DataSingleton.INSTANCE.addNews(news2);
-        DataSingleton.INSTANCE.addNews(news3);
-       
+//        DataSingleton.INSTANCE.addNews(news3);
+//        DataSingleton.INSTANCE.addNews(news2);
+//        DataSingleton.INSTANCE.addNews(news1);
+//       
         
         Manager m1 = new Manager();
-        System.out.println(m1.sortNews());
+//        System.out.println(m1.sortNews());
         //good job, Tuba
+        
+        System.out.println(DataSingleton.INSTANCE.getNews());
 	}
 }
