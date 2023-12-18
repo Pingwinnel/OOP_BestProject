@@ -18,6 +18,6 @@ public class TestNews {
         DataSingleton.INSTANCE.getNews().add(news3);
         
         Manager m1 = new Manager();
-        System.out.println(m1.sortNews());
+        System.out.println(m1.viewNews());
 	}
 }

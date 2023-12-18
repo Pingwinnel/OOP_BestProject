@@ -1,11 +1,12 @@
 package staff;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.Vector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import utilities.News;
-import utilities.Utils;
 import utilities.*;
 
 public abstract class User implements Serializable{
@@ -94,8 +95,17 @@ public abstract class User implements Serializable{
 				&& Objects.equals(getSurname(), other.getSurname());
 	}
 	
-	public Vector<News> viewNews() {
-		return DataSingleton.getNews();
-	}
+    public Vector<News> viewNews() {
+    	Stream<News> researchNews = DataSingleton.INSTANCE.getNews().stream()
+                    .filter(news -> news.getTitle().toLowerCase().contains("research"))
+                    .sorted(Comparator.comparing(News::getPriority));
+    	
+    	Stream<News> nonResearchNews = DataSingleton.INSTANCE.getNews().stream()
+    		    .filter(news -> !news.getTitle().toLowerCase().contains("research"))
+    		    .sorted(Comparator.comparing(News::getPriority));
+    	
+        return Stream.concat(researchNews, nonResearchNews)
+                .collect(Collectors.toCollection(Vector::new));
+    }
 	
 }
