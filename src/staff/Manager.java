@@ -87,23 +87,10 @@ public class Manager extends Employee{
 				.collect(Collectors.toCollection(Vector::new));
 	}
 	
-    public List<Student> viewStudentsSortedAlphabetically() {
-    	return DataSingleton.INSTANCE.getStudents().stream()
-        		.sorted(Comparator.comparing(Student::getSurname))
-                .collect(Collectors.toCollection(Vector::new));
-    }
-    
-    public static Vector<News> sortNews() {
-    	Stream<News> researchNews = DataSingleton.INSTANCE.getNews().stream()
-                    .filter(news -> news.getTitle().toLowerCase().contains("research"))
-                    .sorted(Comparator.comparing(News::getPriority));
-    	
-    	Stream<News> nonResearchNews = DataSingleton.INSTANCE.getNews().stream()
-    		    .filter(news -> !news.getTitle().toLowerCase().contains("research"))
-    		    .sorted(Comparator.comparing(News::getPriority));
-    	
-        return Stream.concat(researchNews, nonResearchNews)
-                .collect(Collectors.toCollection(Vector::new));
-    }
+    	public List<Student> viewStudentsSortedAlphabetically() {
+    		return DataSingleton.INSTANCE.getStudents().stream()
+        			.sorted(Comparator.comparing(Student::getSurname))
+                		.collect(Collectors.toCollection(Vector::new));
+   	}
 	
 }
