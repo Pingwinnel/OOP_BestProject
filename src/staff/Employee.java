@@ -5,9 +5,10 @@ import java.util.Objects;
 
 import utilities.DataSingleton;
 import utilities.Message;
+import utilities.Request;
 
 public abstract class Employee extends User{
-	DataSingleton db = DataSingleton.getInstance();
+	DataSingleton db = DataSingleton.INSTANCE;
 	private double salary;
 	private Date hireDate;
 	
@@ -65,5 +66,8 @@ public abstract class Employee extends User{
 		
 	}
 	
-	
+	public void sendRequest(Request r) {
+		db.addRequests(r);
+	}
+
 }

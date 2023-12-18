@@ -1,6 +1,7 @@
 package teacher;
 
 import java.util.Objects;
+
 import java.util.Vector;
 
 import course.Course;
@@ -16,7 +17,7 @@ public class Teacher extends Employee{
 	private School school;
 	private Degree academicDegree;
 	private Vector<Course> courses;
-	DataSingleton db = DataSingleton.getInstance();
+	DataSingleton db = DataSingleton.INSTANCE;
 	
 	{
 		courses = new Vector<Course>();
