@@ -1,6 +1,8 @@
 package student;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 import java.util.Vector;
 
@@ -16,7 +18,7 @@ public class Student extends User {
 	private Schools school;
 	private Major major;
 	private double gpa;
-	private HashMap<Course, Mark> marks;
+	private HashMap<Course, Mark> marks = new HashMap<Course, Mark>();
 	private int yearOfStudy;
 
 	
@@ -42,6 +44,12 @@ public class Student extends User {
 		this.yearOfStudy = yearOfStudy;
 	}
 	
+	//for test
+	public Student(String surname, String name, double gpa) {
+		super(surname, name);
+		this.gpa = gpa;
+	}
+	
 	public Schools getSchool() {
 		return school;
 	}
@@ -59,7 +67,7 @@ public class Student extends User {
 	}
 	
 	public DiplomaProject getDiplomaProject() {
-		return null; //from database
+		return (DiplomaProject) DataSingleton.INSTANCE.getDiplomaProject().stream().filter(n->n.getMembers().contains(this));
 	}
 	
 	
@@ -79,8 +87,8 @@ public class Student extends User {
 		this.yearOfStudy = yearOfStudy;
 	}
 	
-	public void setDiplomaProject(DiplomaProject diplomaProject) {
-		//add to db
+	public void setDiplomaProject(DiplomaProject diplomaProject) throws IOException {
+		DataSingleton.INSTANCE.addDiplomaProject(diplomaProject);
 	}
 
 	
@@ -97,7 +105,7 @@ public class Student extends User {
 	}
 	
 	public void registerCourses(Course course) {
-		
+		marks.put(course, new Mark());
 	}
 	
 	public void rateTeachers() {
@@ -131,11 +139,11 @@ public class Student extends User {
 	
 	public class ResearcherStudent implements Researcher{
 		public String toString() {
-			return "I am a student researcher, my name is " + getName();
+			return "and I am a student researcher";
 		}
 
 		@Override
-		public Vector<ResearchPaper> printPapers() {
+		public List<ResearchPaper> printPapers() {
 			// TODO Auto-generated method stub
 			return ResearcherUtils.printPapers(this);
 		}

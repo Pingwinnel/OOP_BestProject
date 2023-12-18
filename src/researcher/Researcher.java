@@ -1,9 +1,9 @@
 package researcher;
 
-import java.util.Vector;
+import java.util.List;
 
 public interface Researcher {
 
-	Vector<ResearchPaper> printPapers();
+	List<ResearchPaper> printPapers();
 	int calculateHIndex();
 }

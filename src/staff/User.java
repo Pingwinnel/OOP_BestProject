@@ -7,23 +7,25 @@ import java.util.Vector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+<<<<<<< HEAD
 import utilities.*;
+=======
+import utilities.DataSingleton;
+import utilities.News;
+import utilities.Utils;
+>>>>>>> 2f1010d4573164c258b49ce0e49451f52c5b16ef
 
 public abstract class User implements Serializable{
 	private int id;
-	private static int cnt;
 	private String surname;
 	private String name;
 	private String corparateEmail;
 	private String password;
 	
-	{
-		cnt++;
-	}
 	public User() {}
 	
 	public User(String surname, String name) {
-		this.id = cnt;
+		this.id = DataSingleton.nextId();
 		this.setSurname(surname);
 		this.setName(name);
 		this.corparateEmail = Utils.generateCorparateEmail(this);
@@ -95,6 +97,7 @@ public abstract class User implements Serializable{
 				&& Objects.equals(getSurname(), other.getSurname());
 	}
 	
+<<<<<<< HEAD
     public Vector<News> viewNews() {
     	Stream<News> researchNews = DataSingleton.INSTANCE.getNews().stream()
                     .filter(news -> news.getTitle().toLowerCase().contains("research"))
@@ -107,5 +110,10 @@ public abstract class User implements Serializable{
         return Stream.concat(researchNews, nonResearchNews)
                 .collect(Collectors.toCollection(Vector::new));
     }
+=======
+	public Vector<News> viewNews() {
+		return DataSingleton.INSTANCE.getNews();
+	}
+>>>>>>> 2f1010d4573164c258b49ce0e49451f52c5b16ef
 	
 }

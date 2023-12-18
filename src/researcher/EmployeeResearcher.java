@@ -1,5 +1,6 @@
 package researcher;
 
+import java.util.List;
 import java.util.Vector;
 import staff.Employee;
 
@@ -15,7 +16,7 @@ public class EmployeeResearcher extends Employee implements Researcher  {
 	}
 	
 	@Override
-	public Vector<ResearchPaper> printPapers() {
+	public List<ResearchPaper> printPapers() {
 		return ResearcherUtils.printPapers(this);
 	}
 

@@ -1,5 +1,7 @@
 package test;
 
+import java.io.IOException;
+
 import course.Course;
 import course.School;
 import staff.Manager;
@@ -7,7 +9,7 @@ import staff.ManagerType;
 
 public class Test2 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		Course oop = new Course("OOP", "CS201", School.FIT, 4);
 		

@@ -1,5 +1,6 @@
 package student;
 
+import java.util.List;
 import java.util.Vector;
 
 import researcher.Researcher;
@@ -55,7 +56,7 @@ public class GraduateStudent extends Student implements Researcher{
 	}
 
 	@Override
-	public Vector<ResearchPaper> printPapers() {
+	public List<ResearchPaper> printPapers() {
 		// TODO Auto-generated method stub
 		return ResearcherUtils.printPapers(this);
 	}

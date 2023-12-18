@@ -1,10 +1,11 @@
 package student;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import researcher.ResearchPaper;
 
-public class DiplomaProject {
+public class DiplomaProject implements Serializable{
 
 	private String title;
 	private StudentDegree type;

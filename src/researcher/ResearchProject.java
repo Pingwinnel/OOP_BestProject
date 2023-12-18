@@ -1,10 +1,11 @@
 package researcher;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import staff.User;
 
-public class ResearchProject {
+public class ResearchProject implements Serializable{
 	
 	private String title;
 	private Vector<User> members;

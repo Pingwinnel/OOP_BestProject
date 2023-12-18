@@ -1,6 +1,8 @@
 package staff;
 
+import java.io.IOException;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 import java.util.Vector;
 import java.util.stream.Collectors;
@@ -8,6 +10,7 @@ import java.util.stream.Stream;
 
 import course.Course;
 import student.Student;
+import teacher.Teacher;
 import utilities.DataSingleton;
 import utilities.News;
 
@@ -52,7 +55,7 @@ public class Manager extends Employee{
 		return super.toString() + "I am manager " + type;
 	}
 	
-	public void addCoursesForRegis(Course crs) {
+	public void addCoursesForRegis(Course crs) throws IOException {
 		data.addCourse(crs);
 	}
 	
@@ -64,31 +67,29 @@ public class Manager extends Employee{
 		
 	}
 	
-	public void addNews(News n) {
+	public void addNews(News n) throws IOException {
 		data.addNews(n);
 	}
 	
-	public void viewInfoStudents() {
-		
-	}
 	
-	public void viewInfoTeacher() {
-		
+	public List<User> viewInfoTeacher() throws Exception {
+		List<User> teachers = DataSingleton.INSTANCE.getUsers().stream().filter(n->n instanceof Teacher).collect(Collectors.toList());
+		return teachers;
 	}
 
 	public void createReport() {
 		
 	}
 	
-	public Vector<Student> viewStudentsSortedByGpa(){
+	public List<User> viewStudentsSortedByGpa() throws Exception{
 		return DataSingleton.INSTANCE.getStudents().stream()
 				.sorted(Comparator.comparingDouble(Student::getGpa).reversed())
 				.collect(Collectors.toCollection(Vector::new));
 	}
 	
-    public Vector<Student> viewStudentsSortedAlphabetically() {
-        return DataSingleton.INSTANCE.getStudents().stream()
-        		.sorted(Comparator.comparing(Student::getName))
+    public List<Student> viewStudentsSortedAlphabetically() {
+    	return DataSingleton.INSTANCE.getStudents().stream()
+        		.sorted(Comparator.comparing(Student::getSurname))
                 .collect(Collectors.toCollection(Vector::new));
     }
     

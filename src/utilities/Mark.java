@@ -3,33 +3,24 @@ package utilities;
 import java.io.Serializable;
 import java.util.Objects;
 
-<<<<<<< HEAD
+
 public class Mark implements Serializable {
-	private int att1;
-	private int att2;
-	private int finalExamScore;
-	private int score;
-	private String letterGrade;
-	
-	
-	public int getScore() {
-		score=att1+att2+finalExamScore;
-		return score ;
-	}
-=======
-public class Mark implements Serializable{
 	private double att1;
 	private double att2;
 	private double finalExamScore;
 	private double score;
 	private String letterGrade;
 	
-
-	public double getScore() {
-		return score;
-	}
 	
->>>>>>> 679e6757646f56875dc48e8263c9b4466286d1a8
+	public Mark() {
+		
+	}
+	public double getScore() {
+		score=att1+att2+finalExamScore;
+		return score ;
+	}
+
+	
 	public String getLetterGrade() {
 		return letterGrade;
 	}

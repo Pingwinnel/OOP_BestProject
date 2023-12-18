@@ -5,7 +5,6 @@ import java.util.Vector;
 import utilities.DataSingleton;
 
 public class Admin extends Employee{
-	DataSingleton s = DataSingleton.INSTANCE;
 	
 	public Admin() {
 		
@@ -17,18 +16,19 @@ public class Admin extends Employee{
 	}
 	
 	public void addUser(User u) throws Exception {
-		s.addUser(u);
+		DataSingleton.INSTANCE.addUser(u);
 	}
 	
-	public DataSingleton getUsers() throws Exception {
-		return s.getUsers();
+	public Vector<User> getUsers() throws Exception {
+		return DataSingleton.INSTANCE.getUsers();
 	}
 	
-	public void changeUsers(User changedUser) throws Exception {
-	
-	}
-	public void removeUser(User u) throws Exception {
-		s.removeUser(u);
+	//idk how to do it
+//	public void changeUsers(User changedUser) throws Exception {
+//	
+//	}
+	public void removeUser(int id) throws Exception {
+		DataSingleton.INSTANCE.removeUser(id);
 		
 	}
 	
