@@ -92,7 +92,7 @@ public class Manager extends Employee{
 	
     public List<Student> viewStudentsSortedAlphabetically() {
     	return DataSingleton.INSTANCE.getStudents().stream()
-        		.sorted(Comparator.comparing(Student::getName))
+        		.sorted(Comparator.comparing(Student::getSurname))
                 .collect(Collectors.toCollection(Vector::new));
     }
     

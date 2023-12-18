@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Vector;
-import java.util.stream.Collectors;
 
 import course.Course;
 import utilities.DataSingleton;
@@ -42,6 +41,12 @@ public class Student extends User {
 		this.school = school;
 		this.major = major;
 		this.yearOfStudy = yearOfStudy;
+	}
+	
+	//for test
+	public Student(String surname, String name, double gpa) {
+		super(surname, name);
+		this.gpa = gpa;
 	}
 	
 	public Schools getSchool() {
