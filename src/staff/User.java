@@ -80,7 +80,7 @@ public abstract class User implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getCorparateEmail(), getId(), getName(), getPassword(), getSurname());
+		return Objects.hash(getCorparateEmail(), getId(), getName(), getSurname());
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public abstract class User implements Serializable{
 		if (getClass() != obj.getClass()) return false;
 		User other = (User) obj;
 		return getId() == other.getId() && Objects.equals(getCorparateEmail(), other.getCorparateEmail()) &&
-				Objects.equals(getName(), other.getName()) && Objects.equals(getPassword(), other.getPassword())
+				Objects.equals(getName(), other.getName()) 
 				&& Objects.equals(getSurname(), other.getSurname());
 	}
 	
