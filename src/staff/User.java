@@ -8,22 +8,21 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import utilities.*;
+import utilities.DataSingleton;
+import utilities.News;
+import utilities.Utils;
 
 public abstract class User implements Serializable{
 	private int id;
-	private static int cnt;
 	private String surname;
 	private String name;
 	private String corparateEmail;
 	private String password;
 	
-	{
-		cnt++;
-	}
 	public User() {}
 	
 	public User(String surname, String name) {
-		this.id = cnt;
+		this.id = DataSingleton.nextId();
 		this.setSurname(surname);
 		this.setName(name);
 		this.corparateEmail = Utils.generateCorparateEmail(this);
@@ -95,11 +94,7 @@ public abstract class User implements Serializable{
 				&& Objects.equals(getSurname(), other.getSurname());
 	}
 	
-//	public Vector<News> viewNews() {
-//		return DataSingleton.getNews();
-//	}
-	
-    public Vector<News> viewNews() {
+	public Vector<News> viewNews() {
     	Stream<News> researchNews = DataSingleton.INSTANCE.getNews().stream()
                     .filter(news -> news.getTitle().toLowerCase().contains("research"))
                     .sorted(Comparator.comparing(News::getPriority));
