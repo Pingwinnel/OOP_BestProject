@@ -1,6 +1,7 @@
 package teacher;
 
 import java.util.Objects;
+
 import java.util.Vector;
 
 import course.Course;

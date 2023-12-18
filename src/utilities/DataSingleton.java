@@ -7,25 +7,24 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-<<<<<<< HEAD
+
 import java.io.Serializable;
-=======
->>>>>>> 1319c849654f708f97ba0bb68d0bce1befeecf7f
+
 import java.util.HashMap;
 import java.util.Vector;
 import course.Course;
 import researcher.ResearchPaper;
-<<<<<<< HEAD
+
 import researcher.Researcher;
 import staff.Manager;
 import staff.TechSupportSpecialist;
 import researcher.ResearchProject;
-=======
+
 import researcher.ResearchProject;
 import researcher.Researcher;
 import staff.Manager;
 import staff.TechSupportSpecialist;
->>>>>>> 1319c849654f708f97ba0bb68d0bce1befeecf7f
+
 import staff.User;
 import student.DiplomaProject;
 import student.Student;
@@ -40,31 +39,18 @@ public final class DataSingleton{
 	private static Vector<Request> requests = new Vector<Request>();
 	private static Vector<Course> courses = new Vector<Course>();
 	private static Vector<ResearchPaper> researchPapers = new Vector<ResearchPaper>();
-<<<<<<< HEAD
-
 	private static Vector<Student> students=new Vector<Student>();
-=======
-	private static Vector<ResearchProject> researchProjects = new Vector<ResearchProject>();
 	private static HashMap<String, Vector<String>> facultyComplaints = new HashMap<>();
-	private static Vector<Student> students = new Vector<Student>();
->>>>>>> 1319c849654f708f97ba0bb68d0bce1befeecf7f
 	private static Vector<Manager> managers=new Vector<Manager>();
 	private static Vector<Researcher> researchers=new Vector<Researcher>();
 	private static Vector<Teacher> teachers=new Vector<Teacher>();
 	private static Vector<TechSupportSpecialist> techSupportSpecialists=new Vector<TechSupportSpecialist>();
-<<<<<<< HEAD
-	
-	
-	
-
 	private static Vector<ResearchProject> researchProjects = new Vector<ResearchProject>();
-	private static HashMap<String, Vector<String>> facultyComplaints = new HashMap<>();
 	// private static Vector<Student> students;
-=======
+
     	private static Vector<News> news = new Vector<News>();
     	private static Vector<StudentOrganization> studOrg = new Vector<StudentOrganization>();
     	private static Vector<DiplomaProject> dipProj = new Vector<DiplomaProject>();
->>>>>>> 1319c849654f708f97ba0bb68d0bce1befeecf7f
 	static File dataFile = new File("data.ser");
 	private DataSingleton() {
 		

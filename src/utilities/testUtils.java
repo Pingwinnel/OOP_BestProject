@@ -11,7 +11,7 @@ public class testUtils  {
 		Admin ad=new Admin();
 		Student s=new Student("Omirzhanov", "Yerasyl",Schools.BS,Major.IS);
 		ad.addUser(s);
-		System.out.println(DataSingleton.getInstance().getStudents());
+		System.out.println(DataSingleton.INSTANCE.getStudents());
 	}
 
 }

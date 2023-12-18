@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Vector;
 
 import staff.Manager;
+import teacher.UrgencyLevel;
 
 public class TestNews {
 	public static void main(String[] args) {
