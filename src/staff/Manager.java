@@ -87,10 +87,10 @@ public class Manager extends Employee{
 				.collect(Collectors.toCollection(Vector::new));
 	}
 	
-    public List<Student> viewStudentsSortedAlphabetically() {
-    	return DataSingleton.INSTANCE.getStudents().stream()
-        		.sorted(Comparator.comparing(Student::getSurname))
-                .collect(Collectors.toCollection(Vector::new));
-    }
+    	public List<Student> viewStudentsSortedAlphabetically() {
+    		return DataSingleton.INSTANCE.getStudents().stream()
+        			.sorted(Comparator.comparing(Student::getSurname))
+                		.collect(Collectors.toCollection(Vector::new));
+   	}
 	
 }
