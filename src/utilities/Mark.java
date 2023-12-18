@@ -12,6 +12,9 @@ public class Mark implements Serializable {
 	private String letterGrade;
 	
 	
+	public Mark() {
+		
+	}
 	public double getScore() {
 		score=att1+att2+finalExamScore;
 		return score ;

@@ -18,7 +18,7 @@ public class Student extends User {
 	private Schools school;
 	private Major major;
 	private double gpa;
-	private HashMap<Course, Mark> marks;
+	private HashMap<Course, Mark> marks = new HashMap<Course, Mark>();
 	private int yearOfStudy;
 
 	
@@ -105,7 +105,7 @@ public class Student extends User {
 	}
 	
 	public void registerCourses(Course course) {
-		
+		marks.put(course, new Mark());
 	}
 	
 	public void rateTeachers() {
