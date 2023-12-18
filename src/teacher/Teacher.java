@@ -1,6 +1,7 @@
 package teacher;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 import java.util.Vector;
@@ -104,7 +105,7 @@ public class Teacher extends Employee{
 	public class TeacherResearcher implements Researcher{
 
 		@Override
-		public Vector<ResearchPaper> printPapers() {
+		public List<ResearchPaper> printPapers() {
 			return ResearcherUtils.printPapers(this);
 			
 		}

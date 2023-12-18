@@ -1,6 +1,7 @@
 package teacher;
 
-import java.util.Vector;
+import java.util.List;
+
 
 import course.School;
 import researcher.ResearchPaper;
@@ -21,7 +22,7 @@ public class Professor extends Teacher implements Researcher{
 
 
 	@Override
-	public Vector<ResearchPaper> printPapers() {
+	public List<ResearchPaper> printPapers() {
 		return ResearcherUtils.printPapers(this);
 	}
 

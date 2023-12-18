@@ -2,6 +2,7 @@ package student;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 import java.util.Vector;
 
@@ -142,7 +143,7 @@ public class Student extends User {
 		}
 
 		@Override
-		public Vector<ResearchPaper> printPapers() {
+		public List<ResearchPaper> printPapers() {
 			// TODO Auto-generated method stub
 			return ResearcherUtils.printPapers(this);
 		}
