@@ -5,7 +5,7 @@ import java.util.Vector;
 import utilities.DataSingleton;
 
 public class Admin extends Employee{
-	DataSingleton s = DataSingleton.getInstance();
+	DataSingleton s = DataSingleton.INSTANCE;
 	
 	public Admin() {
 		

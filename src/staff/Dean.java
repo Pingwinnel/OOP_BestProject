@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import student.Schools;
 import student.StudentOrganization;
+import utilities.Request;
 
 public class Dean extends Employee {
 	private Schools faculty;
@@ -39,4 +40,13 @@ public class Dean extends Employee {
     public String toString() {
         return "Dean{"  + super.toString() + "faculty=" + faculty + "} ";
     }
+	
+	public Request getRequest() {
+		for(Request r: db.getRequests()) {
+			if(r.getReceiverDean().equals(this)) {
+				return r;
+			} 
+		}
+		return null;
+	}
 }

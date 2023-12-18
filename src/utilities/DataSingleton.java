@@ -7,32 +7,52 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+<<<<<<< HEAD
 import java.io.Serializable;
+=======
+>>>>>>> 1319c849654f708f97ba0bb68d0bce1befeecf7f
 import java.util.HashMap;
 import java.util.Vector;
 import course.Course;
 import researcher.ResearchPaper;
+<<<<<<< HEAD
 import researcher.Researcher;
 import staff.Manager;
 import staff.TechSupportSpecialist;
 import researcher.ResearchProject;
+=======
+import researcher.ResearchProject;
+import researcher.Researcher;
+import staff.Manager;
+import staff.TechSupportSpecialist;
+>>>>>>> 1319c849654f708f97ba0bb68d0bce1befeecf7f
 import staff.User;
+import student.DiplomaProject;
 import student.Student;
+import student.StudentOrganization;
 import teacher.Teacher;
 
 
-public class DataSingleton implements Serializable{
-	private static DataSingleton DB = new DataSingleton();
+public final class DataSingleton{
+	private static final DataSingleton DB = new DataSingleton();
 	private static Vector<User> users;
 	private static Vector<Message> messages = new Vector<Message>();
+	private static Vector<Request> requests = new Vector<Request>();
 	private static Vector<Course> courses = new Vector<Course>();
 	private static Vector<ResearchPaper> researchPapers = new Vector<ResearchPaper>();
+<<<<<<< HEAD
 
 	private static Vector<Student> students=new Vector<Student>();
+=======
+	private static Vector<ResearchProject> researchProjects = new Vector<ResearchProject>();
+	private static HashMap<String, Vector<String>> facultyComplaints = new HashMap<>();
+	private static Vector<Student> students = new Vector<Student>();
+>>>>>>> 1319c849654f708f97ba0bb68d0bce1befeecf7f
 	private static Vector<Manager> managers=new Vector<Manager>();
 	private static Vector<Researcher> researchers=new Vector<Researcher>();
 	private static Vector<Teacher> teachers=new Vector<Teacher>();
 	private static Vector<TechSupportSpecialist> techSupportSpecialists=new Vector<TechSupportSpecialist>();
+<<<<<<< HEAD
 	
 	
 	
@@ -40,43 +60,68 @@ public class DataSingleton implements Serializable{
 	private static Vector<ResearchProject> researchProjects = new Vector<ResearchProject>();
 	private static HashMap<String, Vector<String>> facultyComplaints = new HashMap<>();
 	// private static Vector<Student> students;
+=======
+    	private static Vector<News> news = new Vector<News>();
+    	private static Vector<StudentOrganization> studOrg = new Vector<StudentOrganization>();
+    	private static Vector<DiplomaProject> dipProj = new Vector<DiplomaProject>();
+>>>>>>> 1319c849654f708f97ba0bb68d0bce1befeecf7f
 	static File dataFile = new File("data.ser");
 	private DataSingleton() {
 		
 	}
-	
-	public static DataSingleton getInstance() {
-		return DB;
-	}
+
+	public static DataSingleton INSTANCE;
+
+//	public static DataSingleton getInstance() {
+//		return DB;
+//	}
+//	
 	
 	static {
-		if(dataFile.exists()) {
+		if(new File("data").exists()) {
 			try {
-				DB = read();
+				INSTANCE = read();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else users = new Vector<User>();
+		}
+		else INSTANCE = new DataSingleton();
 	}
 
+//	public static Vector<User> readUsers() throws Exception {
+//		FileInputStream fis = new FileInputStream("data.ser");
+//		ObjectInputStream ois = new ObjectInputStream(fis);
+//		Vector<User> users = (Vector<User>)ois.readObject();
+//		fis.close(); ois.close();
+//		return users;
+//	}
+//	
+//	public void saveUsers() throws Exception {
+//		FileOutputStream fos = new FileOutputStream("data.ser");
+//		ObjectOutputStream oos = new ObjectOutputStream(fos);
+//		oos.writeObject(users);
+//		oos.close(); fos.close();
+//	}
+	
 	public static DataSingleton read() throws IOException, ClassNotFoundException{
 		FileInputStream fis = new FileInputStream("data");
 		ObjectInputStream oin = new ObjectInputStream(fis);
 		return (DataSingleton) oin.readObject();
 	}
-	public static void write()throws IOException{
+	
+	public static void write() throws IOException{
 		FileOutputStream fos = new FileOutputStream("data");
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(DB);
+		oos.writeObject(INSTANCE);
 		oos.close();
 	}
 	
 	public void addUser(User u) throws Exception {
-		Utils.sortUserData(u);
+		users.add(u);
 		write();
 		
 	}
+	
 	public DataSingleton getUsers() throws Exception {
 		return read();
 	}
@@ -86,10 +131,8 @@ public class DataSingleton implements Serializable{
 		users.remove(u);
 		write();
 	}
-	
 
 	public Vector<Message> getMessages() {
-		
 		return messages;
 	}
 
@@ -97,13 +140,78 @@ public class DataSingleton implements Serializable{
 		messages.add(m);
 	}
 
+	public Vector<ResearchPaper> getResearchPapers() {
+		return researchPapers;
+	}
+
+	public void addResearchPapers(ResearchPaper researchPaper) {
+		researchPapers.add(researchPaper);
+	}
+	
+	public Vector<ResearchProject> getResearchProject() {
+		return researchProjects;
+	}
+	
+	public void addResearchProjects(ResearchProject researchProject) {
+		researchProjects.add(researchProject);
+	}
+	
+	//course
+	public void addCourse(Course c) {
+		courses.add(c);
+	}
+	
+	public Vector<Course> getCourse(){
+		return courses;
+	}
+	
+	public void addComplaint(String faculty, String complaint) {
+        if (!facultyComplaints.containsKey(faculty)) {
+            facultyComplaints.put(faculty, new Vector<>());
+        }
+        facultyComplaints.get(faculty).add(complaint);
+    }
+
+    public Vector<String> getComplaintsByFaculty(String faculty) {
+        return facultyComplaints.getOrDefault(faculty, new Vector<>());
+    }
+
+    //news
+	public void addNews(News n) {
+		news.add(n);
+	}
+	
+	public static Vector<News> getNews(){
+		return news;
+	}
+	
+    //Student Organization
+	public void addSudentOrganization(StudentOrganization so) {
+		studOrg.add(so);
+	}
+	
+	public Vector<StudentOrganization> getStudentOrganization(){
+		return studOrg;
+	}
+	
+    //Diploma Project
+	public void addDiplomaProject(DiplomaProject dp) {
+		dipProj.add(dp);
+	}
+	
+	public Vector<DiplomaProject> getDiplomaProject(){
+		return dipProj;
+	}
+    
+	
 	public static Vector<Student> getStudents() {
 		return students;
 	}
-	public void addStudent(Student s) {
+
+	public static void addStudents(Student s) {
 		students.add(s);
 	}
-
+	
 	public static Vector<Manager> getManagers() {
 		return managers;
 	}
@@ -132,41 +240,13 @@ public class DataSingleton implements Serializable{
 		techSupportSpecialists.add(t);
 	}
 
-	public Vector<ResearchPaper> getResearchPapers() {
-		return researchPapers;
+	//Request
+	public static Vector<Request> getRequests() {
+		return requests;
 	}
-	public void addResearchPaper(ResearchPaper rp) {
-		researchPapers.add(rp);
-	}
-	
-	public void addResearchPapers(ResearchPaper researchPaper) {
-		researchPapers.add(researchPaper);
-	}
-	
-	public Vector<ResearchProject> getResearchProject() {
-		return researchProjects;
-	}
-	
-	public void addResearchProjects(ResearchProject researchProject) {
-		researchProjects.add(researchProject);
-	}
-	//course
-	public void addCourse(Course c) {
-		courses.add(c);
-	}
-	public Vector<Course> getCourse(){
-		return courses;
-	}
-	
-	public void addComplaint(String faculty, String complaint) {
-        if (!facultyComplaints.containsKey(faculty)) {
-            facultyComplaints.put(faculty, new Vector<>());
-        }
-        facultyComplaints.get(faculty).add(complaint);
-    }
 
-    public Vector<String> getComplaintsByFaculty(String faculty) {
-        return facultyComplaints.getOrDefault(faculty, new Vector<>());
-    }
+	public void addRequests(Request req) {
+		requests.add(req);
+	}
 	
 }

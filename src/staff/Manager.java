@@ -1,6 +1,10 @@
 package staff;
 
+import java.util.Comparator;
 import java.util.Objects;
+import java.util.Vector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import course.Course;
 import student.Student;
@@ -8,12 +12,11 @@ import utilities.DataSingleton;
 import utilities.News;
 
 public class Manager extends Employee{
-	DataSingleton data = DataSingleton.getInstance();
-	private ManagerType type;
-	
+	DataSingleton data = DataSingleton.INSTANCE;
+	private ManagerType type;	
 	
 	public Manager() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Manager(String surname, String name, double salary, ManagerType type) {
@@ -62,7 +65,7 @@ public class Manager extends Employee{
 	}
 	
 	public void addNews(News n) {
-		
+		data.addNews(n);
 	}
 	
 	public void viewInfoStudents() {
@@ -77,13 +80,29 @@ public class Manager extends Employee{
 		
 	}
 	
-	public void viewStudentsSortedByGpa(){
-		
+	public Vector<Student> viewStudentsSortedByGpa(){
+		return DataSingleton.INSTANCE.getStudents().stream()
+				.sorted(Comparator.comparingDouble(Student::getGpa).reversed())
+				.collect(Collectors.toCollection(Vector::new));
 	}
 	
-	public void viewStudentsSortedByAlphabetically() {
-		
-	}
-	
+    public Vector<Student> viewStudentsSortedAlphabetically() {
+        return DataSingleton.INSTANCE.getStudents().stream()
+        		.sorted(Comparator.comparing(Student::getName))
+                .collect(Collectors.toCollection(Vector::new));
+    }
+    
+    public static Vector<News> sortNews() {
+    	Stream<News> researchNews = DataSingleton.INSTANCE.getNews().stream()
+                    .filter(news -> news.getTitle().toLowerCase().contains("research"))
+                    .sorted(Comparator.comparing(News::getPriority));
+    	
+    	Stream<News> nonResearchNews = DataSingleton.INSTANCE.getNews().stream()
+    		    .filter(news -> !news.getTitle().toLowerCase().contains("research"))
+    		    .sorted(Comparator.comparing(News::getPriority));
+    	
+        return Stream.concat(researchNews, nonResearchNews)
+                .collect(Collectors.toCollection(Vector::new));
+    }
 	
 }
