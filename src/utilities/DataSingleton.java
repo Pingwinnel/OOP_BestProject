@@ -117,7 +117,7 @@ public class DataSingleton implements Serializable{
 
 	public void addResearchPapers(ResearchPaper researchPaper) throws IOException {
 		researchPapers.add(researchPaper);
-//		write();
+		write();
 	}
 	
 	public Vector<ResearchProject> getResearchProject() {

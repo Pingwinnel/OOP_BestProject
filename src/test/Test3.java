@@ -21,23 +21,23 @@ public class Test3 {
 		Teacher t1 = new Teacher();
 		Professor p1 = new Professor();
 		
-		ResearchPaper r1 = new ResearchPaper("Emotions", 60, 5, "SGS6889HH");
-		DataSingleton.INSTANCE.addResearchPapers(r1);
-		r1.addAuthor(emr);
-		ResearchPaper r2 = new ResearchPaper("Emotions", 60, 10, "SGS6889HH");
-		DataSingleton.INSTANCE.addResearchPapers(r2);
-		r2.addAuthor(emr);
-		ResearchPaper r3 = new ResearchPaper("Emotions", 60, 3, "SGS6889HH");
-		DataSingleton.INSTANCE.addResearchPapers(r3);
-		r3.addAuthor(emr);
-		ResearchPaper r4 = new ResearchPaper("Emotions", 60, 2, "SGS6889HH");
-		DataSingleton.INSTANCE.addResearchPapers(r4);
-		r4.addAuthor(emr);
-		ResearchPaper r5 = new ResearchPaper("Emotions", 60, 9, "SGS6889HH");
-		DataSingleton.INSTANCE.addResearchPapers(r5);
-		r5.addAuthor(emr);
+//		ResearchPaper r1 = new ResearchPaper("Emotions", 60, 5, "SGS6889HH");
+//		DataSingleton.INSTANCE.addResearchPapers(r1);
+//		r1.addAuthor(emr);
+//		ResearchPaper r2 = new ResearchPaper("Emotions", 60, 10, "SGS6889HH");
+//		DataSingleton.INSTANCE.addResearchPapers(r2);
+//		r2.addAuthor(emr);
+//		ResearchPaper r3 = new ResearchPaper("Emotions", 60, 3, "SGS6889HH");
+//		DataSingleton.INSTANCE.addResearchPapers(r3);
+//		r3.addAuthor(emr);
+//		ResearchPaper r4 = new ResearchPaper("Emotions", 60, 2, "SGS6889HH");
+//		DataSingleton.INSTANCE.addResearchPapers(r4);
+//		r4.addAuthor(emr);
+//		ResearchPaper r5 = new ResearchPaper("Emotions", 60, 9, "SGS6889HH");
+//		DataSingleton.INSTANCE.addResearchPapers(r5);
+//		r5.addAuthor(emr);
 		
-		
+		System.out.println(DataSingleton.INSTANCE.getResearchPapers());
 		System.out.println(emr.calculateHIndex());
 		
 

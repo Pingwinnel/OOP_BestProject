@@ -1,9 +1,10 @@
 package researcher;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Vector;
 
-public class ResearchPaper implements Comparable<ResearchPaper>{
+public class ResearchPaper implements Comparable<ResearchPaper>, Serializable{
 
 	// res paper - list of authors
 	// pakita - rese

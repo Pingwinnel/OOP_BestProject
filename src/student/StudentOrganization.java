@@ -1,8 +1,9 @@
 package student;
 
+import java.io.Serializable;
 import java.util.Vector;
 
-public class StudentOrganization {
+public class StudentOrganization implements Serializable{
 	
 	private String studOrgName;
 	private Student head;
