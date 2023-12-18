@@ -4,25 +4,21 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.Vector;
 
+import utilities.DataSingleton;
 import utilities.News;
 import utilities.Utils;
-import utilities.*;
 
 public abstract class User implements Serializable{
 	private int id;
-	private static int cnt;
 	private String surname;
 	private String name;
 	private String corparateEmail;
 	private String password;
 	
-	{
-		cnt++;
-	}
 	public User() {}
 	
 	public User(String surname, String name) {
-		this.id = cnt;
+		this.id = DataSingleton.nextId();
 		this.setSurname(surname);
 		this.setName(name);
 		this.corparateEmail = Utils.generateCorparateEmail(this);
@@ -95,7 +91,7 @@ public abstract class User implements Serializable{
 	}
 	
 	public Vector<News> viewNews() {
-		return DataSingleton.getNews();
+		return DataSingleton.INSTANCE.getNews();
 	}
 	
 }

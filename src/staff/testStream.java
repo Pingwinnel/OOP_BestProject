@@ -11,9 +11,9 @@ public class testStream {
 
         
         DataSingleton db = DataSingleton.INSTANCE;
-        db.addStudents(new Student("WW", 3.8));
-        db.addStudents(new Student("Alice", 3.5));
-        db.addStudents(new Student("Charlie", 4.0));
+        db.addUser(new Student("WW", 3.8));
+        db.addUser(new Student("Alice", 3.5));
+        db.addUser(new Student("Charlie", 4.0));
         
         Manager m1 = new Manager();
         System.out.println(m1.viewStudentsSortedByGpa());

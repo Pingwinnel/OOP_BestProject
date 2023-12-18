@@ -1,5 +1,6 @@
 package staff;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.Objects;
 
@@ -8,7 +9,6 @@ import utilities.Message;
 import utilities.Request;
 
 public abstract class Employee extends User{
-	DataSingleton db = DataSingleton.INSTANCE;
 	private double salary;
 	private Date hireDate;
 	
@@ -48,12 +48,12 @@ public abstract class Employee extends User{
 		return Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary);
 	}
 	
-	public void sendMessage(Message m) {
-		db.addMessages(m);
+	public void sendMessage(Message m) throws Exception {
+		DataSingleton.INSTANCE.addMessages(m);
 	}
 
 	public Message getMessage() {
-		for(Message m: db.getMessages()) {
+		for(Message m: DataSingleton.INSTANCE.getMessages()) {
 			if(m.getReceiver().equals(this)) {
 				return m;
 			} 
@@ -66,8 +66,8 @@ public abstract class Employee extends User{
 		
 	}
 	
-	public void sendRequest(Request r) {
-		db.addRequests(r);
+	public void sendRequest(Request r) throws IOException {
+		DataSingleton.INSTANCE.addRequests(r);
 	}
 
 }

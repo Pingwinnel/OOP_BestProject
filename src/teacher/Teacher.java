@@ -1,5 +1,6 @@
 package teacher;
 
+import java.io.IOException;
 import java.util.Objects;
 
 import java.util.Vector;
@@ -12,6 +13,7 @@ import researcher.Researcher;
 import staff.Employee;
 import student.Student;
 import utilities.DataSingleton;
+import utilities.ResearchUniversity;
 
 public class Teacher extends Employee{
 	private School school;
@@ -60,9 +62,9 @@ public class Teacher extends Employee{
 		courses.add(course);
 	}
 	
-	public void putMark(Course c, Student s, Double score, int week) {
-		if(week <= 8) s.getMarks().get(c).setAtt1(score);
-		else if (week>8) s.getMarks().get(c).setAtt2(score);
+	public void putMark(Course c, Student s, Double score) {
+		if(ResearchUniversity.INSTANCE.getWeek() <= 8) s.getMarks().get(c).setAtt1(score);
+		else if (ResearchUniversity.INSTANCE.getWeek()>=14 && ResearchUniversity.INSTANCE.getWeek()>=15) s.getMarks().get(c).setAtt2(score);
 		else s.getMarks().get(c).setFinalExamScore(score);
 		
 	}
@@ -71,7 +73,7 @@ public class Teacher extends Employee{
 		return null;
 	}
 	
-	public void sendComplaint(String s, UrgencyLevel level) {
+	public void sendComplaint(String s, UrgencyLevel level) throws IOException {
 		String faculty = this.school.name(); 
 		String complaint = "Urgency Level: " + level + "\n" + s;
         db.addComplaint(faculty, complaint); 
@@ -87,11 +89,7 @@ public class Teacher extends Employee{
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
 		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
 			return false;
 		Teacher other = (Teacher) obj;
 		return academicDegree == other.academicDegree && school == other.school;

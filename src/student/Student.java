@@ -1,8 +1,10 @@
 package student;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 import course.Course;
 import utilities.DataSingleton;
@@ -59,7 +61,7 @@ public class Student extends User {
 	}
 	
 	public DiplomaProject getDiplomaProject() {
-		return null; //from database
+		return (DiplomaProject) DataSingleton.INSTANCE.getDiplomaProject().stream().filter(n->n.getMembers().contains(this));
 	}
 	
 	
@@ -79,8 +81,8 @@ public class Student extends User {
 		this.yearOfStudy = yearOfStudy;
 	}
 	
-	public void setDiplomaProject(DiplomaProject diplomaProject) {
-		//add to db
+	public void setDiplomaProject(DiplomaProject diplomaProject) throws IOException {
+		DataSingleton.INSTANCE.addDiplomaProject(diplomaProject);
 	}
 
 	
@@ -131,7 +133,7 @@ public class Student extends User {
 	
 	public class ResearcherStudent implements Researcher{
 		public String toString() {
-			return "I am a student researcher, my name is " + getName();
+			return "and I am a student researcher";
 		}
 
 		@Override
