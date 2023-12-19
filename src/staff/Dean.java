@@ -4,7 +4,6 @@ import java.util.Objects;
 
 import student.Schools;
 import student.StudentOrganization;
-import utilities.DataSingleton;
 import utilities.Request;
 
 public class Dean extends Employee {
@@ -19,9 +18,14 @@ public class Dean extends Employee {
 		this.faculty = faculty;
 	}
 	
-	public void signRequest(Employee emp) {
-		
-	}
+    public void signRequest(Employee emp, Request request) {
+        if (request.getReceiverDean().equals(this)) {
+            System.out.println("Dean " + this.getName()+ this.getSurname() + " has signed the request: " + request.getOrder());
+            request.setSigned(true);
+        } else {
+            System.out.println("Dean " + this.getName() + " cannot sign the request. It's not intended for approval.");
+        }
+    }
 	
 	public boolean approveOrganization(StudentOrganization stor) {
 		return false;
@@ -43,7 +47,7 @@ public class Dean extends Employee {
     }
 	
 	public Request getRequest() {
-		for(Request r: DataSingleton.INSTANCE.getRequests()) {
+		for(Request r: db.getRequests()) {
 			if(r.getReceiverDean().equals(this)) {
 				return r;
 			} 
