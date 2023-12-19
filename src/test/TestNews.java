@@ -1,13 +1,11 @@
 package test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
+
 
 import staff.Manager;
+import student.Student;
 import teacher.UrgencyLevel;
-import utilities.DataSingleton;
 import utilities.News;
 
 public class TestNews {
@@ -23,13 +21,14 @@ public class TestNews {
 //       
         
         Manager m1 = new Manager();
-<<<<<<< HEAD
-        System.out.println(m1.viewNews());
-=======
+
+//        System.out.println(m1.viewNews());
+
 //        System.out.println(m1.sortNews());
-        //good job, Tuba
+        //good job, Tuba, ap-barekeldi
         
-        System.out.println(DataSingleton.INSTANCE.getNews());
->>>>>>> 2f1010d4573164c258b49ce0e49451f52c5b16ef
+        Student s = new Student("Test", "Pest");
+        System.out.println(s.viewNews());
+
 	}
 }
