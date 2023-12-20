@@ -1,21 +1,21 @@
 package teacher;
 
 import java.util.List;
-
-
-import course.School;
 import researcher.ResearchPaper;
 import researcher.Researcher;
 import researcher.ResearcherUtils;
+import student.Schools;
 
 public class Professor extends Teacher implements Researcher{
 
 	
+	private static final long serialVersionUID = 5295963205026648093L;
+
 	public Professor() {
 		
 	}
 	
-	public Professor(String surname, String name, double salary, School school) {
+	public Professor(String surname, String name, double salary, Schools school) {
 		super(surname, name, salary, school);
 		this.setAcademicDegree(Degree.PROFESSOR);
 	}

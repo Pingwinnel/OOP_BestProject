@@ -4,9 +4,11 @@ import java.util.Objects;
 
 import student.Schools;
 import student.StudentOrganization;
+import utilities.DataSingleton;
 import utilities.Request;
 
 public class Dean extends Employee {
+	private static final long serialVersionUID = 4657377240619077289L;
 	private Schools faculty;
 
 	public Dean() {
@@ -47,7 +49,7 @@ public class Dean extends Employee {
     }
 	
 	public Request getRequest() {
-		for(Request r: db.getRequests()) {
+		for(Request r: DataSingleton.INSTANCE.getRequests()) {
 			if(r.getReceiverDean().equals(this)) {
 				return r;
 			} 

@@ -9,6 +9,7 @@ import utilities.Message;
 import utilities.Request;
 
 public abstract class Employee extends User{
+	private static final long serialVersionUID = -4147612431222113640L;
 	private double salary;
 	private Date hireDate;
 	
@@ -67,6 +68,7 @@ public abstract class Employee extends User{
 	}
 	
 	public void sendRequest(Request r) throws IOException {
+		r.setSender(this);
 		DataSingleton.INSTANCE.addRequests(r);
 	}
 

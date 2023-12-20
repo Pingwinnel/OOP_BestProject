@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
 import student.Major;
+import student.Schools;
 
 public class Course implements Serializable{
+	private static final long serialVersionUID = -197806065249070159L;
 	private String name;
 	private String code;
-	private School school;
+	private Schools school;
 	private int credits;
 	private HashSet<Course> prerequisites;
 	private HashMap<Major, CourseType> obligation = new HashMap<Major, CourseType>();
@@ -20,7 +22,7 @@ public class Course implements Serializable{
 	
 	public Course() {}
 	
-	public Course(String name, String code, School school, int credits) {
+	public Course(String name, String code, Schools school, int credits) {
 		this.name = name;
 		this.code = code;
 		this.school = school;

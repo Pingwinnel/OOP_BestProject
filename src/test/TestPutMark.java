@@ -1,9 +1,9 @@
 package test;
 
 import course.Course;
-import course.School;
 import staff.Admin;
 import staff.Manager;
+import student.Schools;
 import student.Student;
 import teacher.Teacher;
 import utilities.ResearchUniversity;
@@ -14,7 +14,7 @@ public class TestPutMark {
 		// TODO Auto-generated method stub
 		Admin a = new Admin();
 		Student s = new Student("Akn", "Pakn");
-		Teacher t = new Teacher("T", "U", 100, School.FIT);
+		Teacher t = new Teacher("T", "U", 100, Schools.SITE);
 //		a.addUser(t);
 //		System.out.println(a.getUsers());
 		Manager m = new Manager();
@@ -24,7 +24,7 @@ public class TestPutMark {
 	
 //		System.out.println(a.getUsers());
 		
-		Course oop = new Course("OOP", "CS10", School.FIT, 5);
+		Course oop = new Course("OOP", "CS10", Schools.SITE, 5);
 		s.registerCourses(oop);
 		
 //		t.putMark(oop, s, 29.6);

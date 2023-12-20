@@ -7,6 +7,10 @@ import staff.Dean;
 import staff.Employee;
 
 public class Request implements Serializable{
+<<<<<<< HEAD
+=======
+	private static final long serialVersionUID = 6590591269722086429L;
+>>>>>>> 5a5af524f8e60aefd3369332c6c0a79b6f86052d
 	private String order;
 	private Dean receiverDean;
 	private Employee sender;
@@ -16,9 +20,8 @@ public class Request implements Serializable{
 		
 	}
 
-	public Request(Dean receiverDean,Employee sender, String order) {
+	public Request(Dean receiverDean, String order) {
 		this.receiverDean = receiverDean;
-		this.sender = sender;
 		this.order = order;
 	}
 	
@@ -67,7 +70,7 @@ public class Request implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Request" + "\n "+ "Order :" + order + "\n to" + receiverDean + "\n from" + sender;
+		return "Request: " + order + "\n to " + receiverDean.getSurname() +" " + receiverDean.getName()  + "\n from " + sender.getSurname() + " " + sender.getName();
 	}
 
 	public boolean isSigned() {
