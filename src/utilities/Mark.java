@@ -50,8 +50,13 @@ public class Mark implements Serializable {
 	}
 	@Override
 	public String toString() {
+<<<<<<< HEAD
 		return "Attestation 1: " + att1 + ", Attestation 2: " + att2 + ", Final Exam Score: " + finalExamScore +
 				", Letter Grade: "+ getLetterGrade() +", Full Score: "+ (att1 + att2 + finalExamScore);
+=======
+		return "att1: " + att1 + ", att2: " + att2 + ", finalExamScore: " + finalExamScore +
+				", Letter Grade: "+ getLetterGrade() +", score: "+ getScore();
+>>>>>>> 7477d3faa4df73dc5078897976e152370942b0b6
 	}
 	@Override
 	public int hashCode() {
