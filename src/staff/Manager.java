@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import course.Course;
+import student.Schools;
 import student.Student;
 import teacher.Teacher;
 import utilities.DataSingleton;
@@ -77,9 +78,17 @@ public class Manager extends Employee{
 		return teachers;
 	}
 
-	public void createReport() {
-		
-	}
+    public String createReportBySchool(Schools school) {
+        List<Student> students = DataSingleton.INSTANCE.getStudents();
+
+        double averageGPA = students.stream()
+                .filter(student -> student.getSchool().equals(school))
+                .mapToDouble(Student::getGpa)
+                .average()
+                .orElse(0.0);
+
+        return "Average GPA for " + school + ": " + averageGPA;
+    }
 	
 	public List<User> viewStudentsSortedByGpa() throws Exception{
 		return DataSingleton.INSTANCE.getStudents().stream()
@@ -87,10 +96,10 @@ public class Manager extends Employee{
 				.collect(Collectors.toCollection(Vector::new));
 	}
 	
-    	public List<Student> viewStudentsSortedAlphabetically() {
-    		return DataSingleton.INSTANCE.getStudents().stream()
-        			.sorted(Comparator.comparing(Student::getSurname))
-                		.collect(Collectors.toCollection(Vector::new));
+    public List<Student> viewStudentsSortedAlphabetically() {
+ 		return DataSingleton.INSTANCE.getStudents().stream()
+      			.sorted(Comparator.comparing(Student::getSurname))
+           		.collect(Collectors.toCollection(Vector::new));
    	}
 	
 }

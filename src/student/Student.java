@@ -50,6 +50,13 @@ public class Student extends User {
 		this.gpa = gpa;
 	}
 	
+	//for test createReport
+	public Student(String name, double gpa, Schools school) {
+		super(name);
+		this.gpa = gpa;
+		this.school = school;
+	}
+	
 	public Schools getSchool() {
 		return school;
 	}
