@@ -7,17 +7,18 @@ import java.util.Objects;
 import java.util.Vector;
 
 import course.Course;
-import course.School;
 import researcher.ResearcherUtils;
 import researcher.ResearchPaper;
 import researcher.Researcher;
 import staff.Employee;
+import student.Schools;
 import student.Student;
 import utilities.DataSingleton;
 import utilities.ResearchUniversity;
 
 public class Teacher extends Employee{
-	private School school;
+	private static final long serialVersionUID = 7233161159009468822L;
+	private Schools school;
 	private Degree academicDegree;
 	private Vector<Course> courses;
 	DataSingleton db = DataSingleton.INSTANCE;
@@ -27,23 +28,23 @@ public class Teacher extends Employee{
 	}
 	
 	public Teacher() {}
-	public Teacher(String surname, String name, double salary, School school) {
+	public Teacher(String surname, String name, double salary, Schools school) {
 		super(surname, name, salary);
 		this.academicDegree = Degree.TUTOR;
 		this.school = school;
 	}
 	
-	public Teacher(String surname, String name, double salary, School school, Degree academicDegree) {
+	public Teacher(String surname, String name, double salary, Schools school, Degree academicDegree) {
 		super(surname, name, salary);
 		this.setAcademicDegree(academicDegree);
 		this.setSchool(school);
 	}
 
-	public School getSchool() {
+	public Schools getSchool() {
 		return school;
 	}
 
-	public void setSchool(School school) {
+	public void setSchool(Schools school) {
 		this.school = school;
 	}
 

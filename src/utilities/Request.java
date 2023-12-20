@@ -1,11 +1,13 @@
 package utilities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import staff.Dean;
 import staff.Employee;
 
-public class Request {
+public class Request implements Serializable{
+	private static final long serialVersionUID = 6590591269722086429L;
 	private String order;
 	private Dean receiverDean;
 	private Employee sender;
@@ -15,9 +17,8 @@ public class Request {
 		
 	}
 
-	public Request(Dean receiverDean,Employee sender, String order) {
+	public Request(Dean receiverDean, String order) {
 		this.receiverDean = receiverDean;
-		this.sender = sender;
 		this.order = order;
 	}
 	
@@ -66,7 +67,7 @@ public class Request {
 	
 	@Override
 	public String toString() {
-		return "Request" + "\n "+ "Order :" + order + "\n to" + receiverDean + "\n from" + sender;
+		return "Request: " + order + "\n to " + receiverDean.getSurname() +" " + receiverDean.getName()  + "\n from " + sender.getSurname() + " " + sender.getName();
 	}
 
 	public boolean isSigned() {
