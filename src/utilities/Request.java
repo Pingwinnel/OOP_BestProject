@@ -7,10 +7,7 @@ import staff.Dean;
 import staff.Employee;
 
 public class Request implements Serializable{
-<<<<<<< HEAD
-=======
 	private static final long serialVersionUID = 6590591269722086429L;
->>>>>>> 5a5af524f8e60aefd3369332c6c0a79b6f86052d
 	private String order;
 	private Dean receiverDean;
 	private Employee sender;

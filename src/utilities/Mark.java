@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Mark implements Serializable {
+	private static final long serialVersionUID = 5063732366564975348L;
 	private double att1;
 	private double att2;
 	private double finalExamScore;
@@ -12,12 +13,12 @@ public class Mark implements Serializable {
 	public Mark() {
 		
 	}
-	
-//	public Mark(double att1, double att2, double finalExamScore) {
-//		this.att1 = att1;
-//		this.att2 = att2;
-//		this.finalExamScore = finalExamScore;
-//	}
+	//just for test
+	public Mark(double att1, double att2, double finalExamScore) {
+		this.att1 = att1;
+		this.att2 = att2;
+		this.finalExamScore = finalExamScore;
+	}
 	
 	public double getScore() {
 		score=att1+att2+finalExamScore;

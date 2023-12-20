@@ -1,4 +1,4 @@
-package tests;
+package test;
 
 import utilities.Mark;
 
@@ -13,9 +13,9 @@ public class TestLetterGrade {
 		System.out.println(m1.getScore());
 		System.out.println(m1.getLetterGrade());
 		
-		Mark m2 = new Mark(26, 29, 33);
-		System.out.println(m2.getScore());
-		System.out.println(m2.getLetterGrade());
+		Mark m2 = new Mark(26, 29, 40);
+		System.out.println(m2);
+		
 
 	}
 
