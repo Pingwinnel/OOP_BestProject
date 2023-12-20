@@ -38,6 +38,10 @@ public class Teacher extends Employee{
 		this.setAcademicDegree(academicDegree);
 		this.setSchool(school);
 	}
+	
+	public Teacher(String surname, String name, double salary) {
+		super(surname, name, salary);
+	}
 
 	public School getSchool() {
 		return school;

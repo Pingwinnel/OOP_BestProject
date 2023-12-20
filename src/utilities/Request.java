@@ -1,11 +1,12 @@
 package utilities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import staff.Dean;
 import staff.Employee;
 
-public class Request {
+public class Request implements Serializable{
 	private String order;
 	private Dean receiverDean;
 	private Employee sender;
