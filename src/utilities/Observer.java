@@ -1,9 +1,9 @@
 package utilities;
 
+import java.util.List;
+
 import researcher.ResearchPaper;
 
 public interface Observer {
-	public static void update() {
-		
-	}
+	public void update(List<ResearchPaper> researchPapers);
 }
