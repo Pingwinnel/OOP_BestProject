@@ -27,7 +27,7 @@ public class Mark implements Serializable {
 	
 	public String getLetterGrade() {
 		  String grades[] = {"F","F","F","F","F","F","F","F","F","F", "D", "D+", "-C", "C", "+C", "-B", "B", "+B", "-A", "A"};
-		  return grades[(int)(Math.round(score)/5)];
+		  return grades[(int)(Math.round(getScore())/5)];
 	}
 
 	public double getAtt1() {
@@ -50,8 +50,8 @@ public class Mark implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "att1: " + att1 + ", att2: " + att2 + ", finalExamScore: " + finalExamScore +
-				", Letter Grade: "+ getLetterGrade() +", score: "+ (att1 + att2 + finalExamScore);
+		return "Attestation 1: " + att1 + ", Attestation 2: " + att2 + ", Final Exam Score: " + finalExamScore +
+				", Letter Grade: "+ getLetterGrade() +", Full Score: "+ (att1 + att2 + finalExamScore);
 	}
 	@Override
 	public int hashCode() {
