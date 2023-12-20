@@ -1,9 +1,11 @@
-package tests;
+package test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import researcher.ResearchPaper;
+import student.Major;
+import student.Schools;
 import student.Student;
 import utilities.UniversityJournal;
 
@@ -12,7 +14,7 @@ public class TestUniversityJournal {
 	public static void main(String[] args) {
         UniversityJournal universityJournal = new UniversityJournal();
 
-        Student student = new Student("Tuba", 3.5);
+        Student student = new Student("Tuba","Aknur",Schools.BS,Major.IS);
 
         student.subscribeToJournal(universityJournal);
 
