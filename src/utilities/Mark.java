@@ -3,30 +3,30 @@ package utilities;
 import java.io.Serializable;
 import java.util.Objects;
 
-
 public class Mark implements Serializable {
 	private double att1;
 	private double att2;
 	private double finalExamScore;
 	private double score;
-	private String letterGrade;
-	
 	
 	public Mark() {
 		
 	}
+	
+//	public Mark(double att1, double att2, double finalExamScore) {
+//		this.att1 = att1;
+//		this.att2 = att2;
+//		this.finalExamScore = finalExamScore;
+//	}
+	
 	public double getScore() {
 		score=att1+att2+finalExamScore;
 		return score ;
 	}
-
 	
 	public String getLetterGrade() {
-		return letterGrade;
-	}
-	
-	public void setLetterGrade(String letterGrade) {
-		this.letterGrade = letterGrade;
+		  String grades[] = {"F","F","F","F","F","F","F","F","F","F", "D", "D+", "-C", "C", "+C", "-B", "B", "+B", "-A", "A"};
+		  return grades[(int)(Math.round(score)/5)];
 	}
 
 	public double getAtt1() {
@@ -50,7 +50,7 @@ public class Mark implements Serializable {
 	@Override
 	public String toString() {
 		return "att1: " + att1 + ", att2: " + att2 + ", finalExamScore: " + finalExamScore +
-				", Letter Grade: "+letterGrade +", score: "+ (att1 + att2 + finalExamScore);
+				", Letter Grade: "+ getLetterGrade() +", score: "+ (att1 + att2 + finalExamScore);
 	}
 	@Override
 	public int hashCode() {
@@ -67,8 +67,5 @@ public class Mark implements Serializable {
 		Mark other = (Mark) obj;
 		return att1 == other.att1 && att2 == other.att2 && finalExamScore == other.finalExamScore;
 	}
-	
-	
-	
 	
 }
