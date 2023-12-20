@@ -12,11 +12,15 @@ import java.io.Serializable;
 
 import java.util.HashMap;
 import java.util.Vector;
+
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+
 import course.Course;
+import researcher.EmployeeResearcher;
 import researcher.ResearchPaper;
 import researcher.ResearchProject;
-
-
+import staff.Manager;
+import staff.TechSupportSpecialist;
 import staff.User;
 import student.DiplomaProject;
 import student.Schools;
@@ -31,6 +35,9 @@ public class DataSingleton implements Serializable{
 	private Vector<User> users = new Vector<User>();
 	private Vector<Student> students = new Vector<Student>();
 	private Vector<Teacher> teachers = new Vector<Teacher>();
+	private Vector<TechSupportSpecialist> techSupportSpecialists = new Vector<TechSupportSpecialist>();
+	private Vector<Manager> managers = new Vector<Manager>();
+	private Vector<EmployeeResearcher> employeeResearchers = new Vector<EmployeeResearcher>();
 	private Vector<Message> messages = new Vector<Message>();
 	private Vector<Request> requests = new Vector<Request>();
 	private Vector<Course> courses = new Vector<Course>();
@@ -40,6 +47,7 @@ public class DataSingleton implements Serializable{
     private Vector<News> news = new Vector<News>();
     private Vector<StudentOrganization> studOrg = new Vector<StudentOrganization>();
     private Vector<DiplomaProject> diplomaProjescts = new Vector<DiplomaProject>();
+    private Vector<Orders> orders=new Vector<Orders>();
 	
     static File dataFile = new File("data.ser");
 	
@@ -76,6 +84,9 @@ public class DataSingleton implements Serializable{
 		users.add(u);
 		if(u instanceof Student) students.add((Student) u);
 		if(u instanceof Teacher) teachers.add((Teacher) u);
+		if(u instanceof TechSupportSpecialist) techSupportSpecialists.add((TechSupportSpecialist)u);
+		if(u instanceof Manager) managers.add((Manager)u);
+		if(u instanceof EmployeeResearcher) employeeResearchers.add((EmployeeResearcher)u);
 		write();
 		
 	}
@@ -101,6 +112,10 @@ public class DataSingleton implements Serializable{
 	
 	public static int nextId() {
 		return INSTANCE.users.size()+1;
+	}
+	
+	public static int nextIdOrder() {
+		return INSTANCE.orders.size()+1;
 	}
 
 	public Vector<Message> getMessages() {
@@ -227,6 +242,38 @@ public class DataSingleton implements Serializable{
 	public void addRequests(Request req) throws IOException {
 		requests.add(req);
 		write();
+	}
+
+	public Vector<Orders> getOrders() {
+		return orders;
+	}
+
+	public void addOrders(Orders o) throws IOException {
+		orders.add(o);
+	}
+
+	public Vector<TechSupportSpecialist> getTechSupportSpecialists() {
+		return techSupportSpecialists;
+	}
+
+	public void addTechSupportSpecialists(TechSupportSpecialist techSupportSpecialist) {
+		 techSupportSpecialists.add(techSupportSpecialist);
+	}
+
+	public Vector<Manager> getManagers() {
+		return managers;
+	}
+
+	public void addManagers(Manager manager) {
+		managers.add(manager);
+	}
+
+	public Vector<EmployeeResearcher> getEmployeeResearchers() {
+		return employeeResearchers;
+	}
+
+	public void addEmployeeResearchers(EmployeeResearcher employeeResearcher) {
+		employeeResearchers.add(employeeResearcher);
 	}
 	
 }

@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import utilities.DataSingleton;
 import utilities.Message;
+import utilities.Orders;
 import utilities.Request;
 
 public abstract class Employee extends User{
@@ -70,6 +71,12 @@ public abstract class Employee extends User{
 	public void sendRequest(Request r) throws IOException {
 		r.setSender(this);
 		DataSingleton.INSTANCE.addRequests(r);
+	}
+	
+	public void senbOrder(String description) throws IOException {
+		Orders o=new Orders(this,description);
+		DataSingleton.INSTANCE.addOrders(o);
+		DataSingleton.INSTANCE.write();
 	}
 
 }

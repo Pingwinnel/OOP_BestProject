@@ -1,6 +1,10 @@
 package utilities;
 
+import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.List;
+import java.util.Vector;
+
 import staff.User;
 import student.Student;
 
@@ -33,5 +37,17 @@ public class Utils {
 		} 
 		return u.getName().toLowerCase().charAt(0)+"."+u.getSurname().toLowerCase()+email;
 		
+	}
+	
+	public static Boolean printList(List list) {
+		if(!list.isEmpty()) {
+		for(int i=0; i<list.size(); i++)
+			System.out.println(i+1+ ")" +list.get(i));
+		return true;
+	}
+	return false;
+}
+	public static void saveData() throws IOException {
+		DataSingleton.INSTANCE.write();
 	}
 }

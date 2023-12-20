@@ -1,6 +1,12 @@
 package staff;
 
+import java.io.IOException;
 import java.util.Objects;
+
+import utilities.DataSingleton;
+import utilities.Orders;
+import utilities.Utils;
+import utilities.acceptType;
 
 public class TechSupportSpecialist extends Employee {
 
@@ -10,31 +16,37 @@ public class TechSupportSpecialist extends Employee {
 
 	public TechSupportSpecialist(String surname, String name, double salary) {
 		super(surname, name, salary);
-		
+
 	}
 
-	public boolean acceptOrders() {
-		return false;
+	public void  acceptOrders(Integer id) throws IOException {
+		for (Orders order : DataSingleton.INSTANCE.getOrders()) {
+			if(order.getId().intValue()==id.intValue()) {
+				order.setIsAccepted(acceptType.True);
+				Utils.saveData();
+				break;
+			}
+		}
 	}
-	
-	void viewOrders() {
-		
-	}
-	
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        TechSupportSpecialist that = (TechSupportSpecialist) o;
-        return true;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode());
-    }
-    
-    public String toString() {
-        return "TechSupportSpecialist {" + super.toString() + "}";
-    }
+	public	void viewOrders() {
+		Utils.printList( DataSingleton.INSTANCE.getOrders());
+	}
+
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+		TechSupportSpecialist that = (TechSupportSpecialist) o;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(super.hashCode());
+	}
+
+	public String toString() {
+		return "TechSupportSpecialist {" + super.toString() + "}";
+	}
 }
