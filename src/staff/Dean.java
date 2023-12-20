@@ -10,6 +10,7 @@ import utilities.Request;
 public class Dean extends Employee {
 	private static final long serialVersionUID = 4657377240619077289L;
 	private Schools faculty;
+	DataSingleton db = DataSingleton.INSTANCE;
 
 	public Dean() {
 		// TODO Auto-generated constructor stub
@@ -31,6 +32,10 @@ public class Dean extends Employee {
 	
 	public boolean approveOrganization(StudentOrganization stor) {
 		return false;
+	}
+	
+	public void readComplaints() {
+		db.getComplaintsByFaculty(this.faculty).removeAllElements();
 	}
 
     public boolean equals(Object o) {

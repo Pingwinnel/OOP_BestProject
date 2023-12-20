@@ -19,6 +19,7 @@ import researcher.ResearchProject;
 
 import staff.User;
 import student.DiplomaProject;
+import student.Schools;
 import student.Student;
 import student.StudentOrganization;
 import teacher.Teacher;
@@ -34,7 +35,7 @@ public class DataSingleton implements Serializable{
 	private Vector<Request> requests = new Vector<Request>();
 	private Vector<Course> courses = new Vector<Course>();
 	private Vector<ResearchPaper> researchPapers = new Vector<ResearchPaper>();
-	private HashMap<String, Vector<String>> facultyComplaints = new HashMap<>();
+	private HashMap<Schools, Vector<String>> facultyComplaints = new HashMap<Schools, Vector<String>>();
 	private Vector<ResearchProject> researchProjects = new Vector<ResearchProject>();
     private Vector<News> news = new Vector<News>();
     private Vector<StudentOrganization> studOrg = new Vector<StudentOrganization>();
@@ -139,16 +140,15 @@ public class DataSingleton implements Serializable{
 		return courses;
 	}
 	
-	public void addComplaint(String faculty, String complaint) throws IOException {
-        if (!facultyComplaints.containsKey(faculty)) {
-            facultyComplaints.put(faculty, new Vector<>());
+	public void addComplaint(Schools school, String complaint) {
+        if(!facultyComplaints.containsKey(school)) {
+            facultyComplaints.put(school, new Vector<>());
         }
-        facultyComplaints.get(faculty).add(complaint);
-        write();
-    }
+        	facultyComplaints.get(school).add(complaint);
+	}
 
-    public Vector<String> getComplaintsByFaculty(String faculty) {
-        return facultyComplaints.getOrDefault(faculty, new Vector<>());
+    public Vector<String> getComplaintsByFaculty(Schools school) {
+    	return facultyComplaints.get(school);
     }
 
     //news

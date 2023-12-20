@@ -79,10 +79,9 @@ public class Teacher extends Employee{
 		return null;
 	}
 	
-	public void sendComplaint(String s, UrgencyLevel level) throws IOException {
-		String faculty = this.school.name(); 
-		String complaint = "Urgency Level: " + level + "\n" + s;
-        db.addComplaint(faculty, complaint); 
+	public void sendComplaint(Schools school, String s, UrgencyLevel level) {
+		String complaint = "\n" + "Urgency Level: " + level + " -> " + s;
+        db.addComplaint(school, complaint); 
 	}
 
 	@Override
