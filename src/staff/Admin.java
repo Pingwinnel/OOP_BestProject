@@ -3,6 +3,7 @@ package staff;
 import java.util.Vector;
 
 import utilities.DataSingleton;
+import utilities.Utils;
 
 public class Admin extends Employee{
 	
@@ -32,7 +33,9 @@ public class Admin extends Employee{
 		
 	}
 	
-	
+	public void seeLogFiles() {
+		Utils.printList(DataSingleton.INSTANCE.getLogs());
+	}
 
 	
 }

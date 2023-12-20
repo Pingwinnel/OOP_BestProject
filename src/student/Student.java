@@ -3,6 +3,7 @@ package student;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Vector;
 
@@ -104,7 +105,10 @@ public class Student extends User {
 	}
 	
 	public void viewTranscript() {
-		
+		System.out.println("|Course| " +"|First Att|"+"|Second Att|"+"|Final|");
+		marks.forEach((key,value)->{
+			System.out.println("|"+key+"|"+value.getAtt1()+"|"+value.getAtt2()+"|"+value.getFinalExamScore()+"|");
+		});
 	}
 	
 	public void viewTeacherInfo(Course course) {
