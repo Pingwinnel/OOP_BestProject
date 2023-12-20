@@ -1,15 +1,10 @@
 package utilities;
 
 public interface Observable {
-	public static void subscribe() {
-		
-	}
+	void subscribe(Observer observer);
+
+	void unsubscribe(Observer observer);
+
+	void notifyObservers();
 	
-	public static void unsubscribe() {
-		
-	}
-	
-	public static void notifyObserver() {
-		
-	}
 }

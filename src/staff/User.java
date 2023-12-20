@@ -2,17 +2,20 @@ package staff;
 
 import java.io.Serializable;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 import java.util.Vector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import researcher.ResearchPaper;
 import utilities.*;
 import utilities.DataSingleton;
 import utilities.News;
 import utilities.Utils;
 
-public abstract class User implements Serializable{
+public abstract class User implements Serializable, Observer{
+
 	private int id;
 	private String surname;
 	private String name;
@@ -80,7 +83,7 @@ public abstract class User implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getCorparateEmail(), getId(), getName(), getSurname());
+		return Objects.hash(getCorparateEmail(), getId(), getName(), getPassword(), getSurname());
 	}
 
 	@Override
@@ -90,7 +93,7 @@ public abstract class User implements Serializable{
 		if (getClass() != obj.getClass()) return false;
 		User other = (User) obj;
 		return getId() == other.getId() && Objects.equals(getCorparateEmail(), other.getCorparateEmail()) &&
-				Objects.equals(getName(), other.getName()) 
+				Objects.equals(getName(), other.getName()) && Objects.equals(getPassword(), other.getPassword())
 				&& Objects.equals(getSurname(), other.getSurname());
 	}
 	
@@ -105,6 +108,16 @@ public abstract class User implements Serializable{
     	
         return Stream.concat(researchNews, nonResearchNews)
                 .collect(Collectors.toCollection(Vector::new));
+    }
+	
+	@Override
+	public void update(List<ResearchPaper> researchPapers) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+    public void subscribeToJournal(UniversityJournal journal) {
+        journal.subscribe(this);
     }
 	
 }
