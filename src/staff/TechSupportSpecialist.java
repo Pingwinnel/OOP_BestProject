@@ -21,11 +21,12 @@ public class TechSupportSpecialist extends Employee {
 
 	}
 
+	@SuppressWarnings("static-access")
 	public void  acceptOrders(Integer id) throws IOException {
 		for (Orders order : DataSingleton.INSTANCE.getOrders()) {
 			if(order.getId().intValue()==id.intValue()) {
 				order.setIsAccepted(acceptType.True);
-				Utils.saveData();
+				DataSingleton.INSTANCE.write();
 				break;
 			}
 		}

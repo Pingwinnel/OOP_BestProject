@@ -47,7 +47,4 @@ public class Utils {
 	}
 	return false;
 }
-	public static void saveData() throws IOException {
-		DataSingleton.INSTANCE.write();
-	}
 }
