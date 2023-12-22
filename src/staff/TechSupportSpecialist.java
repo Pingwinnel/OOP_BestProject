@@ -10,6 +10,8 @@ import utilities.acceptType;
 
 public class TechSupportSpecialist extends Employee {
 
+	private static final long serialVersionUID = -5085163744100008225L;
+
 	public TechSupportSpecialist() {
 		// TODO Auto-generated constructor stub
 	}

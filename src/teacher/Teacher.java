@@ -17,7 +17,8 @@ import utilities.DataSingleton;
 import utilities.ResearchUniversity;
 
 public class Teacher extends Employee{
-	private static final long serialVersionUID = 7233161159009468822L;
+	
+	private static final long serialVersionUID = 3831962457385399365L;
 	private Schools school;
 	private Degree academicDegree;
 	private Vector<Course> courses;
@@ -28,6 +29,7 @@ public class Teacher extends Employee{
 	}
 	
 	public Teacher() {}
+	
 	public Teacher(String surname, String name, double salary, Schools school) {
 		super(surname, name, salary);
 		this.academicDegree = Degree.TUTOR;

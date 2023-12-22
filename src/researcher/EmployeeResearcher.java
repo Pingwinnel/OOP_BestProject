@@ -1,12 +1,13 @@
 package researcher;
 
 import java.util.List;
-import java.util.Vector;
 import staff.Employee;
 
 
 public class EmployeeResearcher extends Employee implements Researcher  {
 	
+	private static final long serialVersionUID = -3599532175820123036L;
+
 	public EmployeeResearcher() {
 		
 	}

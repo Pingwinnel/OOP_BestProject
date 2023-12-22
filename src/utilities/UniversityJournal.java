@@ -6,7 +6,7 @@ import java.util.Objects;
 
 import researcher.ResearchPaper;
 
-public class UniversityJournal implements Observable, Observer{
+public class UniversityJournal implements Observable{
 	private List<Observer> observers; 
 	private List<ResearchPaper> researchPapers;
 //	private DataSingleton.INSTANCE.getResearchPapers();
@@ -59,9 +59,5 @@ public class UniversityJournal implements Observable, Observer{
         notifyObservers();
     }
 
-	@Override
-	public void update(List<ResearchPaper> researchPapers) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
