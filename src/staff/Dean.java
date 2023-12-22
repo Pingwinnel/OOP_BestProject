@@ -8,7 +8,6 @@ import utilities.DataSingleton;
 import utilities.Request;
 
 public class Dean extends Employee {
-	private static final long serialVersionUID = 4657377240619077289L;
 	private Schools faculty;
 	DataSingleton db = DataSingleton.INSTANCE;
 

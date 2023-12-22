@@ -1,5 +1,5 @@
 package student;
 
 public enum Schools {
-	SITE, SAM, BS,FIT;
+	SITE, SAM, BS;
 }

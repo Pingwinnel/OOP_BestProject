@@ -7,6 +7,8 @@ import utilities.Utils;
 
 public class Admin extends Employee{
 	
+	private static final long serialVersionUID = -5079377241382479154L;
+
 	public Admin() {
 		
 	}

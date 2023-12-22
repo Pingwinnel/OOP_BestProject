@@ -112,7 +112,8 @@ public abstract class User implements Serializable, Observer{
 	
 	@Override
 	public void update(List<ResearchPaper> researchPapers) {
-		// TODO Auto-generated method stub
+		System.out.println();
+		
 		
 	}
 	
