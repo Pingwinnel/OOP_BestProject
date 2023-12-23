@@ -8,12 +8,12 @@ public class TestLetterGrade {
 		Mark m1 = new Mark();
 		m1.setAtt1(15);
 		m1.setAtt2(15);
-		m1.setFinalExamScore(36);
+		m1.setFinalExamScore(40);
 		
 		System.out.println(m1.getScore());
 		System.out.println(m1.getLetterGrade());
 		
-		Mark m2 = new Mark(26, 29, 40);
+		Mark m2 = new Mark(15, 15, 40);
 		System.out.println(m2);
 		
 

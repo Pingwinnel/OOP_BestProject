@@ -1,5 +1,5 @@
 package utilities;
 
-public enum acceptType {
+public enum acceptType  {
 False,True,InProcess
 }

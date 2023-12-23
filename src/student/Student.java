@@ -105,9 +105,9 @@ public class Student extends User {
 	}
 	
 	public void viewTranscript() {
-		System.out.println("|Course| " +"|First Att|"+"|Second Att|"+"|Final|");
+		System.out.println("|Course|" +"|First Att|"+"|Second Att|"+"|Final|");
 		marks.forEach((key,value)->{
-			System.out.println("|"+key+"|"+value.getAtt1()+"|"+value.getAtt2()+"|"+value.getFinalExamScore()+"|");
+			System.out.println("|"+key.getName()+"\t|"+value.getAtt1()+"\t|"+value.getAtt2()+"\t|"+value.getFinalExamScore()+"\t|\t"+value.getLetterGrade());
 		});
 	}
 	

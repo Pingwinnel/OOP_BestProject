@@ -252,6 +252,7 @@ public class DataSingleton implements Serializable{
 
 	public void addOrders(Orders o) throws IOException {
 		orders.add(o);
+		write();
 	}
 
 	public Vector<TechSupportSpecialist> getTechSupportSpecialists() {
