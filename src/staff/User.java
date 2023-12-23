@@ -24,6 +24,7 @@ public abstract class User implements Serializable, Observer{
 	
 	public User() {}
 	
+	
 	public User(String surname, String name) {
 		this.id = DataSingleton.nextId();
 		this.setSurname(surname);
