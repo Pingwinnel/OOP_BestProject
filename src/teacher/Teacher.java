@@ -81,7 +81,7 @@ public class Teacher extends Employee{
 		return null;
 	}
 	
-	public void sendComplaint(Schools school, String s, UrgencyLevel level) {
+	public void sendComplaint(Schools school, String s, UrgencyLevel level) throws IOException {
 		String complaint = "\n" + "Urgency Level: " + level + " -> " + s;
         db.addComplaint(school, complaint); 
 	}

@@ -25,6 +25,17 @@ public class TechSupportSpecialist extends Employee {
 			if(order.getId().intValue()==id.intValue()) {
 				order.setIsAccepted(acceptType.True);
 				DataSingleton.write();
+				System.out.println("Order "+order.getId()+" has been completed");
+				break;
+			}
+		}
+	}
+	public void inProgressOrder(Integer id) throws IOException {
+		for (Orders order : DataSingleton.INSTANCE.getOrders()) {
+			if(order.getId().intValue()==id.intValue()) {
+				order.setIsAccepted(acceptType.InProcess);
+				DataSingleton.write();
+				System.out.println("Order "+order.getId()+" has been taken");
 				break;
 			}
 		}

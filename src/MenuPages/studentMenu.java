@@ -9,7 +9,7 @@ import student.Student;
 import utilities.DataSingleton;
 import utilities.Mark;
 
-public class studentMenu {
+public class studentMenu extends UserMenu{
 	Scanner in = new Scanner(System.in);
 	Student s;
 	
@@ -81,6 +81,11 @@ public class studentMenu {
 			e.printStackTrace();
 			save();
 		}
+	}
+	@Override
+	public void welcomeMessage() {
+		System.out.println("Welcome Student "+s.getName());
+		
 	}
 
 }
