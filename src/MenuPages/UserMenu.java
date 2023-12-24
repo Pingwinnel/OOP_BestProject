@@ -11,12 +11,12 @@ import utilities.Utils;
 public abstract class UserMenu {
 	Scanner in = new Scanner(System.in);
 	User u;
-public UserMenu() {
-	u =new User(in.next()) {};
-}
-public UserMenu(User u1) {
-	this.u=u1;
-}
+	public UserMenu() {
+		u =new User(in.next()) {};
+	}
+	public UserMenu(User u1) {
+		this.u=u1;
+	}
 
 abstract public void welcomeMessage() ;
 
