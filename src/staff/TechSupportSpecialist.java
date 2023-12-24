@@ -10,6 +10,8 @@ import utilities.acceptType;
 
 public class TechSupportSpecialist extends Employee {
 
+	private static final long serialVersionUID = -5085163744100008225L;
+
 	public TechSupportSpecialist() {
 		// TODO Auto-generated constructor stub
 	}
@@ -18,12 +20,22 @@ public class TechSupportSpecialist extends Employee {
 		super(surname, name, salary);
 
 	}
-
 	public void  acceptOrders(Integer id) throws IOException {
 		for (Orders order : DataSingleton.INSTANCE.getOrders()) {
 			if(order.getId().intValue()==id.intValue()) {
 				order.setIsAccepted(acceptType.True);
-				Utils.saveData();
+				DataSingleton.write();
+				System.out.println("Order "+order.getId()+" has been completed");
+				break;
+			}
+		}
+	}
+	public void inProgressOrder(Integer id) throws IOException {
+		for (Orders order : DataSingleton.INSTANCE.getOrders()) {
+			if(order.getId().intValue()==id.intValue()) {
+				order.setIsAccepted(acceptType.InProcess);
+				DataSingleton.write();
+				System.out.println("Order "+order.getId()+" has been taken");
 				break;
 			}
 		}

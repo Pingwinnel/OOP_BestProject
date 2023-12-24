@@ -22,6 +22,10 @@ public class Course implements Serializable{
 	
 	public Course() {}
 	
+	public Course(String name) {
+		this.name=name;
+	}
+	
 	public Course(String name, String code, Schools school, int credits) {
 		this.name = name;
 		this.code = code;

@@ -16,6 +16,7 @@ import utilities.DataSingleton;
 import utilities.News;
 
 public class Manager extends Employee{
+	private static final long serialVersionUID = -4796615096842031598L;
 	DataSingleton data = DataSingleton.INSTANCE;
 	private ManagerType type;	
 	

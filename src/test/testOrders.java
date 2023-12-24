@@ -15,9 +15,9 @@ public class testOrders {
 		TechSupportSpecialist tch1=new TechSupportSpecialist("Kabanbai","Arman,",2500);
 		Utils.printList(DataSingleton.INSTANCE.getTechSupportSpecialists());
 		EmployeeResearcher epRes=new EmployeeResearcher("Omirzhanov","Yerasyil",1000);
-		Orders o =new Orders(epRes,"I have problem 424");
-		tch1.acceptOrders(o.getId());
-		DataSingleton.INSTANCE.addOrders(o);
+		epRes.senbOrder("Computer doesnt woj");
+		tch1.viewOrders();
+		tch1.acceptOrders(1);
 		Utils.printList(DataSingleton.INSTANCE.getOrders());
 		
 	}

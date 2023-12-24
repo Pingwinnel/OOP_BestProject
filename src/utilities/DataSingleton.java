@@ -157,11 +157,12 @@ public class DataSingleton implements Serializable{
 		return courses;
 	}
 	
-	public void addComplaint(Schools school, String complaint) {
+	public void addComplaint(Schools school, String complaint) throws IOException {
         if(!facultyComplaints.containsKey(school)) {
             facultyComplaints.put(school, new Vector<>());
         }
         	facultyComplaints.get(school).add(complaint);
+        	write();
 	}
 
     public Vector<String> getComplaintsByFaculty(Schools school) {
@@ -252,46 +253,52 @@ public class DataSingleton implements Serializable{
 
 	public void addOrders(Orders o) throws IOException {
 		orders.add(o);
+		write();
 	}
 
 	public Vector<TechSupportSpecialist> getTechSupportSpecialists() {
 		return techSupportSpecialists;
 	}
 
-	public void addTechSupportSpecialists(TechSupportSpecialist techSupportSpecialist) {
+	public void addTechSupportSpecialists(TechSupportSpecialist techSupportSpecialist) throws IOException {
 		 techSupportSpecialists.add(techSupportSpecialist);
+		 write();
 	}
 
 	public Vector<Manager> getManagers() {
 		return managers;
 	}
 
-	public void addManagers(Manager manager) {
+	public void addManagers(Manager manager) throws IOException {
 		managers.add(manager);
+		write();
 	}
 
 	public Vector<EmployeeResearcher> getEmployeeResearchers() {
 		return employeeResearchers;
 	}
 
-	public void addEmployeeResearchers(EmployeeResearcher employeeResearcher) {
+	public void addEmployeeResearchers(EmployeeResearcher employeeResearcher) throws IOException {
 		employeeResearchers.add(employeeResearcher);
+		write();
 	}
 
 	public HashMap<String,String> getUserLogin() {
 		return userLogin;
 	}
 
-	public void addUserLogin(String email,String password) {
+	public void addUserLogin(String email,String password) throws IOException {
 		userLogin.put(email, password);
+		write();
 	}
 
 	public Vector<String> getLogs() {
 		return logs;
 	}
 
-	public void addLogs(String log) {
+	public void addLogs(String log) throws IOException {
 		logs.add(log);
+		write();
 	}
 	
 }

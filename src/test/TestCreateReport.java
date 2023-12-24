@@ -1,4 +1,4 @@
-package tests;
+package test;
 
 import staff.Manager;
 import student.Schools;

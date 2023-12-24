@@ -76,7 +76,7 @@ public abstract class Employee extends User{
 	public void senbOrder(String description) throws IOException {
 		Orders o=new Orders(this,description);
 		DataSingleton.INSTANCE.addOrders(o);
-		DataSingleton.INSTANCE.write();
+		DataSingleton.write();
 	}
 
 }
