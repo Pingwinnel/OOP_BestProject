@@ -15,11 +15,11 @@ public class News implements Serializable{
 	private String text;
 	private Date date;
 
-	public News(String title, UrgencyLevel priority, String text, Date date) {
+	public News(String title, UrgencyLevel priority, String text) {
 		this.priority = priority;
 		this.text = text;
 		this.title = title;
-		this.date = date;
+		this.date = new Date();
 	}
 	
 	public News() {
