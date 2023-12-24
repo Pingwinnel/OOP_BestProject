@@ -24,7 +24,7 @@ public abstract class Employee extends User{
 	
 	@Override
 	public String toString() {
-		return super.toString()+", salary: " + salary + ", hireDate: " + hireDate;
+		return super.toString()+ ", hireDate: " + hireDate.getYear();
 	}
 
 	public double getSalary() {

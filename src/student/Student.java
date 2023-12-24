@@ -137,7 +137,7 @@ public class Student extends User {
 	}
 	
 	public String toString() {
-		return "Student [" + super.toString() + ", school= " + this.school + ", speciality= " + this.major + ", gpa= " + this.gpa + ", year of study= " + this.yearOfStudy + "]"; 
+		return "Student [" + super.toString() + ", school= " + this.school + ", speciality= " + this.major + ", year of study= " + this.yearOfStudy + "]"; 
 	}
 	
 	public boolean equals(Object o) {
