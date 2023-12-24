@@ -10,7 +10,7 @@ public class UniversityJournal implements Observable, Observer{
 	private List<Observer> observers; 
 	private List<ResearchPaper> researchPapers;
 //	private DataSingleton.INSTANCE.getResearchPapers();
-	private ResearchPaper latest;
+//	private ResearchPaper latest;
 	
     public UniversityJournal() {
         observers = new ArrayList<>();
@@ -19,7 +19,7 @@ public class UniversityJournal implements Observable, Observer{
 
     @Override
 	public String toString() {
-		return "UniversityJournal \n" + "Journal observers:" + observers + "\nAll Papers: " + researchPapers + "\nLatest Paper:" + latest;
+		return "UniversityJournal \n" + "Journal observers:" + observers + "\nAll Papers: " + researchPapers + "\nLatest Paper: " + getLatest();
 	}
     
     @Override
@@ -29,12 +29,12 @@ public class UniversityJournal implements Observable, Observer{
         UniversityJournal that = (UniversityJournal) o;
         return Objects.equals(observers, that.observers) &&
                 Objects.equals(researchPapers, that.researchPapers) &&
-                Objects.equals(latest, that.latest);
+                Objects.equals(getLatest(), that.getLatest());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(observers, researchPapers, latest);
+        return Objects.hash(observers, researchPapers, getLatest());
     }
 
 	@Override
@@ -52,6 +52,7 @@ public class UniversityJournal implements Observable, Observer{
         for (Observer observer : observers) {
             observer.update(researchPapers);
         }
+        System.out.println("New Research Paper!");
     }
 
     public void setNewPapers(List<ResearchPaper> newPapers) {
@@ -64,4 +65,20 @@ public class UniversityJournal implements Observable, Observer{
 		// TODO Auto-generated method stub
 		
 	}
+	
+    public ResearchPaper getLatest() {
+        if (researchPapers.isEmpty()) {
+            return null; // No papers available
+        }
+
+        ResearchPaper latest = researchPapers.get(researchPapers.size()-1); // Assuming the list is sorted by publication date
+
+        for (ResearchPaper paper : researchPapers) {
+            if (paper.getDate().compareTo(latest.getDate()) > 0) {
+                latest = paper;
+            }
+        }
+
+        return latest;
+    }
 }

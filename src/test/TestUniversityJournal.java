@@ -25,6 +25,7 @@ public class TestUniversityJournal {
         universityJournal.setNewPapers(newResearchPapers);
         
         System.out.println(universityJournal);
+        universityJournal.notifyObservers();
 	}
 
 }
