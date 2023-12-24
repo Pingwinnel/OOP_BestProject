@@ -48,7 +48,7 @@ public class DataSingleton implements Serializable{
     private Vector<StudentOrganization> studOrg = new Vector<StudentOrganization>();
     private Vector<DiplomaProject> diplomaProjescts = new Vector<DiplomaProject>();
     private Vector<Orders> orders=new Vector<Orders>();
-    private HashMap<String,String> userLogin=new HashMap<String, String>();
+    private HashMap<String,String> loginInfo = new HashMap<String, String>();
     private Vector<String> logs=new Vector<String>();
 	
     static File dataFile = new File("data.ser");
@@ -84,6 +84,7 @@ public class DataSingleton implements Serializable{
 	
 	public void addUser(User u) throws Exception {
 		users.add(u);
+		loginInfo.put(u.getCorparateEmail(), u.getPassword());
 		if(u instanceof Student) students.add((Student) u);
 		if(u instanceof Teacher) teachers.add((Teacher) u);
 		if(u instanceof TechSupportSpecialist) techSupportSpecialists.add((TechSupportSpecialist)u);
@@ -283,13 +284,8 @@ public class DataSingleton implements Serializable{
 		write();
 	}
 
-	public HashMap<String,String> getUserLogin() {
-		return userLogin;
-	}
-
-	public void addUserLogin(String email,String password) throws IOException {
-		userLogin.put(email, password);
-		write();
+	public HashMap<String,String> getLoginInfo() {
+		return loginInfo;
 	}
 
 	public Vector<String> getLogs() {

@@ -59,13 +59,6 @@ public class UniversityJournal implements Observable{
         researchPapers.addAll(newPapers);
         notifyObservers();
     }
-
-<<<<<<< HEAD
-	@Override
-	public void update(List<ResearchPaper> researchPapers) {
-		// TODO Auto-generated method stub
-		
-	}
 	
     public ResearchPaper getLatest() {
         if (researchPapers.isEmpty()) {
@@ -82,7 +75,5 @@ public class UniversityJournal implements Observable{
 
         return latest;
     }
-=======
-	
->>>>>>> 34c6d586a0177ab1e874b1823101211af0660b53
+
 }

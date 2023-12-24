@@ -30,7 +30,6 @@ public abstract class User implements Serializable, Observer{
 		this.setSurname(surname);
 		this.setName(name);
 		this.corparateEmail = Utils.generateCorparateEmail(this);
-		this.password = Utils.generatePassword();
 	}
 
 	public User(String name) {
@@ -73,7 +72,11 @@ public abstract class User implements Serializable, Observer{
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword() {
+		this.password = Utils.generatePassword();
+	}
+	
+	public void changePassword(String password) {
 		this.password = password;
 	}
 	

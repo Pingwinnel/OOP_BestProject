@@ -1,5 +1,7 @@
 package test;
 
+import java.io.IOException;
+
 import staff.Dean;
 import student.Schools;
 import teacher.Teacher;
@@ -8,7 +10,7 @@ import utilities.DataSingleton;
 
 public class TestComplaint {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		DataSingleton db = DataSingleton.INSTANCE;
 		Teacher t1 = new Teacher("a1", "b1", 250000, Schools.SAM);
