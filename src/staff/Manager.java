@@ -71,6 +71,7 @@ public class Manager extends Employee{
 	
 	public void addNews(News n) throws IOException {
 		data.addNews(n);
+		DataSingleton.write();
 	}
 	
 	
