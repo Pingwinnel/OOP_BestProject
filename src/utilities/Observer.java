@@ -5,5 +5,5 @@ import java.util.List;
 import researcher.ResearchPaper;
 
 public interface Observer {
-	public void update(List<ResearchPaper> researchPapers);
+	public void update();
 }

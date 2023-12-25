@@ -10,9 +10,6 @@ import java.util.stream.Stream;
 
 import researcher.ResearchPaper;
 import utilities.*;
-import utilities.DataSingleton;
-import utilities.News;
-import utilities.Utils;
 
 public abstract class User implements Serializable, Observer{
 
@@ -115,10 +112,8 @@ public abstract class User implements Serializable, Observer{
     }
 	
 	@Override
-	public void update(List<ResearchPaper> researchPapers) {
-		System.out.println();
-		
-		
+	public void update() {
+		System.out.println("Journal is updated!");
 	}
 	
     public void subscribeToJournal(UniversityJournal journal) {

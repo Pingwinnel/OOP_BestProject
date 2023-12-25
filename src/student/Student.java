@@ -150,13 +150,6 @@ public class Student extends User {
 		return Objects.hash(getCorparateEmail(), getId(), getName(), getPassword(), getSurname(), getSchool(), getMajor(), getGpa(), getYearOfStudy());
 	}
 	
-
-	@Override
-	public void update(List<ResearchPaper> researchPapers) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	public class ResearcherStudent implements Researcher{
 		public String toString() {
 			return "and I am a student researcher";

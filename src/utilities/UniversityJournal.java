@@ -1,5 +1,6 @@
 package utilities;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -8,18 +9,14 @@ import researcher.ResearchPaper;
 
 public class UniversityJournal implements Observable{
 	private List<Observer> observers; 
-	private List<ResearchPaper> researchPapers;
-//	private DataSingleton.INSTANCE.getResearchPapers();
-//	private ResearchPaper latest;
 	
     public UniversityJournal() {
         observers = new ArrayList<>();
-        researchPapers = new ArrayList<>();
     }
 
     @Override
 	public String toString() {
-		return "UniversityJournal \n" + "Journal observers:" + observers + "\nAll Papers: " + researchPapers + "\nLatest Paper: " + getLatest();
+		return "UniversityJournal " + "\nJournal observers:" + observers + "\nAll Papers: " + DataSingleton.INSTANCE.getResearchPapers() + "\nLatest Paper: " + getLatest();
 	}
     
     @Override
@@ -27,14 +24,12 @@ public class UniversityJournal implements Observable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UniversityJournal that = (UniversityJournal) o;
-        return Objects.equals(observers, that.observers) &&
-                Objects.equals(researchPapers, that.researchPapers) &&
-                Objects.equals(getLatest(), that.getLatest());
+        return Objects.equals(observers, that.observers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(observers, researchPapers, getLatest());
+        return Objects.hash(observers);
     }
 
 	@Override
@@ -50,30 +45,29 @@ public class UniversityJournal implements Observable{
     @Override
     public void notifyObservers() {
         for (Observer observer : observers) {
-            observer.update(researchPapers);
+            observer.update();
         }
-        System.out.println("New Research Paper!");
+//        System.out.println("New Research Paper!");
     }
 
-    public void setNewPapers(List<ResearchPaper> newPapers) {
-        researchPapers.addAll(newPapers);
+    public void setNewPapers(ResearchPaper newPaper) throws IOException {
+    	DataSingleton.INSTANCE.addResearchPapers(newPaper);
         notifyObservers();
     }
 	
     public ResearchPaper getLatest() {
-        if (researchPapers.isEmpty()) {
+        if (DataSingleton.INSTANCE.getResearchPapers().isEmpty()) {
             return null; // No papers available
         }
 
-        ResearchPaper latest = researchPapers.get(researchPapers.size()-1); // Assuming the list is sorted by publication date
+        ResearchPaper latest = DataSingleton.INSTANCE.getResearchPapers().get(DataSingleton.INSTANCE.getResearchPapers().size()-1);
 
-        for (ResearchPaper paper : researchPapers) {
+        for (ResearchPaper paper : DataSingleton.INSTANCE.getResearchPapers()) {
             if (paper.getDate().compareTo(latest.getDate()) > 0) {
                 latest = paper;
             }
         }
-
+        
         return latest;
     }
-
 }
