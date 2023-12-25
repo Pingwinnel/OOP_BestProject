@@ -4,12 +4,13 @@
  */
 package course;
 
+import java.io.Serializable;
 import java.util.Objects;
 /**
  * The Lesson class represents a lesson in a course, with information such as the course, day, time,
  * format, type, and room.
  */
-public class Lesson {
+public class Lesson implements Serializable{
 	private Course course;
 	private Days day;
 	private Time time;

@@ -3,8 +3,11 @@
  * @version 25.12.2023
  */
 package course;
+
+import java.io.Serializable;
+
 //Class that represents room characteristic  
-public class Room {
+public class Room implements Serializable{
 	String name;
 	//capacity of room (like 50 people)
 	int capacity;

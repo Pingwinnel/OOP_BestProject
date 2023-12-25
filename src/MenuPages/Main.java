@@ -55,7 +55,7 @@ public class Main {
 		// m.addNews(new News("Examination days", UrgencyLevel.HIGH, "examination dates are in the system now, check your schedule"));
 //		m.addCoursesForRegis(oop);
 //		m.addCoursesForRegis(algo);
-//		m.addLessonToSystem(oopL1);
+		m.addLessonToSystem(oopL1);
 //		m.addLessonToSystem(adsL1);
 		
 //		m.approveRegistration(s1, oop);
@@ -86,11 +86,11 @@ public class Main {
 //		System.out.println(DataSingleton.INSTANCE.getLessonsOfStudents());
 //		
 		
-		for(Student s: DataSingleton.INSTANCE.getStudents()) {
-			if(s.equals(s1)) {
-				System.out.println(s.getMarks());
-			}
-		}
+//		for(Student s: DataSingleton.INSTANCE.getStudents()) {
+//			if(s.equals(s1)) {
+//				System.out.println(s.getMarks());
+//			}
+//		}
 
 //		TeacherMenu tm = new TeacherMenu(t1);
 		
