@@ -1,7 +1,3 @@
-/**
- * This is `Student` class.
- * It extends the `User` class and includes specific attributes and methods related to student functionality.
- */
 package student;
 
 import java.io.IOException;
@@ -18,9 +14,12 @@ import researcher.ResearchPaper;
 import researcher.Researcher;
 import researcher.ResearcherUtils;
 import staff.User;
-
+/**
+ * This is `Student` class.
+ * It extends the `User` class and includes specific attributes and methods related to student functionality.
+ */
 public class Student extends User {
-	//Student's attributes 
+	//Attributes specific to the Student class 
 	private Schools school;
 	private Major major;
 	private double gpa;
@@ -183,12 +182,20 @@ public class Student extends User {
 		//only those teachers which teach a student
 		
 	}
-	
+    /**
+     * Method to retrieve the courses for registration.
+     *
+     * @return null.
+     */
 	public Vector<Course> getCoursesForRegistration() {
 		return null;
 		//return DataSingleton.getInstance().getCourse().stream().filter(n->n.);
 	}
-	
+    /**
+     * Method to retrieve Marks of the student.
+     *
+     * @return The HashMap with course name and Mark of the student.
+     */
 	public HashMap<Course, Mark> getMarks() {
 		return marks;
 	}
