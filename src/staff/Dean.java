@@ -4,12 +4,12 @@ import java.util.Objects;
 
 import student.Schools;
 import student.StudentOrganization;
+import teacher.Teacher;
 import utilities.DataSingleton;
 import utilities.Request;
 
-public class Dean extends Employee {
+public class Dean extends Teacher {
 	private Schools faculty;
-	DataSingleton db = DataSingleton.INSTANCE;
 
 	public Dean() {
 		// TODO Auto-generated constructor stub
@@ -20,9 +20,9 @@ public class Dean extends Employee {
 		this.faculty = faculty;
 	}
 	
-    public void signRequest(Employee emp, Request request) {
+    public void signRequest(Request request) {
         if (request.getReceiverDean().equals(this)) {
-            System.out.println("Dean " + this.getName()+ this.getSurname() + " has signed the request: " + request.getOrder());
+            System.out.println("Dean " + this.getName()+ " "+ this.getSurname() + " has signed the request: " + request.getOrder() + " from " + request.getSender());
             request.setSigned(true);
         } else {
             System.out.println("Dean " + this.getName() + " cannot sign the request. It's not intended for approval.");
@@ -34,7 +34,7 @@ public class Dean extends Employee {
 	}
 	
 	public void readComplaints() {
-		db.getComplaintsByFaculty(this.faculty).removeAllElements();
+		DataSingleton.INSTANCE.getComplaintsByFaculty(this.faculty).removeAllElements();
 	}
 
     public boolean equals(Object o) {
