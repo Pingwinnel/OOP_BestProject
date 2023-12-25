@@ -9,15 +9,16 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import course.Course;
+import course.Lesson;
 import student.Schools;
 import student.Student;
 import teacher.Teacher;
 import utilities.DataSingleton;
+import utilities.Mark;
 import utilities.News;
 
 public class Manager extends Employee{
-	private static final long serialVersionUID = -4796615096842031598L;
-	DataSingleton data = DataSingleton.INSTANCE;
+	
 	private ManagerType type;	
 	
 	public Manager() {
@@ -54,23 +55,62 @@ public class Manager extends Employee{
 
 	@Override
 	public String toString() {
-		return super.toString() + "I am manager " + type;
+		return super.toString() + "Manager " + type;
 	}
 	
 	public void addCoursesForRegis(Course crs) throws IOException {
-		data.addCourse(crs);
+		DataSingleton.INSTANCE.addCourse(crs);
+		DataSingleton.write();
 	}
 	
-	public void deleteCoursesForRegis(Course crs) {
-		
+	public void addLessonToSystem(Lesson l) throws IOException {
+		DataSingleton.INSTANCE.getLessons().add(l);
+		DataSingleton.write();
 	}
 	
-	public void approveRegistration(Student s) {
+	public void deleteLessonFromSystem(Lesson l) throws IOException {
+		DataSingleton.INSTANCE.getLessons().remove(l);
+		DataSingleton.write();
+	}
+	
+	public void attachLessonToTeacher(Teacher t, Lesson l) throws Exception {
 		
+		DataSingleton.INSTANCE.getLessonsOfTeachers().put(t, l);
+		
+		DataSingleton.write();
+	}
+	
+	public void detachLessonToTeacher(Teacher t, Lesson l) throws IOException {
+		DataSingleton.INSTANCE.getLessonsOfTeachers().remove(t, l);
+		DataSingleton.write();
+	}
+	
+	public void attachLessonToStudent(Student s, Lesson l) throws Exception {
+		DataSingleton.INSTANCE.getLessonsOfStudents().put(s, l);
+		DataSingleton.write();
+	}
+	
+	public void detachLessonToStudent(Student s, Lesson l) throws IOException {
+		DataSingleton.INSTANCE.getLessonsOfStudents().remove(s, l);
+		DataSingleton.write();
+	}
+	
+	public void approveRegistration(Student s, Course c) throws Exception {
+		for(User u: DataSingleton.INSTANCE.getUsers()) {
+			if(u instanceof Student) {
+				Student st = (Student)u;
+				if(st.equals(s)) {
+					if(!st.getMarks().containsKey(c)) 
+						st.getMarks().put(c, new Mark());
+				}
+			}
+			
+		}
+		DataSingleton.write();
 	}
 	
 	public void addNews(News n) throws IOException {
-		data.addNews(n);
+		DataSingleton.INSTANCE.addNews(n);
 		DataSingleton.write();
 	}
 	

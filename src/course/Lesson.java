@@ -14,7 +14,7 @@ public class Lesson {
 		
 	}
 	//for test
-	public Lesson(Course course, Days day, Time time, LessonType type) {
+	public Lesson(Course course, Days day,  LessonType type, Time time) {
 		this.course = course;
 		this.day = day;
 		this.time = time;

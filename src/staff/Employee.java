@@ -24,7 +24,7 @@ public abstract class Employee extends User{
 	
 	@Override
 	public String toString() {
-		return super.toString()+ ", hireDate: " + hireDate.getYear();
+		return super.toString();
 	}
 
 	public double getSalary() {
@@ -50,8 +50,11 @@ public abstract class Employee extends User{
 		return Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary);
 	}
 	
-	public void sendMessage(Message m) throws Exception {
+	public void sendMessage(String text, Employee e) throws Exception {
+		Message m = new Message(e, text);
+		m.setSender(this);
 		DataSingleton.INSTANCE.addMessages(m);
+		
 	}
 
 	public Message getMessage() {

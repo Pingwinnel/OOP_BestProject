@@ -1,12 +1,18 @@
 package teacher;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 import course.Course;
+import course.Lesson;
 import researcher.ResearcherUtils;
 import researcher.ResearchPaper;
 import researcher.Researcher;
@@ -21,12 +27,6 @@ public class Teacher extends Employee{
 	private static final long serialVersionUID = 3831962457385399365L;
 	private Schools school;
 	private Degree academicDegree;
-	private Vector<Course> courses;
-	DataSingleton db = DataSingleton.INSTANCE;
-	
-	{
-		courses = new Vector<Course>();
-	}
 	
 	public Teacher() {}
 	
@@ -61,29 +61,50 @@ public class Teacher extends Employee{
 	public void setAcademicDegree(Degree academicDegree) {
 		this.academicDegree = academicDegree;
 	}
-
-	public Vector<Course> viewCourses() {
+	
+	public List<Course> viewCourses() {
+		List<Course> courses = new ArrayList<Course>();
+		for(Lesson l : getLessons()) {
+			courses.add(l.getCourse());
+		}
 		return courses;
 	}
-
-	public void addCourse(Course course) {
-		courses.add(course);
-	}
 	
-	public void putMark(Course c, Student s, Double score) {
-		if(ResearchUniversity.INSTANCE.getWeek() <= 8) s.getMarks().get(c).setAtt1(score);
-		else if (ResearchUniversity.INSTANCE.getWeek()>=14 && ResearchUniversity.INSTANCE.getWeek()>=15) s.getMarks().get(c).setAtt2(score);
-		else s.getMarks().get(c).setFinalExamScore(score);
+	public void putMark(Lesson l) throws NumberFormatException, IOException {
+//		if(ResearchUniversity.INSTANCE.getWeek() <= 8) s.getMarks().get(c).setAtt1(score);
+//		else if (ResearchUniversity.INSTANCE.getWeek()>=14 && ResearchUniversity.INSTANCE.getWeek()>=15) s.getMarks().get(c).setAtt2(score);
+//		else s.getMarks().get(c).setFinalExamScore(score);
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		int i = Integer.parseInt(bf.readLine()) - 1;
+		Student s = viewStudentInfo(l).get(i);
+		System.out.println("Score:");
+		Double score = Double.parseDouble(bf.readLine());
+		if(s.getMarks().containsKey(l.getCourse())) {
+			s.getMarks().get(l.getCourse()).setAtt1(score);
+			System.out.println("Added");
+		} else System.out.println("Already have a mark, you cannot change it!");
+	
+	}
+	public List<Student> viewStudentInfo(Lesson l){
+		return DataSingleton.INSTANCE.getLessonsOfStudents().entrySet()
+				.stream()
+				.filter(n->n.getValue().equals(l))
+				.map(Map.Entry::getKey)
+				.collect(Collectors.toList());
 		
 	}
 	
-	public Vector<Student> viewStudentInfo(){
-		return null;
+	public List<Lesson> getLessons() {
+		return DataSingleton.INSTANCE.getLessonsOfTeachers().entrySet()
+				.stream()
+				.filter(n->n.getKey().equals(this))
+				.map(Map.Entry::getValue)
+				.collect(Collectors.toList());
 	}
 	
 	public void sendComplaint(Schools school, String s, UrgencyLevel level) throws IOException {
 		String complaint = "\n" + "Urgency Level: " + level + " -> " + s;
-        db.addComplaint(school, complaint); 
+		DataSingleton.INSTANCE.addComplaint(school, complaint); 
 	}
 
 	@Override
@@ -104,7 +125,7 @@ public class Teacher extends Employee{
 
 	@Override
 	public String toString() {
-		return super.toString() + "Teacher' school: " + school + ", academicDegree: " + academicDegree + ", courses: " + courses;
+		return super.toString() + "Teacher' school: " + school + ", academicDegree: " + academicDegree;
 	}
 	
 	

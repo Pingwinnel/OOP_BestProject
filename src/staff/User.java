@@ -93,7 +93,7 @@ public abstract class User implements Serializable, Observer{
 		if (obj == null) return false;
 		if (getClass() != obj.getClass()) return false;
 		User other = (User) obj;
-		return getId() == other.getId() && Objects.equals(getCorparateEmail(), other.getCorparateEmail()) &&
+		return Objects.equals(getCorparateEmail(), other.getCorparateEmail()) &&
 				Objects.equals(getName(), other.getName()) && Objects.equals(getPassword(), other.getPassword())
 				&& Objects.equals(getSurname(), other.getSurname());
 	}

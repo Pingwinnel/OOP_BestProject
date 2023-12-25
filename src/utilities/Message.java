@@ -16,8 +16,7 @@ public class Message implements Serializable{
 	
 	public Message() {}
 	
-	public Message(Employee sender, Employee receiver, String message) {
-		this.sender = sender;
+	public Message(Employee receiver, String message) {
 		this.setReceiver(receiver);
 		this.date = new Date();
 		this.message = message;
@@ -40,11 +39,11 @@ public class Message implements Serializable{
 		this.receiver = receiver;
 	}
 	
-	public static String writeMessage() throws IOException {
-		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-		String object = bf.readLine();
-		return object;
-	}
+//	public static String writeMessage() throws IOException {
+//		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+//		String object = bf.readLine();
+//		return object;
+//	}
 	
 	
 	

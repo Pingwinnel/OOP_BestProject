@@ -9,13 +9,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 import course.Course;
+import course.Lesson;
 import researcher.EmployeeResearcher;
 import researcher.ResearchPaper;
 import researcher.ResearchProject;
@@ -50,6 +52,9 @@ public class DataSingleton implements Serializable{
     private Vector<Orders> orders=new Vector<Orders>();
     private HashMap<String,String> loginInfo = new HashMap<String, String>();
     private Vector<String> logs=new Vector<String>();
+    private HashMap<Teacher, Lesson> lessonsOfTeachers = new HashMap<Teacher, Lesson>();
+    private HashMap<Student, Lesson> lessonsOfStudents = new HashMap<Student, Lesson>();
+    private List<Lesson> lessons = new ArrayList<Lesson>();
 	
     static File dataFile = new File("data.ser");
 	
@@ -296,5 +301,18 @@ public class DataSingleton implements Serializable{
 		logs.add(log);
 		write();
 	}
+	
+	public List<Lesson> getLessons() {
+		return lessons;
+	}
+
+	public HashMap<Teacher, Lesson> getLessonsOfTeachers() {
+		return lessonsOfTeachers;
+	}
+
+	public HashMap<Student, Lesson> getLessonsOfStudents() {
+		return lessonsOfStudents;
+	}
+
 	
 }
