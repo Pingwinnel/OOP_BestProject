@@ -1,7 +1,14 @@
+/**
+ * @author Yerasyil
+ * @version 25.12.2023
+ */
 package course;
 
 import java.util.Objects;
-
+/**
+ * The Lesson class represents a lesson in a course, with information such as the course, day, time,
+ * format, type, and room.
+ */
 public class Lesson {
 	private Course course;
 	private Days day;
@@ -13,13 +20,28 @@ public class Lesson {
 	public Lesson() {
 		
 	}
-	//for test
+	/**
+	 * Lesson objects constructor
+	 * @param course
+	 * @param day
+	 * @param type
+	 * @param time
+	 */
 	public Lesson(Course course, Days day,  LessonType type, Time time) {
 		this.course = course;
 		this.day = day;
 		this.time = time;
 		this.type=type;
 	}
+/**
+ * Lesson objects more detailed constructor 
+ * @param course
+ * @param name
+ * @param day
+ * @param time
+ * @param type
+ * @param room
+ */
 	public Lesson(Course course, String name, Days day, Time time, LessonType type,Room room) {
 		this.course = course;
 		this.day = day;
@@ -74,6 +96,8 @@ public class Lesson {
 		return Objects.hash(course, day, format, room, time, type);
 	}
 	@Override
+	// The `equals(Object obj)` method is used to compare two `Lesson` objects for equality. It overrides
+	// the default `equals()` method provided by the `Object` class.
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

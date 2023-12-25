@@ -1,5 +1,9 @@
+/**
+ * @author Yerasyil
+ * @version 25.12.2023
+ */
 package course;
-
+//Class which represent time 
 public class Time {
 	int hour;
 	int min;

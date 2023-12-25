@@ -13,11 +13,6 @@ public class studentMenu extends UserMenu{
 	Scanner in = new Scanner(System.in);
 	Student s;
 	
-	public studentMenu() throws Exception {
-		System.out.println("Enter name: ");
-		DataSingleton.INSTANCE.addUser(new Student(in.next()));
-		System.out.println("Student added! ");
-	}
 	public studentMenu(Student s) {
 		this.s=s;
 	}
