@@ -99,6 +99,27 @@ public class TeacherMenu {
 					break;
 				}
 			}
+			else if(choice == 5) {
+				putMark: while(true) {
+					System.out.println("Choose a lesson: ");
+					printList(t.getLessons());
+					int choice1 = Integer.parseInt(bf.readLine());
+					Lesson l = t.getLessons().get(choice1-1);
+					System.out.println("Choose a student: ");
+					printList(t.viewStudentInfo(l));
+					int choice2 = Integer.parseInt(bf.readLine());
+					Student s = t.viewStudentInfo(l).get(choice2-1);
+					System.out.println("Double mark: ");
+					double choice3 = Double.parseDouble(bf.readLine());
+					t.putMark(l, s, choice3);
+					System.out.println("Mark is putted");
+					System.out.println("\n 1) Return back \n 2) Exit");
+					choice = Integer.parseInt(bf.readLine());
+					if(choice==1) continue menu;
+					if(choice==2) {exit();  break menu;}
+					break;
+				}
+			}
 			else if(choice == 6) {
 				sendRequest: while(true) {
 					
@@ -137,7 +158,7 @@ public class TeacherMenu {
 					break;
 				}
 			}
-			else if(choice == 11) {
+			else if(choice == 12) {
 				exit();
 			}
 			
@@ -201,7 +222,7 @@ public class TeacherMenu {
 //		System.out.println(DataSingleton.INSTANCE.getCourse());
 		System.out.println(DataSingleton.INSTANCE.getLessons());
 //		System.out.println(t.getLessons());	
-//		System.out.println(s1.getMarks());
+		
 //		System.out.println(s2.getMarks());
 //		System.out.println(DataSingleton.INSTANCE.getLessonsOfTeachers());
 //		System.out.println(DataSingleton.INSTANCE.getLessonsOfStudents());
@@ -216,9 +237,8 @@ public class TeacherMenu {
 
 		// System.out.println(DataSingleton.INSTANCE.getTeachers().get(0).getLessons());
 		ResearchUniversity.INSTANCE.setWeek(7);
-//		t.run();
 		
-//		s.getMarks().entrySet().stream().forEach(n->System.out.println(n.getKey() + " " + n.getValue()));
-		TeacherMenu tm = new TeacherMenu(t);
+////		s.getMarks().entrySet().stream().forEach(n->System.out.println(n.getKey() + " " + n.getValue()));
+//		TeacherMenu tm = new TeacherMenu(t);
 	}
 }

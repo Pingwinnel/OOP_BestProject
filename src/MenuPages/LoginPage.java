@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+
 import staff.User;
 import teacher.Teacher;
 import utilities.DataSingleton;
@@ -112,7 +113,9 @@ public class LoginPage implements ActionListener{
 								if(u instanceof Teacher) 
 								messageLabel.setText("Login successful, welcome " + u.getName() + " " + u.getSurname());
 								// if (type check) -> menu
-								// today i will finish the teacher's menu and show u how to do, but it is easy
+								if(u instanceof Teacher) {
+									TeacherMenu tm = new TeacherMenu((Teacher)u);
+								}
 								
 							}
 						}

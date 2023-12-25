@@ -93,7 +93,7 @@ public class Lesson {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(course, day, format, room, time, type);
+		return Objects.hash(course, day, time, type);
 	}
 	@Override
 	// The `equals(Object obj)` method is used to compare two `Lesson` objects for equality. It overrides
@@ -106,8 +106,8 @@ public class Lesson {
 		if (getClass() != obj.getClass())
 			return false;
 		Lesson other = (Lesson) obj;
-		return Objects.equals(course, other.course) && day == other.day && format == other.format
-				&& Objects.equals(room, other.room) && Objects.equals(time, other.time) && type == other.type;
+		return Objects.equals(course, other.course) && day == other.day
+				&& Objects.equals(time, other.time) && type == other.type;
 	}
 	
 	

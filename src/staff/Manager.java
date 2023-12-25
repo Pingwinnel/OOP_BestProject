@@ -74,25 +74,39 @@ public class Manager extends Employee{
 	}
 	
 	public void attachLessonToTeacher(Teacher t, Lesson l) throws Exception {
-		
-		DataSingleton.INSTANCE.getLessonsOfTeachers().put(t, l);
-		
-		DataSingleton.write();
+		for(Teacher tt: DataSingleton.INSTANCE.getTeachers()) {
+			if(tt.equals(t)) {
+				DataSingleton.INSTANCE.getLessonsOfTeachers().put(tt, l);
+				DataSingleton.write();
+			}
+		}
 	}
 	
 	public void detachLessonToTeacher(Teacher t, Lesson l) throws IOException {
-		DataSingleton.INSTANCE.getLessonsOfTeachers().remove(t, l);
-		DataSingleton.write();
+		for(Teacher tt: DataSingleton.INSTANCE.getTeachers()) {
+			if(tt.equals(t)) {
+				DataSingleton.INSTANCE.getLessonsOfTeachers().remove(tt, l);
+				DataSingleton.write();
+			}
+		}
 	}
 	
 	public void attachLessonToStudent(Student s, Lesson l) throws Exception {
-		DataSingleton.INSTANCE.getLessonsOfStudents().put(s, l);
-		DataSingleton.write();
+		for(Student st: DataSingleton.INSTANCE.getStudents()) {
+			if(st.equals(s)) {
+				DataSingleton.INSTANCE.getLessonsOfStudents().put(st, l);
+				DataSingleton.write();
+			}
+		}
 	}
 	
 	public void detachLessonToStudent(Student s, Lesson l) throws IOException {
-		DataSingleton.INSTANCE.getLessonsOfStudents().remove(s, l);
-		DataSingleton.write();
+		for(Student st: DataSingleton.INSTANCE.getStudents()) {
+			if(st.equals(s)) {
+				DataSingleton.INSTANCE.getLessonsOfStudents().remove(s, l);
+				DataSingleton.write();
+			}
+		}
 	}
 	
 	public void approveRegistration(Student s, Course c) throws Exception {

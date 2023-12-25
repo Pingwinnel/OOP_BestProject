@@ -119,23 +119,19 @@ public class Teacher extends Employee{
     /**
      * Method to put a mark for a lesson for a specific student.
      *
-     * @param l The lesson for which the mark is to be put.
-     * @throws NumberFormatException If the input for the score is not a valid number.
+     * @param 
+     *
      * @throws IOException           If an I/O error occurs.
      */
-	public void putMark(Lesson l) throws NumberFormatException, IOException {
-//		if(ResearchUniversity.INSTANCE.getWeek() <= 8) s.getMarks().get(c).setAtt1(score);
-//		else if (ResearchUniversity.INSTANCE.getWeek()>=14 && ResearchUniversity.INSTANCE.getWeek()>=15) s.getMarks().get(c).setAtt2(score);
-//		else s.getMarks().get(c).setFinalExamScore(score);
-		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-		int i = Integer.parseInt(bf.readLine()) - 1;
-		Student s = viewStudentInfo(l).get(i);
-		System.out.println("Score:");
-		Double score = Double.parseDouble(bf.readLine());
-		if(s.getMarks().containsKey(l.getCourse())) {
-			s.getMarks().get(l.getCourse()).setAtt1(score);
-			System.out.println("Added");
-		} else System.out.println("Already have a mark, you cannot change it!");
+	public void putMark(Lesson l, Student s, Double score) throws IOException {
+		
+		if(ResearchUniversity.INSTANCE.getWeek() <= 8) s.getMarks().get(l.getCourse()).setAtt1(score);
+		
+		else if(ResearchUniversity.INSTANCE.getWeek()>=14 && ResearchUniversity.INSTANCE.getWeek()>=15) s.getMarks().get(l.getCourse()).setAtt2(score);
+		
+		else if(ResearchUniversity.INSTANCE.getWeek() >= 16) s.getMarks().get(l.getCourse()).setFinalExamScore(score);;
+
+		DataSingleton.write();
 	
 	}
     /**

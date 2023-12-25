@@ -3,10 +3,14 @@
  * @version 25.12.2023
  */
 package course;
+
+import java.util.Objects;
+
+
 //Class which represent time 
 public class Time {
-	int hour;
-	int min;
+	private int hour;
+	private int min;
 
 	public Time() {
 		
@@ -19,7 +23,19 @@ public class Time {
 	public String toString() {
 		return this.hour+ ":"+this.min;
 	}
-	public boolean equals(Time b) {//you have to pass Object here, to be discussed later. 
-		return this.hour==b.hour;
+	@Override
+	public int hashCode() {
+		return Objects.hash(hour, min);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Time other = (Time) obj;
+		return hour == other.hour && min == other.min;
 	}
 }
