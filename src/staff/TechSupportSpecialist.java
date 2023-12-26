@@ -10,6 +10,7 @@ import utilities.acceptType;
 
 /**
  * The TechSupportSpecialist class represents a technical support specialist who handles orders, their acceptance and progress tracking
+ * @author Code Symphony
  */
 public class TechSupportSpecialist extends Employee {
 

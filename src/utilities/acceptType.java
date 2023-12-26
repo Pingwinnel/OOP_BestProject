@@ -1,5 +1,8 @@
 package utilities;
 
-public enum acceptType  {
-False,True,InProcess
+/**
+ * The acceptType enumeration represents different states for accepting or processing orders or requests
+ */
+public enum acceptType {
+	False,True,InProcess
 }

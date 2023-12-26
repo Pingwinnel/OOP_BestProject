@@ -19,7 +19,7 @@ import utilities.News;
 
 /**
  * The Manager class represents a manager who has responsibilities related to course and lesson management, student registration and information viewing
- *
+ * @author Code Symphony
  */
 public class Manager extends Employee{
 	

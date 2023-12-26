@@ -7,6 +7,7 @@ import utilities.Utils;
 
 /**
  * The Admin class represents an administrator who has access to user management and log file viewing
+ * @author Code Symphony
  */
 public class Admin extends Employee{
 	

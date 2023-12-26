@@ -13,6 +13,7 @@ import utilities.*;
 
 /**
  * The User class observes changes in the system through the Observer interface
+ * @author Code Symphony
  */
 public abstract class User implements Serializable, Observer{
 

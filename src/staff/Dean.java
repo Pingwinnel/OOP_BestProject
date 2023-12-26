@@ -10,6 +10,7 @@ import utilities.Request;
 
 /**
  * The Dean class represents a dean who has responsibilities such as signing requests, handling student organizations and reading complaints 
+ * @author Code Symphony
  */
 public class Dean extends Teacher {
 	private Schools faculty;
