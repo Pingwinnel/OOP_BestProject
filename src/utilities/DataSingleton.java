@@ -20,6 +20,7 @@ import course.Lesson;
 import researcher.EmployeeResearcher;
 import researcher.ResearchPaper;
 import researcher.ResearchProject;
+import staff.Dean;
 import staff.Employee;
 import staff.Manager;
 import staff.TechSupportSpecialist;
@@ -56,7 +57,7 @@ public class DataSingleton implements Serializable{
     private HashMap<Student, List<Lesson>> lessonsOfStudents = new HashMap<Student, List<Lesson>>();
     private List<Lesson> lessons = new ArrayList<Lesson>();
     private Vector<Employee> employees = new Vector<Employee>();
-    private vector<Dean> deans = new Vector<Dean>();
+    private Vector<Dean> deans = new Vector<Dean>();
 	
     static File dataFile = new File("data.ser");
 	
