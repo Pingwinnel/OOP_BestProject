@@ -17,6 +17,11 @@ public class Room implements Serializable{
 	public Room(){
 		
 	}
+	
+	public Room(String name){
+		this.name = name;
+	}
+	
 	public Room(String name, int floor, int capacity){
 		this.name = name;
 		this.capacity = capacity;

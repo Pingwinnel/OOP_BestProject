@@ -39,4 +39,18 @@ public class Time implements Serializable{
 		Time other = (Time) obj;
 		return hour == other.hour && min == other.min;
 	}
+	
+	public static Time parse(String timeString) {
+        String[] parts = timeString.split(":");
+        if (parts.length == 2) {
+            try {
+                int hour = Integer.parseInt(parts[0]);
+                int min = Integer.parseInt(parts[1]);
+                return new Time(hour, min);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid time format. Please enter time in HH:mm format.");
+            }
+        }
+        return null;
+    }
 }
