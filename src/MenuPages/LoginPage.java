@@ -11,8 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-
+import staff.Admin;
+import staff.Manager;
 import staff.User;
+import student.Student;
+import teacher.Professor;
 import teacher.Teacher;
 import utilities.DataSingleton;
 
@@ -113,9 +116,28 @@ public class LoginPage implements ActionListener{
 								if(u instanceof Teacher) 
 								messageLabel.setText("Login successful, welcome " + u.getName() + " " + u.getSurname());
 								// if (type check) -> menu
+								if(u instanceof Professor) {
+									ProfessorMenu mm = new ProfessorMenu((Professor)u);
+									mm.run();
+								}
 								if(u instanceof Teacher) {
 									TeacherMenu tm = new TeacherMenu((Teacher)u);
 								}
+								if(u instanceof Admin) {
+									AdminMenu am = new AdminMenu((Admin)u);
+								}
+								if(u instanceof Student) {
+									StudentMenu sm = new StudentMenu((Student)u);
+									sm.run();
+								}
+								if(u instanceof Manager) {
+									ManagerMenu mm = new ManagerMenu((Manager)u);
+									mm.run();
+									
+								}
+								
+								
+								
 								
 							}
 						}

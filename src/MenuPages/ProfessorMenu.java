@@ -20,11 +20,10 @@ public class ProfessorMenu {
 
     BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     Professor professor;
-    DataSingleton db;
+    DataSingleton db = DataSingleton.INSTANCE;
 
-    public ProfessorMenu(Professor professor, DataSingleton db) {
+    public ProfessorMenu(Professor professor) {
         this.professor = professor;
-        this.db = db;
     }
 
     private void write() throws IOException {
