@@ -29,13 +29,19 @@ public class EmployeeResearcher extends Employee implements Researcher  {
 	}
 	
 	@Override
-	
+	/**
+	 * Retrieves and returns a list of research papers authored by the EmployeeResearcher
+	 * @return A list of ResearchPaper objects authored by the EmployeeResearcher
+	 */
 	public List<ResearchPaper> printPapers() {
 		return ResearcherUtils.printPapers(this);
 	}
 
 	@Override
-	
+	/**
+	 * Calculates and returns the h-index of the EmployeeResearcher
+	 * @return The h-index of the EmployeeResearcher
+	 */
 	public int calculateHIndex() {
 		return ResearcherUtils.calculateHIndex(this);
 	}

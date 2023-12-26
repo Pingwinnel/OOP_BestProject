@@ -3,9 +3,8 @@ package student;
 import java.io.Serializable;
 import java.util.Vector;
 /**
- * This is `StudentOrganization` class.
- * It includes information such as the organization name, head (student leader), and members.
- * This class implements the Serializable interface for object serialization.
+ * The StudentOrganization class includes information such as the organization name, head (student leader) and members
+ * @author Code Symphony
  */
 public class StudentOrganization implements Serializable{
 	//Attributes specific to the StundentOrganization class

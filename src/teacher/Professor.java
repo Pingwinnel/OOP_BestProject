@@ -6,24 +6,25 @@ import researcher.Researcher;
 import researcher.ResearcherUtils;
 import student.Schools;
 /**
- * This is `Professor` class.
- * It extends the `Teacher` class and implements the `Researcher` interface,
- * allowing professors to engage in research activities.
+ * The Professor` class allows professors to engage in research activities
+ * @author Code Symphony
  */
 public class Professor extends Teacher implements Researcher{
 	
 	private static final long serialVersionUID = 5295963205026648093L;
-	//Default constructor for the Professor class.
+	
+	/**
+	 * Default empty constructor for the Professor class
+	 */
 	public Professor() {
 		
 	}
+	
     /**
-     * Constructor to initialize a professor with a given surname, name, salary, and school.
-     * The academic degree is set to PROFESSOR.
-     *
-     * @param surname The surname of the professor.
-     * @param name    The name of the professor.
-     * @param school  The school associated with the professor.
+     * Parameterized onstructor for the Professor class
+     * @param surname 
+     * @param name   
+     * @param school  
      */
 	public Professor(String surname, String name, Schools school) {
 		super(surname, name, school);
@@ -31,20 +32,17 @@ public class Professor extends Teacher implements Researcher{
 	}
 
     /**
-     * Implementation of the printPapers method from the Researcher interface.
-     * Delegates the printing of research papers to the ResearcherUtils class.
-     *
-     * @return A list of research papers associated with the professor.
+     * Delegates the printing of research papers to the ResearcherUtils class
+     * @return A list of research papers associated with the professor
      */
 	@Override
 	public List<ResearchPaper> printPapers() {
 		return ResearcherUtils.printPapers(this);
 	}
+	
     /**
-     * Implementation of the calculateHIndex method from the Researcher interface.
-     * Delegates the calculation of the H-index to the ResearcherUtils class.
-     *
-     * @return The calculated H-index of the professor.
+     * Delegates the calculation of the H-index to the ResearcherUtils class
+     * @return The calculated H-index of the professor
      */
 	@Override
 	public int calculateHIndex() {
