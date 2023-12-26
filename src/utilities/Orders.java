@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 import staff.Employee;
-
+/**
+ * The Orders class represents an order placed by an employee
+ * @author Code Symphony
+ */
 public class Orders implements Serializable {
 	private Integer id;
 	private Date date;
@@ -12,12 +15,20 @@ public class Orders implements Serializable {
 	private Employee from;
 	private acceptType isAccepted;
 
-
+	/**
+	 * Default empty constructor for the Orders class
+	 */
 	public Orders() {
 		this.setId(DataSingleton.nextIdOrder());
 		this.isAccepted=acceptType.False;
 		this.date=new Date();
 	}
+	
+	/**
+	 * Parameterized constructor for the Orders class
+	 * @param from
+	 * @param description
+	 */
 	public Orders(Employee from,String description) {
 		this.setId(DataSingleton.nextIdOrder());
 		this.description=description;

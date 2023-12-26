@@ -3,6 +3,10 @@ package utilities;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * The Mark class represents the academic performance of a student in a course and includes attributes such as attendance scores, final exam score, total score and letter grade
+ * @author Code Symphony
+ */
 public class Mark implements Serializable {
 	private static final long serialVersionUID = 5063732366564975348L;
 	private double att1;
@@ -10,21 +14,38 @@ public class Mark implements Serializable {
 	private double finalExamScore;
 	private double score;
 	
+	/**
+	 * Default empty constructor for the Mark class
+	 */
 	public Mark() {
 		
 	}
-	//just for test
+	
+	/**
+	 * Parameterized constructor for the Mark class
+	 * @param att1
+	 * @param att2
+	 * @param finalExamScore
+	 */
 	public Mark(double att1, double att2, double finalExamScore) {
 		this.att1 = att1;
 		this.att2 = att2;
 		this.finalExamScore = finalExamScore;
 	}
 	
+	/**
+     * Calculates and retrieves the total score
+     * @return The total score
+     */
 	public double getScore() {
 		score=att1+att2+finalExamScore;
 		return score ;
 	}
 	
+	 /**
+     * Retrieves the letter grade corresponding to the total score
+     * @return The letter grade
+     */
 	public String getLetterGrade() {
 		  String grades[] = {"F","F","F","F","F","F","F","F","F","F", "D", "D+", "-C", "C", "+C", "-B", "B", "+B", "-A", "A"};
 		  return grades[(int)(Math.round(getScore())/5)];

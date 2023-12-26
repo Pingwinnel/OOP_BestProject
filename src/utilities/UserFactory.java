@@ -11,8 +11,17 @@ import student.Student;
 import teacher.Teacher;
 import researcher.EmployeeResearcher;
 
-
+/**
+ * The UserFactory class is responsible for creating instances of various user types
+ * @author Code Symphony
+ */
 public  class  UserFactory {
+	/**
+     * Creates and returns an instance of the specified user type
+     * @param userType
+     * @return An instance of the specified user type or null if the user type is not recognized
+     * @throws IOException If an I/O error occurs while creating the user instance
+     */
 public static User getUser(String userType) throws IOException {
 	if(userType.equals("Employee Researcher")) {return new EmployeeResearcher();}
 	if(userType.equals("Dean")) {return new Dean();}

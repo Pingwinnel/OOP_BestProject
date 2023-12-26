@@ -6,6 +6,10 @@ import java.util.Objects;
 import staff.Dean;
 import staff.Employee;
 
+/**
+ * The Request class represents a request made by an employee that needs to be addressed by a specific dean
+ * @author Code Symphony
+ */
 public class Request implements Serializable{
 	private static final long serialVersionUID = 6590591269722086429L;
 	private String order;
@@ -13,10 +17,18 @@ public class Request implements Serializable{
 	private Employee sender;
 	private boolean sign;
 	
+	/**
+	 * Default empty constructor for the Request class
+	 */
 	public Request() {
 		
 	}
 
+	/**
+	 * Parameterized constructor for the Request class
+	 * @param receiverDean
+	 * @param order
+	 */
 	public Request(Dean receiverDean, String order) {
 		this.receiverDean = receiverDean;
 		this.order = order;

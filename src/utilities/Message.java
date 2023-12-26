@@ -8,14 +8,26 @@ import java.util.Date;
 
 import staff.Employee;
 
+/**
+ * The Message class represents a communication message between employees and includes information about the sender, receiver, message content, and the date of the message
+ * @author Code Symphony
+ * */
 public class Message implements Serializable{
 	private Employee sender;
 	private Employee receiver;
 	private String message;
 	private Date date;
 	
+	/**
+	 * Default empty constructor for the Message class
+	 */
 	public Message() {}
 	
+	/**
+	 * Parameterized constructor for the Message class
+	 * @param receiver
+	 * @param message
+	 */
 	public Message(Employee receiver, String message) {
 		this.setReceiver(receiver);
 		this.date = new Date();

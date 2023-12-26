@@ -7,9 +7,16 @@ import java.util.Objects;
 
 import researcher.ResearchPaper;
 
+/**
+ * The UniversityJournal class represents a journal in a university that observes research papers
+ * @author Code Symphony
+ */
 public class UniversityJournal implements Observable{
 	private List<Observer> observers; 
 	
+	/**
+	 * Constructor with an empty list of observers for the UniversityJournal class
+	 */
     public UniversityJournal() {
         observers = new ArrayList<>();
     }
@@ -32,16 +39,27 @@ public class UniversityJournal implements Observable{
         return Objects.hash(observers);
     }
 
+    /**
+     * Subscribes an observer to the journal
+     * @param observer The observer to be subscribed
+     */
 	@Override
     public void subscribe(Observer observer) {
         observers.add(observer);
     }
 
+	/**
+     * Unsubscribes an observer from the journal
+     * @param observer The observer to be unsubscribed
+     */
     @Override
     public void unsubscribe(Observer observer) {
         observers.remove(observer);
     }
 
+    /**
+     * Notifies all subscribed observers of updates in the journal
+     */
     @Override
     public void notifyObservers() {
         for (Observer observer : observers) {
@@ -50,11 +68,20 @@ public class UniversityJournal implements Observable{
 //        System.out.println("New Research Paper!");
     }
 
+    /**
+     * Sets a new research paper in the journal and notifies observers
+     * @param newPaper The new research paper to be added to the journal
+     * @throws IOException If an I/O error occurs while adding the research paper
+     */
     public void setNewPapers(ResearchPaper newPaper) throws IOException {
     	DataSingleton.INSTANCE.addResearchPapers(newPaper);
         notifyObservers();
     }
 	
+    /**
+     * Gets the latest research paper in the journal
+     * @return The latest research paper or null if no papers are available
+     */
     public ResearchPaper getLatest() {
         if (DataSingleton.INSTANCE.getResearchPapers().isEmpty()) {
             return null; // No papers available

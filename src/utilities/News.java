@@ -9,12 +9,29 @@ import java.util.stream.Collectors;
 
 import teacher.UrgencyLevel;
 
+/**
+ * The News class represents a news article with a title, priority level, text and date
+ * @author Code Symphony
+ */
 public class News implements Serializable{
 	private String title;
 	private UrgencyLevel priority;
 	private String text;
 	private Date date;
 
+	/**
+	 * Default empty constructor for the News class
+	 */
+	public News() {
+		
+	}
+	
+	/**
+	 * Parameterized constructor for the News class
+	 * @param title
+	 * @param priority
+	 * @param text
+	 */
 	public News(String title, UrgencyLevel priority, String text) {
 		this.priority = priority;
 		this.text = text;
@@ -22,10 +39,6 @@ public class News implements Serializable{
 		this.date = new Date();
 	}
 	
-	public News() {
-		
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(date, priority, text, title);
