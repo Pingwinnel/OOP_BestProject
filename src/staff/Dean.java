@@ -94,6 +94,10 @@ public class Dean extends Teacher {
 		return null;
 	}
 	
+	/**
+	 * Retrieves and returns a list of requests addressed to the current dean
+	 * @return A list of Request objects addressed to the current dean
+	 */
 	public List<Request> viewRequests() {
         List<Request> deanRequests = DataSingleton.INSTANCE.getRequests();
         deanRequests.removeIf(request -> !request.getReceiverDean().equals(this)); // Filter requests for the current dean

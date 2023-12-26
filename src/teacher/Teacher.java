@@ -22,24 +22,26 @@ import student.Student;
 import utilities.DataSingleton;
 import utilities.ResearchUniversity;
 /**
- * This is `Teacher` class.
- * It extends the `Employee` class and includes additional attributes and methods specific to teachers.
- * Teachers can be associated with a school and have an academic degree.
+ * The Teacher class includes additional attributes and methods specific to teachers who can be associated with a school and have an academic degree
+ * @author Code Symphony
  */
 public class Teacher extends Employee{
     // Attributes specific to the Teacher class
 	private static final long serialVersionUID = 3831962457385399365L;
 	private Schools school;
 	private Degree academicDegree;
-	//Default constructor for the Teacher class.
+
+	/**
+	 * Default empty constructor for the Teacher class
+	 */
 	public Teacher() {}
+	
     /**
-     * Constructor to initialize a teacher with a given surname, name, salary, and school.
-     * The academic degree is set to the default value (TUTOR).
-     *
-     * @param surname      The surname of the teacher.
-     * @param name         The name of the teacher.
-     * @param school       The school associated with the teacher.
+     * Parameterized constructor for the Teacher class that initializes a teacher with a given surname, name, salary and school
+     * The academic degree is set to the default value (TUTOR)
+     * @param surname      
+     * @param name       
+     * @param school  
      */
 	public Teacher(String surname, String name, Schools school) {
 		super(surname, name);
@@ -47,49 +49,30 @@ public class Teacher extends Employee{
 		this.school = school;
 	}
     /**
-     * Constructor to initialize a teacher with a given surname, name, salary, school, and academic degree.
-     *
-     * @param surname       The surname of the teacher.
-     * @param name          The name of the teacher.
-     * @param school        The school associated with the teacher.
-     * @param academicDegree The academic degree of the teacher.
+     * Parameterized constructor for the Teacher class that initializes a teacher with a given surname, name, salary, school and academic degree
+     * @param surname      
+     * @param name       
+     * @param school       
+     * @param academicDegree 
      */
 	public Teacher(String surname, String name,  Schools school, Degree academicDegree) {
 		super(surname, name);
 		this.setAcademicDegree(academicDegree);
 		this.setSchool(school);
 	}
-    /**
-     * Constructor to initialize a teacher with a given surname, name, and salary.
-     * The school and academic degree are not set initially.
-     *
-     * @param surname The surname of the teacher.
-     * @param name    The name of the teacher.
-     */
+	
 	public Teacher(String surname, String name) {
 		super(surname, name);
 	}
-    /**
-     * Getter method to retrieve the school associated with the teacher.
-     *
-     * @return The school associated with the teacher.
-     */
+	
 	public Schools getSchool() {
 		return school;
 	}
-    /**
-     * Setter method to set the school associated with the teacher.
-     *
-     * @param school The school to be set for the teacher.
-     */
+  
 	public void setSchool(Schools school) {
 		this.school = school;
 	}
-    /**
-     * Getter method to retrieve the academic degree of the teacher.
-     *
-     * @return The academic degree of the teacher.
-     */
+    
 	public Degree getAcademicDegree() {
 		return academicDegree;
 	}
@@ -101,10 +84,10 @@ public class Teacher extends Employee{
 	public void setAcademicDegree(Degree academicDegree) {
 		this.academicDegree = academicDegree;
 	}
+	
     /**
-     * Method to view the courses associated with the teacher.
-     *
-     * @return A list of courses associated with the teacher.
+     * Displays the courses associated with the teacher
+     * @return A list of courses associated with the teacher
      */
 	public List<Course> viewCourses() {
 		List<Course> courses = new ArrayList<Course>();
@@ -113,14 +96,13 @@ public class Teacher extends Employee{
 		}
 		return courses;
 	}
+	
     /**
-     * Method to put a mark for a lesson for a specific student.
-     *
-     * @param l     The Lesson for which the mark is to be set.
-     * @param s     The Student for whom the mark is to be set.
-     * @param score The score to be set for the specified lesson and student.
-     *
-     * @throws IOException           If an I/O error occurs.
+     * Puts a mark for a lesson for a specific student
+     * @param l The Lesson for which the mark is to be set
+     * @param s The Student for whom the mark is to be set
+     * @param score The score to be set for the specified lesson and student
+     * @throws IOException If an I/O error occurs
      */
 	public void putMark(Lesson l, Student s, Double score) throws IOException {
 		if(ResearchUniversity.INSTANCE.getWeek() <= 8) s.getMarks().get(l.getCourse()).setAtt1(score);
@@ -129,11 +111,11 @@ public class Teacher extends Employee{
 		DataSingleton.write();
 	
 	}
+	
     /**
-     * Method to view information about students.
-     *
-     * @param l The lesson for which student information is to be viewed.
-     * @return A list of students associated with the lesson.
+     * Displays information about students
+     * @param l The lesson for which student information is to be viewed
+     * @return A list of students associated with the lesson
      */
 	public List<Student> viewStudentInfo(Lesson l){
 		return DataSingleton.INSTANCE.getLessonsOfStudents().entrySet()
@@ -143,21 +125,17 @@ public class Teacher extends Employee{
 				.collect(Collectors.toList());
 		
 	}
-    /**
-     * Method to get the lessons associated with the teacher.
-     *
-     * @return A list of lessons associated with the teacher.
-     */
+    
 	public List<Lesson> getLessons() {
 		return DataSingleton.INSTANCE.getLessonsOfTeachers().get(this);
 	}
+	
     /**
-     * Method to send a complaint to the school administration.
-     *
-     * @param school The school to which the complaint is directed.
-     * @param s      The content of the complaint.
-     * @param level  The urgency level of the complaint.
-     * @throws IOException If an I/O error occurs.
+     * Sends a complaint to the school administration
+     * @param school The school to which the complaint is directed
+     * @param s The content of the complaint
+     * @param level The urgency level of the complaint
+     * @throws IOException If an I/O error occurs
      */
 	public void sendComplaint(Schools school, String s, UrgencyLevel level) throws IOException {
 		String complaint = "\n" + "Urgency Level: " + level + " -> " + s;
@@ -179,27 +157,20 @@ public class Teacher extends Employee{
 		Teacher other = (Teacher) obj;
 		return academicDegree == other.academicDegree && school == other.school;
 	}
-    /**
-     * Override of the toString method to provide a string representation of the teacher.
-     *
-     * @return A string representation of the teacher.
-     */
+   
 	@Override
 	public String toString() {
 		return super.toString() + "Teacher' school: " + school + ", academicDegree: " + academicDegree;
 	}
 	
     /**
-     * The `TeacherResearcher` class represents a researcher associated with a teacher.
-     * It implements the `Researcher` interface, allowing teachers to engage in research activities.
+     * The TeacherResearcher class represents a researcher associated with a teacher
      */
 	public class TeacherResearcher implements Researcher{
 
         /**
-         * Implementation of the printPapers method from the Researcher interface.
-         * Delegates the printing of research papers to the ResearcherUtils class.
-         *
-         * @return A list of research papers associated with the teacher.
+         * Delegates the printing of research papers to the ResearcherUtils class
+         * @return A list of research papers associated with the teacher
          */
         @Override
         public List<ResearchPaper> printPapers() {
@@ -207,10 +178,8 @@ public class Teacher extends Employee{
         }
 
         /**
-         * Implementation of the calculateHIndex method from the Researcher interface.
-         * Delegates the calculation of the H-index to the ResearcherUtils class.
-         *
-         * @return The calculated H-index of the teacher.
+         * Delegates the calculation of the H-index to the ResearcherUtils class
+         * @return The calculated H-index of the teacher
          */
 		@Override
 		public int calculateHIndex() {

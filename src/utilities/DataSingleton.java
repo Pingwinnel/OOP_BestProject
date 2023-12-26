@@ -31,8 +31,14 @@ import student.Student;
 import student.StudentOrganization;
 import teacher.Teacher;
 
-
+/**
+ * The DataSingleton class represents a singleton instance that manages the data of the university system
+ * @author Code Symphony
+ */
 public class DataSingleton implements Serializable{
+	/**
+	 * The singleton instance of DataSingleton
+	 */
 	public static DataSingleton INSTANCE;
 	
 	private Vector<User> users = new Vector<User>();
@@ -77,12 +83,22 @@ public class DataSingleton implements Serializable{
 		else INSTANCE = new DataSingleton();
 	}
 	
+	 /**
+     * Reads the serialized data from the "data.ser" file 
+     * @return The deserialized DataSingleton instance
+     * @throws IOException If an I/O error occurs while reading the file
+     * @throws ClassNotFoundException If the class of the serialized object cannot be found
+     */
 	public static DataSingleton read() throws IOException, ClassNotFoundException{
 		FileInputStream fis = new FileInputStream("data.ser");
 		ObjectInputStream oin = new ObjectInputStream(fis);
 		return (DataSingleton) oin.readObject();
 	}
 	
+	/**
+     * Writes the current state of the DataSingleton instance to the "data.ser" file
+     * @throws IOException If an I/O error occurs while writing the file
+     */
 	public static void write() throws IOException{
 		FileOutputStream fos = new FileOutputStream("data.ser");
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -90,6 +106,11 @@ public class DataSingleton implements Serializable{
 		oos.close();
 	}
 	
+	/**
+     * Adds a user to the system, updates login information and categorizes the user based on their role
+     * @param u The user to be added
+     * @throws Exception If an error occurs during user addition
+     */
 	public void addUser(User u) throws Exception {
 		users.add(u);
 		loginInfo.put(u.getCorparateEmail(), u.getPassword());
@@ -106,6 +127,11 @@ public class DataSingleton implements Serializable{
 		return users;
 	}
 	
+	/**
+     * Removes a user from the system based on the provided user ID
+     * @param id The ID of the user to be removed
+     * @throws Exception If an error occurs during user removal
+     */
 	public void removeUser(int id) throws Exception {
 		users.removeIf(n->n.getId()==id);
 		students.removeIf(n->n.getId()==id);
@@ -121,10 +147,18 @@ public class DataSingleton implements Serializable{
 		return teachers;
 	}
 	
+	/**
+     * Retrieves the next available ID for user creation
+     * @return The next available user ID
+     */
 	public static int nextId() {
 		return INSTANCE.users.size()+1;
 	}
 	
+	/**
+     * Retrieves the next available ID for order creation
+     * @return The next available order ID
+     */
 	public static int nextIdOrder() {
 		return INSTANCE.orders.size()+1;
 	}
@@ -133,6 +167,11 @@ public class DataSingleton implements Serializable{
 		return messages;
 	}
 
+	/**
+     * Adds a message to the system
+     * @param m The message to be added
+     * @throws Exception If an error occurs during message addition
+     */
 	public void addMessages(Message m) throws Exception {
 		messages.add(m);
 		write();
@@ -142,6 +181,11 @@ public class DataSingleton implements Serializable{
 		return researchPapers;
 	}
 
+	/**
+     * Adds a research paper to the system
+     * @param researchPaper The research paper to be added
+     * @throws IOException If an I/O error occurs during research paper addition
+     */
 	public void addResearchPapers(ResearchPaper researchPaper) throws IOException {
 		researchPapers.add(researchPaper);
 		write();
@@ -151,12 +195,21 @@ public class DataSingleton implements Serializable{
 		return researchProjects;
 	}
 	
+	/**
+     * Adds a research project to the system
+     * @param researchProject The research project to be added
+     * @throws IOException If an I/O error occurs during research project addition
+     */
 	public void addResearchProjects(ResearchProject researchProject) throws IOException {
 		researchProjects.add(researchProject);
 		write();
 	}
 	
-	//course
+	/**
+     * Adds a course to the system
+     * @param c The course to be added
+     * @throws IOException If an I/O error occurs during course addition
+     */
 	public void addCourse(Course c) throws IOException {
 		courses.add(c);
 		write();
@@ -166,6 +219,12 @@ public class DataSingleton implements Serializable{
 		return courses;
 	}
 	
+	/**
+     * Adds a complaint to the system for a specific school
+     * @param school The school associated with the complaint
+     * @param complaint The complaint to be added
+     * @throws IOException If an I/O error occurs during complaint addition
+     */
 	public void addComplaint(Schools school, String complaint) throws IOException {
         if(!facultyComplaints.containsKey(school)) {
             facultyComplaints.put(school, new Vector<>());
@@ -174,11 +233,21 @@ public class DataSingleton implements Serializable{
         	write();
 	}
 
+
+	/**
+     * Retrieves complaints for a specific school
+     * @param school The school for which complaints are retrieved
+     * @return A vector of complaints for the specified school
+     */
     public Vector<String> getComplaintsByFaculty(Schools school) {
     	return facultyComplaints.get(school);
     }
 
-    //news
+    /**
+     * Adds a news item to the system
+     * @param n The news item to be added
+     * @throws IOException If an I/O error occurs during news item addition
+     */
 	public void addNews(News n) throws IOException {
 		news.add(n);
 		write();
@@ -188,6 +257,11 @@ public class DataSingleton implements Serializable{
 		return news;
 	}
 	
+	/**
+     * Adds a student organization to the system
+     * @param so The student organization to be added
+     * @throws IOException If an I/O error occurs during student organization addition
+     */
 	public void addSudentOrganization(StudentOrganization so) throws IOException {
 		studOrg.add(so);
 		write();
@@ -197,7 +271,11 @@ public class DataSingleton implements Serializable{
 		return studOrg;
 	}
 	
-    //Diploma Project
+	/**
+     * Adds a diploma project to the system
+     * @param dp The diploma project to be added
+     * @throws IOException If an I/O error occurs during diploma project addition
+     */
 	public void addDiplomaProject(DiplomaProject dp) throws IOException {
 		diplomaProjescts.add(dp);
 		write();
@@ -250,6 +328,11 @@ public class DataSingleton implements Serializable{
 		return requests;
 	}
 
+	/**
+	 * Adds a request to the system
+	 * @param req The request to be added
+	 * @throws IOException If an I/O error occurs during request addition
+	 */
 	public void addRequests(Request req) throws IOException {
 		requests.add(req);
 		write();
@@ -259,6 +342,11 @@ public class DataSingleton implements Serializable{
 		return orders;
 	}
 
+	/**
+     * Adds an order to the system
+     * @param o The order to be added
+     * @throws IOException If an I/O error occurs during order addition
+     */
 	public void addOrders(Orders o) throws IOException {
 		orders.add(o);
 		write();
@@ -268,6 +356,11 @@ public class DataSingleton implements Serializable{
 		return techSupportSpecialists;
 	}
 
+	/**
+	 * Adds a tech support specialist to the system
+	 * @param techSupportSpecialist The tech support specialist to be added
+	 * @throws IOException If an I/O error occurs during tech support specialist addition
+	 */
 	public void addTechSupportSpecialists(TechSupportSpecialist techSupportSpecialist) throws IOException {
 		 techSupportSpecialists.add(techSupportSpecialist);
 		 write();
@@ -277,6 +370,11 @@ public class DataSingleton implements Serializable{
 		return managers;
 	}
 
+	/**
+	 * Adds a manager to the system
+	 * @param manager The manager to be added
+	 * @throws IOException If an I/O error occurs during manager addition
+	 */
 	public void addManagers(Manager manager) throws IOException {
 		managers.add(manager);
 		write();
@@ -286,6 +384,11 @@ public class DataSingleton implements Serializable{
 		return employeeResearchers;
 	}
 
+	/**
+	 * Adds an employee researcher to the system
+	 * @param employeeResearcher The employee researcher to be added
+	 * @throws IOException If an I/O error occurs during employee researcher addition
+	 */
 	public void addEmployeeResearchers(EmployeeResearcher employeeResearcher) throws IOException {
 		employeeResearchers.add(employeeResearcher);
 		write();
@@ -299,6 +402,11 @@ public class DataSingleton implements Serializable{
 		return logs;
 	}
 
+	/**
+	 * Adds a log entry to the system
+	 * @param log The log entry to be added
+	 * @throws IOException If an I/O error occurs during log entry addition
+	 */
 	public void addLogs(String log) throws IOException {
 		logs.add(log);
 		write();
