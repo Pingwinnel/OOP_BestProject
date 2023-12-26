@@ -14,6 +14,14 @@ import teacher.Teacher;
 import utilities.DataSingleton;
 import utilities.Mark;
 
+
+
+
+/**
+ * The StudentMenu class is a menu interface for a student, allowing them to perform various actions
+ * such as adding courses, viewing their transcript, changing their password, and accessing
+ * research-related features.
+ */
 public class StudentMenu {
 	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 	Student s;
@@ -21,6 +29,12 @@ public class StudentMenu {
 	public StudentMenu(Student s) {
 		this.s=s;
 	}
+	/**
+	 * The function checks if there are any courses available and prints them if there are, returning true
+	 * if successful.
+	 * 
+	 * @return The method is returning a boolean value.
+	 */
 	public boolean showCourses(){
 		if(DataSingleton.INSTANCE.getCourse().isEmpty()) {
 			System.out.println("No courses yet...");
@@ -29,9 +43,16 @@ public class StudentMenu {
 		utilities.Utils.printList(DataSingleton.INSTANCE.getCourse());
 		return true;
 	}
+	/**
+	 * The save() function writes data to a file.
+	 */
 	private void save() throws IOException {
 		DataSingleton.write();
 	}
+	/**
+	 * The exit() function prints "Bye bye" and attempts to save data, handling any IOExceptions that
+	 * occur.
+	 */
 	private void exit() {
 		System.out.println("Bye bye");
 		try {
@@ -40,11 +61,20 @@ public class StudentMenu {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * The function "addCourse" prompts the user to enter the name of a course, creates a new Course
+	 * object with the entered name, and adds it to a list of courses.
+	 */
 	private void addCourse() throws IOException {
 		System.out.println("Enter name of the course: ");
 		DataSingleton.INSTANCE.getCourse().add(new Course(bf.readLine()));
 		System.out.println("Course added! ");		
 	}
+	/**
+	 * The function is a menu-driven program that allows the user to perform various actions such as
+	 * adding a course, viewing a transcript, changing a password, viewing news, and discovering hidden
+	 * talent in researching.
+	 */
 	public void run() throws IOException {
 		try {
 			System.out.println("Welcome Student "+s.getName() + " " + s.getSurname());
@@ -96,6 +126,11 @@ public class StudentMenu {
 					break menu;
 				}
 				else if(choice == 5) {
+					// The line `Student.ResearcherStudent studentResearcher = s.new ResearcherStudent();` is creating
+					// a new instance of the inner class `ResearcherStudent` within the `Student` class. This inner
+					// class is used to represent a student who is also a researcher. By creating an instance of this
+					// inner class, the student is able to access and use the research-related features provided by
+					// the `ResearcherStudent` class.
 					Student.ResearcherStudent studentResearcher = s.new ResearcherStudent();
 					discoverTalant: while(true) {
 						System.out.println("\n 1) Add Research Paper 2) Print Research Papers \n 3) Calculate H-index\n 4) Return back \n 5) Exit");
@@ -122,6 +157,13 @@ public class StudentMenu {
 							
 						
 						}
+						// The line `if(choice == 3) System.out.println(studentResearcher.calculateHIndex());` is
+						// checking if the user has chosen option 3 in the menu. If they have, it calls the
+						// `calculateHIndex()` method on the `studentResearcher` object, which is an instance of the
+						// inner class `ResearcherStudent` within the `Student` class. This method calculates and returns
+						// the H-index of the student researcher based on their research papers. The H-index is a metric
+						// used to measure the productivity and impact of a researcher's work. The calculated H-index is
+						// then printed to the console.
 						if(choice == 3) System.out.println(studentResearcher.calculateHIndex());
 						if(choice == 4) continue menu;
 						if(choice == 5) {exit();  break menu;}
@@ -134,7 +176,6 @@ public class StudentMenu {
 			save();
 		}
 	}
-
 
 }
 

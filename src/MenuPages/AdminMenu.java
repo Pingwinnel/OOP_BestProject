@@ -8,13 +8,25 @@ import staff.Admin;
 import teacher.Teacher;
 import utilities.DataSingleton;
 
+/**
+ * The AdminMenu class provides a menu interface for an admin user to perform various actions such as
+ * adding and removing users.
+ */
 public class AdminMenu {
 	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 	
+	/**
+	 * The write() function calls the write() method of the DataSingleton class and handles any
+	 * IOException that may occur.
+	 */
 	private void write() throws IOException{
 		DataSingleton.write();
 	}
 	
+	/**
+	 * The exit() function prints "Bye bye" and then calls the write() function from the DataSingleton
+	 * class to write data to a file.
+	 */
 	private void exit() {
 		System.out.println("Bye bye");
 		try {
@@ -23,7 +35,12 @@ public class AdminMenu {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * The admin menu start runner
+	 * @param a
+	 * @throws NumberFormatException
+	 * @throws IOException
+	 */
 	public AdminMenu(Admin a) throws NumberFormatException, IOException {
 		menu: while(true) {
 			System.out.println("Welcome, what do you want to do? \n 1) Add user \n 2) Remove user by id");

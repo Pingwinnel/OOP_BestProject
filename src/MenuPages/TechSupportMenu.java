@@ -9,6 +9,10 @@ import student.Student;
 import utilities.DataSingleton;
 import utilities.Mark;
 
+/**
+ * The TechSupportMenu class provides a menu-driven interface for a tech support specialist to view,
+ * accept, and take orders.
+ */
 public class TechSupportMenu {
 
 	Scanner in = new Scanner(System.in);
@@ -17,9 +21,16 @@ public class TechSupportMenu {
 	public TechSupportMenu(TechSupportSpecialist tss) {
 		this.tss=tss;
 	}
+	/**
+	 * The save() function writes data to a file.
+	 */
 	private void save() throws IOException {
 		DataSingleton.write();
 	}
+	/**
+	 * The exit() function prints "Bye bye" and attempts to save data, handling any IOExceptions that
+	 * occur.
+	 */
 	private void exit() {
 		System.out.println("Bye bye");
 		try {
@@ -29,6 +40,10 @@ public class TechSupportMenu {
 		}
 	}
 
+	/**
+	 * The run() function displays a menu to the user and performs different actions based on their
+	 * choice, such as viewing orders, accepting orders, taking orders, or exiting the program.
+	 */
 	public void run() throws IOException {
 		try {
 			System.out.println("Welcome!");
@@ -37,6 +52,9 @@ public class TechSupportMenu {
 				int choice = in.nextInt();
 				if (choice==1){
 					while(true){
+						// The line `this.tss.viewOrders();` is calling the `viewOrders()` method on the `tss` object.
+						// This method is likely defined in the `TechSupportSpecialist` class and is responsible for
+						// displaying the orders to the tech support specialist.
 						this.tss.viewOrders();
 						System.out.println("\n 1) Return back \n 2) Exit");
 						choice = in.nextInt();
@@ -47,6 +65,9 @@ public class TechSupportMenu {
 				}
 				else if (choice==2){
 					System.out.println("Please enter order id: ");
+					// The line `tss.acceptOrders(in.nextInt());` is calling the `acceptOrders()` method on the `tss`
+					// object. This method is likely defined in the `TechSupportSpecialist` class and is responsible
+					// for accepting an order based on the order ID provided by the user.
 					tss.acceptOrders(in.nextInt());
 					System.out.println("\n 1) Return back \n 2) Exit");
 					choice = in.nextInt();
@@ -56,6 +77,9 @@ public class TechSupportMenu {
 				}
 				else if (choice==3){
 					System.out.println("Please enter order id: ");
+					// The line `tss.inProgressOrder(in.nextInt());` is calling the `inProgressOrder()` method on the
+					// `tss` object. This method is likely defined in the `TechSupportSpecialist` class and is
+					// responsible for marking an order as in progress based on the order ID provided by the user.
 					tss.inProgressOrder(in.nextInt());
 					System.out.println("\n 1) Return back \n 2) Exit");
 					choice = in.nextInt();
