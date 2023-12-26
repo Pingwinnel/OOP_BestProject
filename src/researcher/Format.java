@@ -1,9 +1,9 @@
-/**
- * @author Yerasyil
- * @version 25.12.2023
- */
 package researcher;
-//this enum used to describe a format of research papers
+
+/**
+ * The Format enumeration represents different formats for research papers, such as Plain TeX and BibTeX
+ * @author Code Symphony
+ */
 public enum Format {
 	PlainTeX, BibTeX;
 }

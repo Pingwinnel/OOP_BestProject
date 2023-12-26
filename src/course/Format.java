@@ -1,11 +1,9 @@
-/**
- * @author Yerasyil
- * @version 25.12.2023
- */
 package course;
 
-// `Format` enumeration has two constants: `ONLINE` and `OFFLINE`. These constants can be used to
-// represent different formats for a lesson, such as online or offline.
+/**
+ * The Format enumeration represents the formats in which a course can be conducted
+ * @author Code Symphony
+ */
 public enum Format {
 	ONLINE, OFFLINE
 }

@@ -1,10 +1,9 @@
 package course;
-/**
- * @author Yerasyil
- * @version 25.12.2023
- */
 
-//Course type(Major,Minor,Free)
+/**
+ * The CourseType enumeration represents the type of a course in a university
+ * @author Code Symphony
+ */
 public enum CourseType {
 	Major, Minor, FreeChoice;
 }

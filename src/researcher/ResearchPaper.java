@@ -1,7 +1,3 @@
-/**
- * @author Yerasyil
- * @version 25.12.2023
- */
 package researcher;
 
 import java.io.Serializable;
@@ -9,35 +5,33 @@ import java.util.Date;
 import java.util.Vector;
 
 /**
- * The ResearchPaper class represents a research paper with attributes such as name, authors, pages,
- * date, citations,and provides methods for getting and setting these attributes, generating
- * citations in different formats, and comparing papers based on citations.
+ * The ResearchPaper class represents a research paper with attributes such as name, authors, pages, date, citations
+ * @author Code Symphony
  */
 public class ResearchPaper implements Comparable<ResearchPaper>, Serializable{
 
 // Data.papers().stream().filter(n->n.participants.contains(pakita).collect(Collectors.toList());
 	private String name;
-	// The line `private Vector<Researcher> authors = new Vector<Researcher>(); //authors` is initializing
-	// the `authors` attribute of the `ResearchPaper` class as an empty `Vector` of `Researcher` objects.
-	// This means that by default, a `ResearchPaper` object will have no authors.
-	private Vector<Researcher> authors = new Vector<Researcher>(); //authors
+	private Vector<Researcher> authors = new Vector<Researcher>();
 	private int pages;
 	private Date date;
-	// The line `private int citations;` is declaring a private integer variable named `citations` in the
-	// `ResearchPaper` class. This variable represents the number of citations that the research paper has
-	// received. It is used to calculate of h index of  research paper.
 	private int citations;
-	// The line `private String doi;` is declaring a private string variable named `doi` in the
-	// `ResearchPaper` class. This variable represents the Digital Object Identifier (DOI) of the research
-	// paper. A DOI is a unique alphanumeric string assigned to a digital object, such as a research
-	// paper, to provide a persistent link to its location on the internet. The DOI is often used as a
-	// standard way to reference and identify research papers.
 	private String doi;
 	
+	/**
+	 * Default empty constructor for the ResearchPaper class
+	 */
 	public ResearchPaper() {
 		
 	}
 	
+	/**
+	 * Parameterized constructor for the ResearchPaper class
+	 * @param name
+	 * @param pages
+	 * @param citations
+	 * @param doi
+	 */
 	public ResearchPaper(String name, int pages, int citations, String doi) {
 		this.name = name;
 		this.pages = pages;
@@ -94,15 +88,9 @@ public class ResearchPaper implements Comparable<ResearchPaper>, Serializable{
 	}
 	
 	/**
-	 * The getCitation function returns a citation in either PlainTeX or BibTeX format based on the given
-	 * format parameter.
-	 * 
-	 * @param format The format parameter is an enum type called Format. It has two possible values:
-	 * PlainTeX and BibTeX.
-	 * @return The method getCitation returns a string representation of a citation in the specified
-	 * format. If the format is PlainTeX, it returns a formatted string with the authors, title, year,
-	 * pages, and doi. If the format is BibTeX, it returns a formatted string in the BibTeX format. If the
-	 * format is not supported, it returns the string "Unsupported format".
+	 * Returns a citation in either PlainTeX or BibTeX format based on the given format parameter
+	 * @param format Eenum type called Format that has two possible values: PlainTeX and BibTeX
+	 * @return A string representation of a citation in the specified format
 	 */
 	public String getCitation(Format format) {
 		if(format == Format.PlainTeX) {
@@ -120,9 +108,6 @@ public class ResearchPaper implements Comparable<ResearchPaper>, Serializable{
 	
 
 	@Override
-	// The `compareTo` method is used to compare two `ResearchPaper` objects based on their number of
-	// citations. It is implemented as part of the `Comparable` interface, which allows objects of a class
-	// to be compared and sorted.
 	public int compareTo(ResearchPaper r) {
 		// TODO Auto-generated method stub
 		if(this.citations > r.citations) return -1;

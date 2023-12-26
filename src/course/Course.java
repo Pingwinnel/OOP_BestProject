@@ -1,7 +1,3 @@
-/**
- * @author Yerasyil u r kakashka
- * @version 25.12.2023
- */
 package course;
 
 import java.io.Serializable;
@@ -10,8 +6,10 @@ import java.util.HashSet;
 import java.util.Objects;
 import student.Major;
 import student.Schools;
-/**this is Course class 
-*/
+/**
+ * The Course class represents a course in a university and provides information about the course name, code, school, credits, prerequisites and the obligation for different majors
+ * @author Code Symphony
+ */
 public class Course implements Serializable{
 	private static final long serialVersionUID = -197806065249070159L;
 	private String name;
@@ -30,37 +28,52 @@ public class Course implements Serializable{
 		prerequisites = new HashSet<Course>();
 	}
 	
+	/**
+	 * Default empty constructor for the Course class
+	 */
 	public Course() {}
 	
+	/**
+	 * Parameterized constructor for the Course class that initializes given name
+	 * @param name
+	 */
 	public Course(String name) {
 		this.name=name;
 	}
 	
+	/**
+	 * Parameterized constructor for the Course class that initializes given name, code, school and credits
+	 * @param name
+	 * @param code
+	 * @param school
+	 * @param credits
+	 */
 	public Course(String name, String code, Schools school, int credits) {
 		this.name = name;
 		this.code = code;
 		this.school = school;
 		this.credits = credits;
 	}
+	
 	/**
-     * Getter method to retrieve the name of the course.
-     *
-     * @return The name of the course.
+     * Retrieve the name of the course
+     * @return The name of the course
      */
 	public String getName() {
 		return name;
 	}
-/**
- * Setter method to set, change a name of the course
- * @param name  Course name
- */
+
+	/**
+	 * Sets, changes a name of the course
+	 * @param name Course name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	/**
-     * Getter method to retrieve the code of the course.
-     *
-     * @return The code of the course.
+     * Retrieves the code of the course
+     * @return The code of the course
      */
 	public String getCode() {
 		return code;
@@ -79,18 +92,16 @@ public class Course implements Serializable{
 	}
 
 	/**
-	 * The function returns a HashSet of Course objects representing the prerequisites for a course.
-	 * 
-	 * @return A HashSet of Course objects is being returned.
+	 * Returns a HashSet of Course objects representing the prerequisites for a course
+	 * @return A HashSet of Course objects is being returned
 	 */
 	public HashSet<Course> getPrerequisites() {
 		return prerequisites;
 	}
 
 	/**
-	 * The addCoursePrerequisites function adds a course as a prerequisite to another course.
-	 * 
-	 * @param c The parameter "c" is of type Course.
+	 * Adds a course as a prerequisite to another course
+	 * @param c The parameter "c" is of type Course
 	 */
 	public void addCoursePrerequisites(Course c) {
 		prerequisites.add(c);
@@ -102,8 +113,6 @@ public class Course implements Serializable{
 	}
 
 	@Override
-	// The `equals(Object obj)` method is used to compare two `Course` objects for equality. It overrides
-	// the default `equals` method provided by the `Object` class.
 	public boolean equals(Object obj) {
 		if (this == obj) return true;
 		if (obj == null) return false;

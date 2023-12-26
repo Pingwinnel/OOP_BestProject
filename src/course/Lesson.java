@@ -1,14 +1,10 @@
-/**
- * @author Yerasyil
- * @version 25.12.2023
- */
 package course;
 
 import java.io.Serializable;
 import java.util.Objects;
 /**
- * The Lesson class represents a lesson in a course, with information such as the course, day, time,
- * format, type, and room.
+ * The Lesson class represents a lesson in a course, with information such as the course, day, time, format, type, and room
+ * @author Code Symphony
  */
 public class Lesson implements Serializable{
 	private Course course;
@@ -18,11 +14,15 @@ public class Lesson implements Serializable{
 	private LessonType type;
 	private Room room;
 	
+	/**
+	 * Default empty constructor for the Lesson class
+	 */
 	public Lesson() {
 		
 	}
+	
 	/**
-	 * Lesson objects constructor
+	 * Parameterized constructor for the Lesson class
 	 * @param course
 	 * @param day
 	 * @param type
@@ -34,15 +34,16 @@ public class Lesson implements Serializable{
 		this.time = time;
 		this.type=type;
 	}
-/**
- * Lesson objects more detailed constructor 
- * @param course
- * @param name
- * @param day
- * @param time
- * @param type
- * @param room
- */
+	
+	/**
+	 * More detailed parameterized constructor for the Lesson class
+	 * @param course
+	 * @param name
+	 * @param day
+	 * @param time
+	 * @param type
+	 * @param room
+	 */
 	public Lesson(Course course, String name, Days day, Time time, LessonType type,Room room) {
 		this.course = course;
 		this.day = day;
@@ -96,9 +97,8 @@ public class Lesson implements Serializable{
 	public int hashCode() {
 		return Objects.hash(course, day, time, type);
 	}
+	
 	@Override
-	// The `equals(Object obj)` method is used to compare two `Lesson` objects for equality. It overrides
-	// the default `equals()` method provided by the `Object` class.
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

@@ -1,23 +1,22 @@
-/**
- * @author Yerasyil
- * @version 25.12.2023
- */
 package researcher;
 
 import java.util.List;
 
+/**
+ * The Researcher interface representis a researcher with methods for printing research papers and calculating the H-index
+ * @author Code Symphony
+ */
 public interface Researcher {
 
 	/**
-	 * The function "printPapers" returns a list of research papers.
-	 * 
-	 * @return A List of ResearchPaper objects is being returned.
-	 */
+     * Retrieves a list of research papers associated with the researcher
+     * @return List of research papers
+     */
 	List<ResearchPaper> printPapers();
+	
 	/**
-	 * The function calculates the H-index.
-	 * 
-	 * @return The function calculateHIndex is returning an integer value.
-	 */
+     * Calculates and retrieves the H-index of the researcher
+     * @return The calculated H-index
+     */
 	int calculateHIndex();
 }

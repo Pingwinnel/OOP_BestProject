@@ -1,7 +1,3 @@
-/**
- * @author Yerasyil
- * @version 25.12.2023
- */
 package researcher;
 
 
@@ -11,13 +7,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import utilities.DataSingleton;
-//Some static method which use in researcher package
+
+/**
+ * The ResearjerUtils class performs operations related to researchers and research papers
+ * @author Code Symphony
+ */
 public class ResearcherUtils {
-	//calculate h-index of researcher
+	
+	/**
+    * Calculates the H-index of a given researcher based on their authored research papers
+    * @param researcher The researcher for whom the H-index is to be calculated
+    * @return The calculated H-index
+    */
 	public static int calculateHIndex(Researcher researcher) {
-		//list of research papers
 		List<ResearchPaper> papers = printPapers(researcher);
-		//sort papers
 		Collections.sort(papers);
 		int hIndex = 0;
         for (int i = 0; i < papers.size(); i++) {
@@ -29,12 +32,9 @@ public class ResearcherUtils {
         return hIndex+1;
 	}
 	/**
-	 * The function "printPapers" takes a researcher as input and returns a list of research papers that
-	 * the researcher has authored.
-	 * 
-	 * @param researcher The "researcher" parameter is an instance of the Researcher class. It represents
-	 * a researcher who has authored one or more research papers.
-	 * @return The method is returning a list of ResearchPaper objects.
+	 * Takes a researcher as input and returns a list of research papers that the researcher has authored
+	 * @param researcher Instance of the Researcher class that represents a researcher who has authored one or more research papers
+	 * @return A list of ResearchPaper objects
 	 */
 	public static List<ResearchPaper> printPapers(Researcher researcher){
 		List<ResearchPaper> papers = DataSingleton.INSTANCE.getResearchPapers().stream().filter(n->n.getAuthors().contains(researcher)).collect(Collectors.toList());
