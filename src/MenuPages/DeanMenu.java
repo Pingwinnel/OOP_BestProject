@@ -28,11 +28,10 @@ public class DeanMenu {
 
     BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     Dean dean;
-    DataSingleton db;
+    DataSingleton db = DataSingleton.INSTANCE;
 
-    public DeanMenu(Dean dean, DataSingleton db) {
+    public DeanMenu(Dean dean) {
         this.dean = dean;
-        this.db = db;
     }
 
     private void write() throws IOException {

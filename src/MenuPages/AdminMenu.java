@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import staff.Admin;
+import student.Schools;
 import teacher.Teacher;
 import utilities.DataSingleton;
 
@@ -43,11 +44,11 @@ public class AdminMenu {
 	 */
 	public AdminMenu(Admin a) throws NumberFormatException, IOException {
 		menu: while(true) {
-			System.out.println("Welcome, what do you want to do? \n 1) Add user \n 2) Remove user by id");
+			System.out.println("Welcome, what do you want to do? \n 1) Add user \n 2) Remove user by id \n 3) Exit");
 			int choice = Integer.parseInt(bf.readLine());
 			if(choice == 1) {
 				addUser: while(true) {
-					System.out.println("1) Teacher \n 2) Manager \n 3) Student \n 4) Dean \n 5) Techsupport specialist \n 6) Employee Researcher");
+					System.out.println("1) Teacher \n 2) Professor \n 3)Manager \n 4) Student \n 5) Dean \n 6) Techsupport specialist \n 7) Employee Researcher \n 8) Return back \n 9) Exit");
 					String userType = bf.readLine();
 					System.out.println("Name: ");
 					String userName = bf.readLine();
@@ -55,7 +56,8 @@ public class AdminMenu {
 					String userSurname = bf.readLine();
 					if(userType.equals("Teacher")) {
 						System.out.println("School: SAM/SITE/BS");
-						//Schools school = bf.readLine();
+						Schools school = Schools.valueOf(bf.readLine()); 
+						System.out.println("Degree: TUTOR/SITE/BS");
 						Teacher t = new Teacher(userSurname, userName);
 					}
 					

@@ -18,7 +18,7 @@ public class testDeanMenu {
         Employee teacher = new Teacher("Pakita", "Shamoi");
         teacher.sendRequest(request);
 
-        DeanMenu deanMenu = new DeanMenu(dean, null);
+        DeanMenu deanMenu = new DeanMenu(dean);
         deanMenu.run();
 	}
 

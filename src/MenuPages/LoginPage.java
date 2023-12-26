@@ -12,7 +12,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import staff.Admin;
+import staff.Dean;
 import staff.Manager;
+import staff.TechSupportSpecialist;
 import staff.User;
 import student.Student;
 import teacher.Professor;
@@ -133,11 +135,15 @@ public class LoginPage implements ActionListener{
 								if(u instanceof Manager) {
 									ManagerMenu mm = new ManagerMenu((Manager)u);
 									mm.run();
-									
 								}
-								
-								
-								
+								if(u instanceof Dean) {
+									DeanMenu mm = new DeanMenu((Dean)u);
+									mm.run();
+								}
+								if(u instanceof TechSupportSpecialist) {
+									TechSupportMenu mm = new TechSupportMenu((TechSupportSpecialist)u);
+									mm.run();
+								}
 								
 							}
 						}
