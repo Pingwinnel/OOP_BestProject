@@ -1,5 +1,6 @@
 package test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import utilities.UniversityJournal;
 
 public class TestUniversityJournal {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
         UniversityJournal universityJournal = new UniversityJournal();
 
         Student student1 = new Student("Abdugapparova","Tuba",Schools.SITE, Major.CSaS);
@@ -21,13 +22,14 @@ public class TestUniversityJournal {
 
         student1.subscribeToJournal(universityJournal);
         student2.subscribeToJournal(universityJournal);
+        
+        universityJournal.setNewPapers(new ResearchPaper("Paper1", 10, 5, "doi1"));
 
-        DataSingleton.INSTANCE.getResearchPapers().add(new ResearchPaper("Paper1", 10, 5, "doi1"));
-        DataSingleton.INSTANCE.getResearchPapers().add(new ResearchPaper("Paper2", 15, 8, "doi2"));
+//        DataSingleton.INSTANCE.getResearchPapers().add(new ResearchPaper("Paper2", 15, 8, "doi2"));
 
 //        universityJournal.setNewPapers(newResearchPapers);
         
-        System.out.println(universityJournal);
+//        System.out.println(universityJournal);
         universityJournal.notifyObservers();
 	}
 

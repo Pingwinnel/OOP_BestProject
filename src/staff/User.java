@@ -1,10 +1,13 @@
 package staff;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 import java.util.Vector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -143,10 +146,16 @@ public abstract class User implements Serializable, Observer{
 	
 	/**
      * Updates the user when changes occur in the system
+	 * @throws FileNotFoundException 
      */
 	@Override
-	public void update() {
-		System.out.println("Journal is updated!");
+	public void update(File file) throws FileNotFoundException {
+		 Scanner myReader = new Scanner(file);
+	      while (myReader.hasNextLine()) {
+	        String data = myReader.nextLine();
+	        System.out.println(this.corparateEmail + " gets a new research paper " + data);
+	      }
+	      myReader.close();
 	}
 	
 	/**
