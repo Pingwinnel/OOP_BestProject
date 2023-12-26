@@ -46,6 +46,12 @@ public abstract class Employee extends User{
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
+	
+	public void setHireDate(Date date) {
+		this.hireDate=date;
+		
+	}
+	
 
 	@Override
 	public int hashCode() {
@@ -86,12 +92,6 @@ public abstract class Employee extends User{
 		}
 		return null;
 	}
-
-	public void setHireDate(Date date) {
-		this.hireDate=date;
-		
-	}
-	
 	/**
      * Sends a request on behalf of the employee
      * @param r The request to be sent

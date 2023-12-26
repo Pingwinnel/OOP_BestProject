@@ -24,7 +24,6 @@ public class Utils {
         String numbers = "1234567890";
         String combinedChars = capitalCaseLetters + lowerCaseLetters + specialCharacters + numbers;
       
-
         SecureRandom random = new SecureRandom();
         StringBuilder password = new StringBuilder();
         
@@ -32,9 +31,7 @@ public class Utils {
         	int index = random.nextInt(combinedChars.length());
         	password.append(combinedChars.charAt(index));
         }
-        
         return password.toString();
-      
 	}
 	
 	/**
@@ -46,11 +43,9 @@ public class Utils {
      */
 	public static String generateCorparateEmail(User u) {
 		String email = "@kbtu.kz";
-		if(u instanceof Student) {
-			return u.getName().toLowerCase().charAt(0)+"_"+u.getSurname().toLowerCase()+email;
-		} 
-		return u.getName().toLowerCase().charAt(0)+"."+u.getSurname().toLowerCase()+email;
+		if(u instanceof Student) return u.getName().toLowerCase().charAt(0)+"_"+u.getSurname().toLowerCase()+email;
 		
+		return u.getName().toLowerCase().charAt(0)+"."+u.getSurname().toLowerCase()+email;
 	}
 	
 	/**
