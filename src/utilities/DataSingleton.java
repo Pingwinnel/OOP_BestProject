@@ -64,6 +64,8 @@ public class DataSingleton implements Serializable{
     private List<Lesson> lessons = new ArrayList<Lesson>();
     private Vector<Employee> employees = new Vector<Employee>();
     private Vector<Dean> deans = new Vector<Dean>();
+    private List<Observer> observers = new ArrayList<Observer>();
+
 	
     static File dataFile = new File("data.ser");
 	
@@ -442,5 +444,13 @@ public class DataSingleton implements Serializable{
 			}
 		}
 		return deans;
+	}
+	
+	public List<Observer> getObservers() {
+		return observers;
+	}
+
+	public void setObservers(List<Observer> observers) {
+		this.observers = observers;
 	}
 }

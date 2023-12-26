@@ -146,7 +146,7 @@ public abstract class User implements Serializable, Observer{
      */
 	@Override
 	public void update() {
-		System.out.println("Journal is updated!");
+		System.out.println(this.corparateEmail + " Journal is updated!");
 	}
 	
 	/**

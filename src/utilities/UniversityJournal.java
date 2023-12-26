@@ -12,18 +12,14 @@ import researcher.ResearchPaper;
  * @author Code Symphony
  */
 public class UniversityJournal implements Observable{
-	private List<Observer> observers; 
 	
-	/**
-	 * Constructor with an empty list of observers for the UniversityJournal class
-	 */
     public UniversityJournal() {
-        observers = new ArrayList<>();
+
     }
 
     @Override
 	public String toString() {
-		return "UniversityJournal " + "\nJournal observers:" + observers + "\nAll Papers: " + DataSingleton.INSTANCE.getResearchPapers() + "\nLatest Paper: " + getLatest();
+		return "UniversityJournal " + "\nJournal observers:" + DataSingleton.INSTANCE.getObservers() + "\nAll Papers: " + DataSingleton.INSTANCE.getResearchPapers() + "\nLatest Paper: " + getLatest();
 	}
     
     @Override
@@ -31,13 +27,13 @@ public class UniversityJournal implements Observable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UniversityJournal that = (UniversityJournal) o;
-        return Objects.equals(observers, that.observers);
+        return Objects.equals(DataSingleton.INSTANCE.getObservers(), that.DataSingleton.INSTANCE.getObservers());
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(observers);
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(observers);
+//    }
 
     /**
      * Subscribes an observer to the journal
