@@ -18,6 +18,7 @@ import staff.Manager;
 import student.Major;
 import student.Schools;
 import student.Student;
+import student.StudentOrganization;
 import teacher.Teacher;
 import utilities.DataSingleton;
 import utilities.News;
@@ -58,7 +59,7 @@ public class DeanMenu {
         System.out.println("Welcome, " + dean.getName() + " " + dean.getSurname() + "!");
         menu: while (true) {
             try {
-                System.out.println("What do you wanna do?\n 1) Change Password \n 2) View News \n 3) View Lessons \n 4) View Students' Info \n 5) Approve Student Organization \n 6) Approve Request \n 7) View Requests \n 8) Read Complaints \n 9) Exit");
+                System.out.println("What do you wanna do?\n 1) Change Password \n 2) View News \n 3) View Lessons \n 4) View Students' Info \n 5) Approve Student Organization \n 6) View Requests \n 7) Read Complaints \n 8) Exit");
                 int choice = Integer.parseInt(bf.readLine());
 
                 switch (choice) {
@@ -89,23 +90,23 @@ public class DeanMenu {
                         approveStudentOrganization();
                         break;
 
-                    case 6:
-                        // Approve Request
-                        approveRequest();
-                        break;
+//                    case 6:
+//                        // Approve Request
+//                        approveRequest();
+//                        break;
                         
-                    case 7:
+                    case 6:
                         // Approve Request
                         viewRequests();
                         break;
 
-                    case 8:
+                    case 7:
                         // Read Complaints
                         dean.readComplaints();
                         System.out.println("Complaints read.");
                         break;
 
-                    case 9:
+                    case 8:
                         // Exit
                         exit();
                         break menu;
@@ -131,9 +132,9 @@ public class DeanMenu {
 
     private void approveStudentOrganization() throws IOException {
         System.out.println("Enter Student Organization name: ");
-//        StudentOrganization orgName = bf.readLine();
-//        boolean approved = dean.approveOrganization(orgName);
-//
+        String orgName = bf.readLine();
+//        boolean approved = dean.approveOrganization(StudentOrganization.getStudOrgName());
+
 //        if (approved) {
 //            System.out.println("Student Organization approved successfully.");
 //        } else {
@@ -155,27 +156,27 @@ public class DeanMenu {
     }
     
     private void viewRequests() {
-//        List<Request> requests = dean.viewRequests();
-//
-//        if (requests.isEmpty()) {
-//            System.out.println("No pending requests.");
-//        } else {
-//            System.out.println("Pending Requests:");
-//            printList(requests);
-//
-//            try {
-//                System.out.println("\n 1) Return back \n 2) Exit");
-//                int choice = Integer.parseInt(bf.readLine());
-//                if (choice == 1) {
-//                    return;
-//                } else if (choice == 2) {
-//                    exit();
+        List<Request> requests = dean.viewRequests();
+
+        if (requests.isEmpty()) {
+            System.out.println("No pending requests.");
+        } else {
+            System.out.println("Pending Requests:");
+            printList(requests);
+
+            try {
+                System.out.println("\n 1) Return back \n 2) Select Request 3) Exit");
+                int choice = Integer.parseInt(bf.readLine());
+                if (choice == 1) {
+                    return;
+                } else if (choice == 2) {
+                    exit();
 //                    break;
-//                }
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

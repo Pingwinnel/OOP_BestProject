@@ -21,6 +21,7 @@ import course.Lesson;
 import researcher.EmployeeResearcher;
 import researcher.ResearchPaper;
 import researcher.ResearchProject;
+import staff.Dean;
 import staff.Manager;
 import staff.TechSupportSpecialist;
 import staff.User;
@@ -53,6 +54,7 @@ public class DataSingleton implements Serializable{
     private HashMap<String,String> loginInfo = new HashMap<String, String>();
     private Vector<String> logs=new Vector<String>();
     private HashMap<Teacher, Lesson> lessonsOfTeachers = new HashMap<Teacher, Lesson>();
+    private HashMap<Dean, Lesson> lessonsOfDeans = new HashMap<Dean, Lesson>();
     private HashMap<Student, Lesson> lessonsOfStudents = new HashMap<Student, Lesson>();
     private List<Lesson> lessons = new ArrayList<Lesson>();
 	
@@ -314,5 +316,7 @@ public class DataSingleton implements Serializable{
 		return lessonsOfStudents;
 	}
 
-	
+	public HashMap<Dean, Lesson> getLessonsOfDeans() {
+		return lessonsOfDeans;
+	}
 }

@@ -6,23 +6,29 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Scanner;
 import teacher.Professor;
+import teacher.Teacher;
+import teacher.Teacher.TeacherResearcher;
 import utilities.DataSingleton;
+import utilities.Message;
+import utilities.Request;
 import researcher.ResearchPaper;
+import researcher.Researcher;
+import staff.Employee;
 import student.Student;
 
 public class ProfessorMenu {
 
     BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     Professor professor;
-    DataSingleton dataSingleton;
+    DataSingleton db;
 
-    public ProfessorMenu(Professor professor, DataSingleton dataSingleton) {
+    public ProfessorMenu(Professor professor, DataSingleton db) {
         this.professor = professor;
-        this.dataSingleton = dataSingleton;
+        this.db = db;
     }
 
     private void write() throws IOException {
-        dataSingleton.write();
+        db.write();
     }
 
     private void exit() {
@@ -147,11 +153,32 @@ public class ProfessorMenu {
     }
 
     private void sendRequest() throws IOException {
-        // Implement sendRequest logic here
+        System.out.println("Enter request content: ");
+        String requestContent = bf.readLine();
+        Request request = new Request();
+
+        db.addRequests(request);
+
+        System.out.println("Request sent successfully!");
     }
 
     private void sendMessage() throws IOException {
-        // Implement sendMessage logic here
+//        System.out.println("Enter recipient's name: ");
+//        String recipientName = bf.readLine();
+//
+//        Employee recipient = ;
+//
+//        if (recipient != null) {
+//            System.out.println("Enter message content: ");
+//            String messageContent = bf.readLine();
+//
+//            Message message = new Message(professor, recipient, messageContent);
+//            db.addMessage(message);
+//
+//            System.out.println("Message sent successfully!");
+//        } else {
+//            System.out.println("Recipient not found. Please check the name and try again.");
+//        }  
     }
 
     private void getMessage() throws IOException {
@@ -163,7 +190,34 @@ public class ProfessorMenu {
     }
 
     private void discoverHiddenTalent() throws IOException {
-        // Implement discoverHiddenTalent logic here
-    
+		Professor Researcher = new Professor();
+		System.out.println("\n 1) Add Research Paper 2) Print Research Papers \n 3) Calculate H-index\n 4) Return back \n 5) Exit");
+		int choice = Integer.parseInt(bf.readLine());
+		if(choice == 1) {
+			System.out.println("Name: ");
+			String name = bf.readLine();
+			System.out.println("Pages: ");
+			int pages = Integer.parseInt(bf.readLine());
+			System.out.println("Citations: ");
+			int cit = Integer.parseInt(bf.readLine());
+			System.out.println("Doi: ");
+			String doi = bf.readLine();
+			ResearchPaper rp = new ResearchPaper(name, pages, cit, doi);
+			DataSingleton.INSTANCE.addResearchPapers(rp);
+		}
+		if(choice == 2) {
+			for(ResearchPaper rp : DataSingleton.INSTANCE.getResearchPapers()) {
+				for(Researcher r: rp.getAuthors()) {
+					if(r.equals(professor)) System.out.println(professor.printPapers());
+					
+				}
+			}
+			
+		
+		}
+		if(choice == 3) System.out.println(professor.calculateHIndex());
+//		if(choice == 4) continue;
+//		if(choice == 5) {exit();  break;}
+//		break;    
     }
 }
