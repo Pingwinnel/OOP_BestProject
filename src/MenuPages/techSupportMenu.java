@@ -14,11 +14,6 @@ public class techSupportMenu {
 	Scanner in = new Scanner(System.in);
 	TechSupportSpecialist tss;
 
-	public techSupportMenu() throws Exception {
-		System.out.println("Enter name: ");
-		DataSingleton.INSTANCE.addUser(new Student(in.next()));
-		System.out.println("Student added! ");
-	}
 	public techSupportMenu(TechSupportSpecialist tss) {
 		this.tss=tss;
 	}
@@ -38,10 +33,9 @@ public class techSupportMenu {
 		try {
 			System.out.println("Welcome!");
 			menu : while(true){
-				System.out.println("What do you want to do? \n 1) View orders  \n2)Accept order \n3)Take order \n 4) Exit");
+				System.out.println("What do you want to do? \n 1) View orders  \n 2)Accept order \n 3)Take order \n 4) Exit");
 				int choice = in.nextInt();
 				if (choice==1){
-					this.tss.viewOrders();
 					while(true){
 						this.tss.viewOrders();
 						System.out.println("\n 1) Return back \n 2) Exit");

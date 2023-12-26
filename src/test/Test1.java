@@ -23,6 +23,7 @@ public class Test1 {
 		
 		Admin a = new Admin();
 //		a.addUser(s1);
+//		System.out.println( s1.getName());		
 		System.out.println(a.getUsers());
 
 	}
