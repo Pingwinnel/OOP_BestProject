@@ -1,5 +1,6 @@
 package staff;
 
+import java.util.List;
 import java.util.Objects;
 
 import student.Schools;
@@ -90,4 +91,11 @@ public class Dean extends Teacher {
 		}
 		return null;
 	}
+	
+	public List<Request> viewRequests() {
+        List<Request> deanRequests = DataSingleton.INSTANCE.getRequests();
+        deanRequests.removeIf(request -> !request.getReceiverDean().equals(this)); // Filter requests for the current dean
+
+        return deanRequests;	
+        }
 }
