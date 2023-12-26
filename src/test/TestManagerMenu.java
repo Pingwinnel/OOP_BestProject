@@ -16,7 +16,7 @@ import student.Schools;
 import teacher.Teacher;
 import utilities.DataSingleton;
 
-public class TestManegerMenu {
+public class TestManagerMenu {
 
 	public static void main(String[] args) throws Exception {
 		
