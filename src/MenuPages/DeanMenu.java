@@ -1,7 +1,6 @@
 package MenuPages;
 
 import java.io.BufferedReader;
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -24,7 +23,6 @@ import teacher.Teacher;
 import utilities.DataSingleton;
 import utilities.News;
 import utilities.Request;
-import utilities.ResearchUniversity;
 
 public class DeanMenu {
 
@@ -156,6 +154,22 @@ public class DeanMenu {
         }
     }
     
+    private void selectAndApproveRequest(List<Request> requests) {
+        System.out.println("Select a request to approve:");
+
+        try {
+            int requestChoice = Integer.parseInt(bf.readLine());
+            if (requestChoice > 0 && requestChoice <= requests.size()) {
+                Request selectedRequest = requests.get(requestChoice - 1);
+                approveRequest();
+            } else {
+                System.out.println("Invalid selection. Please try again.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     private void viewRequests() {
         List<Request> requests = dean.viewRequests();
 
@@ -166,11 +180,13 @@ public class DeanMenu {
             printList(requests);
 
             try {
-                System.out.println("\n 1) Return back \n 2) Select Request 3) Exit");
+                System.out.println("\n 1) Return back \n 2) Select Request \n 3) Exit");
                 int choice = Integer.parseInt(bf.readLine());
                 if (choice == 1) {
                     return;
                 } else if (choice == 2) {
+                    selectAndApproveRequest(requests);
+                } else if (choice == 3) {
                     exit();
 //                    break;
                 }
