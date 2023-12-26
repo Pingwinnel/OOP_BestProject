@@ -9,13 +9,26 @@ import utilities.Message;
 import utilities.Orders;
 import utilities.Request;
 
+/**
+ * The Employee class is an abstract class that represents an employee and provides common functionality for all employees, such as salary management, messaging and request handling
+ * @author Code Symphony
+ */
 public abstract class Employee extends User{
 	private static final long serialVersionUID = -4147612431222113640L;
 	private double salary;
 	private Date hireDate;
 	
+	/**
+	 * Default empty constructor for the Employee class
+	 */
 	public Employee() {}
 	
+	/**
+	 * Parameterized constructor for the Employee class
+	 * @param surname
+	 * @param name
+	 * @param salary
+	 */
 	public Employee(String surname, String name, double salary) {
 		super(surname, name);
 		this.salary = salary;
@@ -50,6 +63,11 @@ public abstract class Employee extends User{
 		return Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary);
 	}
 	
+	/**
+     * Sends a message to another employee
+     * @param m The message to be sent
+     * @throws Exception If an error occurs during message sending
+     */
 	public void sendMessage(String text, Employee e) throws Exception {
 		Message m = new Message(e, text);
 		m.setSender(this);
@@ -57,6 +75,10 @@ public abstract class Employee extends User{
 		
 	}
 
+	/**
+     * Retrieves the latest message received by the employee
+     * @return The latest message received or null if no message is available
+     */
 	public Message getMessage() {
 		for(Message m: DataSingleton.INSTANCE.getMessages()) {
 			if(m.getReceiver().equals(this)) {
@@ -71,11 +93,21 @@ public abstract class Employee extends User{
 		
 	}
 	
+	/**
+     * Sends a request on behalf of the employee
+     * @param r The request to be sent
+     * @throws IOException If an error occurs during request sending
+     */
 	public void sendRequest(Request r) throws IOException {
 		r.setSender(this);
 		DataSingleton.INSTANCE.addRequests(r);
 	}
 	
+	/**
+     * Sends an order on behalf of the employee
+     * @param description The description of the order
+     * @throws IOException If an error occurs during order sending
+     */
 	public void senbOrder(String description) throws IOException {
 		Orders o=new Orders(this,description);
 		DataSingleton.INSTANCE.addOrders(o);

@@ -11,6 +11,9 @@ import java.util.stream.Stream;
 import researcher.ResearchPaper;
 import utilities.*;
 
+/**
+ * The User class observes changes in the system through the Observer interface
+ */
 public abstract class User implements Serializable, Observer{
 
 	private int id;
@@ -19,9 +22,25 @@ public abstract class User implements Serializable, Observer{
 	private String corparateEmail;
 	private String password;
 	
+	/**
+	 * Default empty constructor for the User class
+	 */
 	public User() {}
 	
+	/**
+	 * Parameterized constructor for the User class that initializes an user with a given name
+	 * @param surname
+	 * @param name
+	 */
+	public User(String name) {
+		this.name = name;
+	}
 	
+	/**
+	 * Parameterized constructor for the User class that initializes an user with a given surname and name
+	 * @param surname
+	 * @param name
+	 */
 	public User(String surname, String name) {
 		this.id = DataSingleton.nextId();
 		this.setSurname(surname);
@@ -29,9 +48,6 @@ public abstract class User implements Serializable, Observer{
 		this.corparateEmail = Utils.generateCorparateEmail(this);
 	}
 
-	public User(String name) {
-		this.name = name;
-	}
 
 	public int getId() {
 		return id;
@@ -69,10 +85,17 @@ public abstract class User implements Serializable, Observer{
 		return password;
 	}
 
+	/**
+     * Sets a randomly generated password for the user
+     */
 	public void setPassword() {
 		this.password = Utils.generatePassword();
 	}
 	
+	 /**
+     * Changes the password of the user
+     * @param password The new password to be set
+     */
 	public void changePassword(String password) {
 		this.password = password;
 	}
@@ -98,6 +121,10 @@ public abstract class User implements Serializable, Observer{
 				&& Objects.equals(getSurname(), other.getSurname());
 	}
 	
+	/**
+     * Views news articles related to research first, followed by other news, sorted by priority
+     * @return A vector of news articles
+     */
 	public Vector<News> viewNews() {
     	Stream<News> researchNews = DataSingleton.INSTANCE.getNews().stream()
                     .filter(news -> news.getTitle().toLowerCase().contains("research"))
@@ -111,11 +138,18 @@ public abstract class User implements Serializable, Observer{
                 .collect(Collectors.toCollection(Vector::new));
     }
 	
+	/**
+     * Updates the user when changes occur in the system
+     */
 	@Override
 	public void update() {
 		System.out.println("Journal is updated!");
 	}
 	
+	/**
+     * Subscribes the user to a journal for receiving updates
+     * @param journal The journal to subscribe to
+     */
     public void subscribeToJournal(UniversityJournal journal) {
         journal.subscribe(this);
     }

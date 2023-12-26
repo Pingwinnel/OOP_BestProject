@@ -17,14 +17,28 @@ import utilities.DataSingleton;
 import utilities.Mark;
 import utilities.News;
 
+/**
+ * The Manager class represents a manager who has responsibilities related to course and lesson management, student registration and information viewing
+ *
+ */
 public class Manager extends Employee{
 	
 	private ManagerType type;	
 	
+	/**
+	 * Default empty constructor for the Manager class
+	 */
 	public Manager() {
 		
 	}
 
+	/**
+	 * Parameterized constructor for the Manager class
+	 * @param surname
+	 * @param name
+	 * @param salary
+	 * @param type
+	 */
 	public Manager(String surname, String name, double salary, ManagerType type) {
 		super(surname, name, salary);
 		this.type = type;
@@ -58,21 +72,42 @@ public class Manager extends Employee{
 		return super.toString() + "Manager " + type;
 	}
 	
+	/**
+     * Adds a course for registration to the system
+     * @param crs The course to be added
+     * @throws IOException If an error occurs during course addition
+     */
 	public void addCoursesForRegis(Course crs) throws IOException {
 		DataSingleton.INSTANCE.addCourse(crs);
 		DataSingleton.write();
 	}
 	
+	/**
+     * Adds a lesson to the system
+     * @param l The lesson to be added
+     * @throws IOException If an error occurs during lesson addition
+     */
 	public void addLessonToSystem(Lesson l) throws IOException {
 		DataSingleton.INSTANCE.getLessons().add(l);
 		DataSingleton.write();
 	}
 	
+	/**
+     * Deletes a lesson from the system
+     * @param l The lesson to be deleted
+     * @throws IOException If an error occurs during lesson deletion
+     */
 	public void deleteLessonFromSystem(Lesson l) throws IOException {
 		DataSingleton.INSTANCE.getLessons().remove(l);
 		DataSingleton.write();
 	}
 	
+	/**
+     * Attaches a lesson to a teacher
+     * @param t The teacher to attach the lesson to
+     * @param l The lesson to be attached
+     * @throws Exception If an error occurs during attachment
+     */
 	public void attachLessonToTeacher(Teacher t, Lesson l) throws Exception {
 		for(Teacher tt: DataSingleton.INSTANCE.getTeachers()) {
 			if(tt.equals(t)) {
@@ -82,6 +117,12 @@ public class Manager extends Employee{
 		}
 	}
 	
+	/**
+     * Detaches a lesson from a teacher
+     * @param t The teacher to detach the lesson from
+     * @param l The lesson to be detached
+     * @throws IOException If an error occurs during detachment
+     */
 	public void detachLessonToTeacher(Teacher t, Lesson l) throws IOException {
 		for(Teacher tt: DataSingleton.INSTANCE.getTeachers()) {
 			if(tt.equals(t)) {
@@ -91,6 +132,12 @@ public class Manager extends Employee{
 		}
 	}
 	
+	/**
+     * Attaches a lesson to a student
+     * @param s The student to attach the lesson to
+     * @param l The lesson to be attached
+     * @throws Exception If an error occurs during attachment
+     */
 	public void attachLessonToStudent(Student s, Lesson l) throws Exception {
 		for(Student st: DataSingleton.INSTANCE.getStudents()) {
 			if(st.equals(s)) {
@@ -100,6 +147,12 @@ public class Manager extends Employee{
 		}
 	}
 	
+	/**
+     * Detaches a lesson from a student
+     * @param s The student to detach the lesson from
+     * @param l The lesson to be detached
+     * @throws IOException If an error occurs during detachment
+     */
 	public void detachLessonToStudent(Student s, Lesson l) throws IOException {
 		for(Student st: DataSingleton.INSTANCE.getStudents()) {
 			if(st.equals(s)) {
@@ -109,6 +162,12 @@ public class Manager extends Employee{
 		}
 	}
 	
+	 /**
+     * Approves the registration of a student for a course
+     * @param s The student to approve registration for
+     * @param c The course for which registration is approved
+     * @throws Exception If an error occurs during approval
+     */
 	public void approveRegistration(Student s, Course c) throws Exception {
 		for(User u: DataSingleton.INSTANCE.getUsers()) {
 			if(u instanceof Student) {
@@ -123,17 +182,31 @@ public class Manager extends Employee{
 		DataSingleton.write();
 	}
 	
+	/**
+     * Adds news to the system
+     * @param n The news to be added
+     * @throws IOException If an error occurs during news addition
+     */
 	public void addNews(News n) throws IOException {
 		DataSingleton.INSTANCE.addNews(n);
 		DataSingleton.write();
 	}
 	
-	
+	/**
+     * Views information about teachers in the system
+     * @return A list of users representing teachers
+     * @throws Exception If an error occurs during information viewing
+     */
 	public List<User> viewInfoTeacher() throws Exception {
 		List<User> teachers = DataSingleton.INSTANCE.getUsers().stream().filter(n->n instanceof Teacher).collect(Collectors.toList());
 		return teachers;
 	}
 
+	/**
+     * Creates a report of the average GPA for students in a specific school
+     * @param school The school for which the report is generated
+     * @return The report as a string
+     */
     public String createReportBySchool(Schools school) {
         List<Student> students = DataSingleton.INSTANCE.getStudents();
 
@@ -146,12 +219,21 @@ public class Manager extends Employee{
         return "Average GPA for " + school + ": " + averageGPA;
     }
 	
+    /**
+     * Views students sorted by GPA in descending order
+     * @return A list of users representing students, sorted by GPA in descending order
+     * @throws Exception If an error occurs during information viewing
+     */
 	public List<User> viewStudentsSortedByGpa() throws Exception{
 		return DataSingleton.INSTANCE.getStudents().stream()
 				.sorted(Comparator.comparingDouble(Student::getGpa).reversed())
 				.collect(Collectors.toCollection(Vector::new));
 	}
 	
+	/**
+     * Views students sorted alphabetically by surname
+     * @return A list of students sorted alphabetically by surname
+     */
     public List<Student> viewStudentsSortedAlphabetically() {
  		return DataSingleton.INSTANCE.getStudents().stream()
       			.sorted(Comparator.comparing(Student::getSurname))
