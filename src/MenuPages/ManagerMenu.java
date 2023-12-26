@@ -157,9 +157,9 @@ public class ManagerMenu {
 						choice = Integer.parseInt(bf.readLine());
 						Teacher t = DataSingleton.INSTANCE.getTeachers().get(choice-1);
 						System.out.println("Select lesson you wanna attach this teacher to: ");
-						printList(DataSingleton.INSTANCE.getLessons());
+						printList(DataSingleton.INSTANCE.getLessonsOfTeachers().get(t));
 						choice = Integer.parseInt(bf.readLine());
-						Lesson l = DataSingleton.INSTANCE.getLessons().get(choice-1);
+						Lesson l = DataSingleton.INSTANCE.getLessonsOfTeachers().get(t).get(choice-1);
 						m.attachLessonToTeacher(t, l);
 						System.out.println("Lesson attached to teacher!");
 					}
@@ -169,9 +169,9 @@ public class ManagerMenu {
 						choice = Integer.parseInt(bf.readLine());
 						Teacher t = DataSingleton.INSTANCE.getTeachers().get(choice-1);
 						System.out.println("Select lesson you wanna detach this teacher from: ");
-						printList(DataSingleton.INSTANCE.getLessons());
+						printList(DataSingleton.INSTANCE.getLessonsOfTeachers().get(t));
 						choice = Integer.parseInt(bf.readLine());
-						Lesson l = DataSingleton.INSTANCE.getLessons().get(choice-1);
+						Lesson l = DataSingleton.INSTANCE.getLessonsOfTeachers().get(t).get(choice-1);
 						m.detachLessonToTeacher(t, l);
 						System.out.println("Lesson detached from teacher!");
 					}
@@ -194,8 +194,8 @@ public class ManagerMenu {
 						choice = Integer.parseInt(bf.readLine());
 						Student s = DataSingleton.INSTANCE.getStudents().get(choice-1);
 						System.out.println("Select a lesson you wanna attach this student to:");
-						printList(DataSingleton.INSTANCE.getLessons());
-						Lesson l = DataSingleton.INSTANCE.getLessons().get(choice-1);
+						printList(DataSingleton.INSTANCE.getLessonsOfStudents().get(s));
+						Lesson l = DataSingleton.INSTANCE.getLessonsOfStudents().get(s).get(choice-1);
 						m.attachLessonToStudent(s, l);
 						System.out.println("Lesson attached to student!");
 					}
@@ -205,8 +205,8 @@ public class ManagerMenu {
 						choice = Integer.parseInt(bf.readLine());
 						Student s = DataSingleton.INSTANCE.getStudents().get(choice-1);
 						System.out.println("Select a lesson you wanna detach this student from: ");
-						printList(DataSingleton.INSTANCE.getLessons());
-						Lesson l = DataSingleton.INSTANCE.getLessons().get(choice-1);
+						printList(DataSingleton.INSTANCE.getLessonsOfStudents().get(s));
+						Lesson l = DataSingleton.INSTANCE.getLessonsOfStudents().get(s).get(choice-1);
 						m.detachLessonToStudent(s, l);
 						System.out.println("Lesson detached from student!");
 					}
