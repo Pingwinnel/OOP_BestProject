@@ -119,7 +119,9 @@ public class Teacher extends Employee{
     /**
      * Method to put a mark for a lesson for a specific student.
      *
-     * @param 
+     * @param l     The Lesson for which the mark is to be set.
+     * @param s     The Student for whom the mark is to be set.
+     * @param score The score to be set for the specified lesson and student.
      *
      * @throws IOException           If an I/O error occurs.
      */
