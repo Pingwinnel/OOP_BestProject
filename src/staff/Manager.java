@@ -1,6 +1,7 @@
 package staff;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
@@ -111,7 +112,10 @@ public class Manager extends Employee{
 	public void attachLessonToTeacher(Teacher t, Lesson l) throws Exception {
 		for(Teacher tt: DataSingleton.INSTANCE.getTeachers()) {
 			if(tt.equals(t)) {
-				DataSingleton.INSTANCE.getLessonsOfTeachers().put(tt, l);
+				if(DataSingleton.INSTANCE.getLessonsOfTeachers().get(tt) == null) {
+					DataSingleton.INSTANCE.getLessonsOfTeachers().put(tt, new ArrayList<Lesson>());
+				} 
+				DataSingleton.INSTANCE.getLessonsOfTeachers().get(tt).add(l);
 				DataSingleton.write();
 			}
 		}
@@ -126,7 +130,7 @@ public class Manager extends Employee{
 	public void detachLessonToTeacher(Teacher t, Lesson l) throws IOException {
 		for(Teacher tt: DataSingleton.INSTANCE.getTeachers()) {
 			if(tt.equals(t)) {
-				DataSingleton.INSTANCE.getLessonsOfTeachers().remove(tt, l);
+				DataSingleton.INSTANCE.getLessonsOfTeachers().get(tt).remove(l);
 				DataSingleton.write();
 			}
 		}
@@ -141,7 +145,10 @@ public class Manager extends Employee{
 	public void attachLessonToStudent(Student s, Lesson l) throws Exception {
 		for(Student st: DataSingleton.INSTANCE.getStudents()) {
 			if(st.equals(s)) {
-				DataSingleton.INSTANCE.getLessonsOfStudents().put(st, l);
+				if(DataSingleton.INSTANCE.getLessonsOfStudents().get(st) == null) {
+					DataSingleton.INSTANCE.getLessonsOfStudents().put(st, new ArrayList<Lesson>());
+				} 
+				DataSingleton.INSTANCE.getLessonsOfStudents().get(st).add(l);
 				DataSingleton.write();
 			}
 		}
@@ -156,7 +163,7 @@ public class Manager extends Employee{
 	public void detachLessonToStudent(Student s, Lesson l) throws IOException {
 		for(Student st: DataSingleton.INSTANCE.getStudents()) {
 			if(st.equals(s)) {
-				DataSingleton.INSTANCE.getLessonsOfStudents().remove(s, l);
+				DataSingleton.INSTANCE.getLessonsOfStudents().get(st).remove(l);
 				DataSingleton.write();
 			}
 		}

@@ -2,6 +2,7 @@ package staff;
 
 import java.io.Serializable;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Vector;
@@ -99,6 +100,7 @@ public abstract class User implements Serializable, Observer{
      */
 	public void changePassword(String password) {
 		this.password = password;
+		DataSingleton.INSTANCE.getLoginInfo().replace(getCorparateEmail(), password);
 	}
 	
 	@Override
@@ -108,7 +110,7 @@ public abstract class User implements Serializable, Observer{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getCorparateEmail(), getId(), getName(), getPassword(), getSurname());
+		return Objects.hash(getCorparateEmail(), getName(), getPassword(), getSurname());
 	}
 
 	@Override

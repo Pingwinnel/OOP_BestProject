@@ -14,14 +14,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 import course.Course;
 import course.Lesson;
 import researcher.EmployeeResearcher;
 import researcher.ResearchPaper;
 import researcher.ResearchProject;
-import staff.Dean;
+
 import staff.Manager;
 import staff.TechSupportSpecialist;
 import staff.User;
@@ -53,9 +52,8 @@ public class DataSingleton implements Serializable{
     private Vector<Orders> orders=new Vector<Orders>();
     private HashMap<String,String> loginInfo = new HashMap<String, String>();
     private Vector<String> logs=new Vector<String>();
-    private HashMap<Teacher, Lesson> lessonsOfTeachers = new HashMap<Teacher, Lesson>();
-    private HashMap<Dean, Lesson> lessonsOfDeans = new HashMap<Dean, Lesson>();
-    private HashMap<Student, Lesson> lessonsOfStudents = new HashMap<Student, Lesson>();
+    private HashMap<Teacher, List<Lesson>> lessonsOfTeachers = new HashMap<Teacher, List<Lesson>>();
+    private HashMap<Student, List<Lesson>> lessonsOfStudents = new HashMap<Student, List<Lesson>>();
     private List<Lesson> lessons = new ArrayList<Lesson>();
 	
     static File dataFile = new File("data.ser");
@@ -187,7 +185,6 @@ public class DataSingleton implements Serializable{
 		return news;
 	}
 	
-    //Student Organization
 	public void addSudentOrganization(StudentOrganization so) throws IOException {
 		studOrg.add(so);
 		write();
@@ -308,15 +305,11 @@ public class DataSingleton implements Serializable{
 		return lessons;
 	}
 
-	public HashMap<Teacher, Lesson> getLessonsOfTeachers() {
+	public HashMap<Teacher, List<Lesson>> getLessonsOfTeachers() {
 		return lessonsOfTeachers;
 	}
 
-	public HashMap<Student, Lesson> getLessonsOfStudents() {
+	public HashMap<Student, List<Lesson>> getLessonsOfStudents() {
 		return lessonsOfStudents;
-	}
-
-	public HashMap<Dean, Lesson> getLessonsOfDeans() {
-		return lessonsOfDeans;
 	}
 }

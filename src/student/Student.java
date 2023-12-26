@@ -159,8 +159,12 @@ public class Student extends User {
      * @param course The course for which to view the mark.
      * @return The mark of the student for the given course.
      */
-	public Mark viewMark(Course course) {
-		return getMarks().get(course);
+	public HashMap<Course, Mark> viewMark(Course course) {
+		for(Student s: DataSingleton.INSTANCE.getStudents()) {
+			if(s.equals(this)) return s.getMarks();
+		}
+		return null;
+		
 	}
     //Method to view the transcript of the student, including marks for all courses.
 	public void viewTranscript() {

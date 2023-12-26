@@ -143,9 +143,10 @@ public class Teacher extends Employee{
      * @return A list of students associated with the lesson.
      */
 	public List<Student> viewStudentInfo(Lesson l){
+		
 		return DataSingleton.INSTANCE.getLessonsOfStudents().entrySet()
 				.stream()
-				.filter(n->n.getValue().equals(l))
+				.filter(n->n.getValue().contains(l))
 				.map(Map.Entry::getKey)
 				.collect(Collectors.toList());
 		
@@ -156,11 +157,7 @@ public class Teacher extends Employee{
      * @return A list of lessons associated with the teacher.
      */
 	public List<Lesson> getLessons() {
-		return DataSingleton.INSTANCE.getLessonsOfTeachers().entrySet()
-				.stream()
-				.filter(n->n.getKey().equals(this))
-				.map(Map.Entry::getValue)
-				.collect(Collectors.toList());
+		return DataSingleton.INSTANCE.getLessonsOfTeachers().get(this);
 	}
     /**
      * Method to send a complaint to the school administration.

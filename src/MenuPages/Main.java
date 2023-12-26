@@ -27,7 +27,7 @@ public class Main {
 //		a.addUser(s1);
 //		System.out.println(a.getUsers());
 		Teacher t1 = new Teacher("Shamoi", "Pakita", 250, Schools.SITE, Degree.PROFESSOR);
-		t1.changePassword("123");
+//		t1.changePassword("123");
 //		a.addUser(t1);
 		
 		Course oop = new Course("OOP", "CS10", Schools.SITE, 3);
@@ -40,6 +40,7 @@ public class Main {
 		Teacher t2 = new Teacher("Amanov", "Alimzhan", 150, Schools.SITE, Degree.SENIOR_LECTURER);
 
 		Lesson oopL1 = new Lesson(oop, Days.WED, LessonType.PRACTICE, new Time(16,00));
+		Lesson oopL2 = new Lesson(oop, Days.TUE, LessonType.LECTURE, new Time(12,00));
 		Lesson adsL1 = new Lesson(algo, Days.MON, LessonType.LECTURE, new Time(14,00));
 		
 //		a.addUser(t1);
@@ -50,13 +51,14 @@ public class Main {
 //		a.addUser(s4);
 //		a.removeUser(1);
 
-		//System.out.println(a.getUsers());
+		System.out.println(a.getUsers());
 		Manager m = new Manager();
 		// m.addNews(new News("Examination days", UrgencyLevel.HIGH, "examination dates are in the system now, check your schedule"));
 //		m.addCoursesForRegis(oop);
 //		m.addCoursesForRegis(algo);
-		m.addLessonToSystem(oopL1);
+//		m.addLessonToSystem(oopL1);
 //		m.addLessonToSystem(adsL1);
+//		m.addLessonToSystem(oopL2);
 		
 //		m.approveRegistration(s1, oop);
 //		m.approveRegistration(s1, algo);
@@ -67,13 +69,14 @@ public class Main {
 //		m.approveRegistration(s3, algo);
 		
 //		m.attachLessonToStudent(s2, oopL1);
-//		m.attachLessonToStudent(s1, oopL1);
+//		m.attachLessonToStudent(s1, oopL2);
 //		m.attachLessonToStudent(s3, oopL1);
 //		m.attachLessonToStudent(s4, oopL1);
 //		m.attachLessonToStudent(s1, adsL1);
 //		m.attachLessonToStudent(s3, adsL1);
 
 //		m.attachLessonToTeacher(t1, oopL1);
+//		m.attachLessonToTeacher(t1, oopL2);
 //		m.attachLessonToTeacher(t2, adsL1);
 //		m.deleteLessonFromSystem(adsL1);
 		
@@ -84,15 +87,17 @@ public class Main {
 //		System.out.println(s2.getMarks());
 //		System.out.println(DataSingleton.INSTANCE.getLessonsOfTeachers());
 //		System.out.println(DataSingleton.INSTANCE.getLessonsOfStudents());
-//		
 		
-//		for(Student s: DataSingleton.INSTANCE.getStudents()) {
-//			if(s.equals(s1)) {
-//				System.out.println(s.getMarks());
-//			}
-//		}
+//		
+		for(Student s: DataSingleton.INSTANCE.getStudents()) {
+			if(s.equals(s1)) {
+				System.out.println(s.getMarks());
+			}
+		}
+//		System.out.println(s1.getMarks());
 
 //		TeacherMenu tm = new TeacherMenu(t1);
+//		System.out.println(t1.viewStudentInfo(oopL1));
 		
 //		LoginPage loginPage = new LoginPage();
 		
