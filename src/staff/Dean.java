@@ -1,5 +1,6 @@
 package staff;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
@@ -58,9 +59,11 @@ public class Dean extends Teacher {
 	
 	/**
      * Reads and clears complaints associated with the dean's faculty
+	 * @throws IOException 
      */
-	public void readComplaints() {
+	public void readComplaints() throws IOException {
 		DataSingleton.INSTANCE.getComplaintsByFaculty(this.faculty).removeAllElements();
+		DataSingleton.write();
 	}
 
     public boolean equals(Object o) {
@@ -94,7 +97,6 @@ public class Dean extends Teacher {
 	public List<Request> viewRequests() {
         List<Request> deanRequests = DataSingleton.INSTANCE.getRequests();
         deanRequests.removeIf(request -> !request.getReceiverDean().equals(this)); // Filter requests for the current dean
-
-        return deanRequests;	
+        return deanRequests;
         }
 }

@@ -266,6 +266,6 @@ public class TeacherMenu {
 		ResearchUniversity.INSTANCE.setWeek(7);
 		
 ////		s.getMarks().entrySet().stream().forEach(n->System.out.println(n.getKey() + " " + n.getValue()));
-//		TeacherMenu tm = new TeacherMenu(t);
+		TeacherMenu tm = new TeacherMenu(t);
 	}
 }

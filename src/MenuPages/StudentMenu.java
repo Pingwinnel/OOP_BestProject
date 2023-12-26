@@ -11,7 +11,7 @@ import student.Student;
 import utilities.DataSingleton;
 import utilities.Mark;
 
-public class StudentMenu extends UserMenu{
+public class StudentMenu {
 	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 	Student s;
 	
@@ -25,6 +25,11 @@ public class StudentMenu extends UserMenu{
 		}
 		utilities.Utils.printList(DataSingleton.INSTANCE.getCourse());
 		return true;
+	}
+	
+	public void welcomeMessage() {
+		System.out.println("Welcome Student "+s.getName());
+		
 	}
 	private void save() throws IOException {
 		DataSingleton.write();
@@ -96,11 +101,7 @@ public class StudentMenu extends UserMenu{
 			save();
 		}
 	}
-	@Override
-	public void welcomeMessage() {
-		System.out.println("Welcome Student "+s.getName());
-		
-	}
+	
 
 }
 

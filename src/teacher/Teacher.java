@@ -123,13 +123,9 @@ public class Teacher extends Employee{
      * @throws IOException           If an I/O error occurs.
      */
 	public void putMark(Lesson l, Student s, Double score) throws IOException {
-		
 		if(ResearchUniversity.INSTANCE.getWeek() <= 8) s.getMarks().get(l.getCourse()).setAtt1(score);
-		
 		else if(ResearchUniversity.INSTANCE.getWeek()>=14 && ResearchUniversity.INSTANCE.getWeek()>=15) s.getMarks().get(l.getCourse()).setAtt2(score);
-		
 		else if(ResearchUniversity.INSTANCE.getWeek() >= 16) s.getMarks().get(l.getCourse()).setFinalExamScore(score);;
-
 		DataSingleton.write();
 	
 	}
@@ -140,7 +136,6 @@ public class Teacher extends Employee{
      * @return A list of students associated with the lesson.
      */
 	public List<Student> viewStudentInfo(Lesson l){
-		
 		return DataSingleton.INSTANCE.getLessonsOfStudents().entrySet()
 				.stream()
 				.filter(n->n.getValue().contains(l))

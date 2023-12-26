@@ -110,7 +110,7 @@ public abstract class User implements Serializable, Observer{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getCorparateEmail(), getName(), getPassword(), getSurname());
+		return Objects.hash(getCorparateEmail(), getName(), getSurname());
 	}
 
 	@Override
