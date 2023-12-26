@@ -12,7 +12,7 @@ import utilities.Request;
 public class testDeanMenu {
 
 	public static void main(String[] args) throws Exception {
-        Dean dean = new Dean("Johnson", "Jane", 100000.0, Schools.SAM);
+        Dean dean = new Dean("Imanbaev", "Azamat", 500000.0, Schools.SITE);
         
         Request request = new Request(dean, "Vacation");
         Employee teacher = new Teacher("Pakita", "Shamoi", 530000);
