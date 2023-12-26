@@ -4,9 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import course.Course;
+import course.Lesson;
 import researcher.ResearchPaper;
 import researcher.Researcher;
 import student.Student;
@@ -14,15 +16,12 @@ import teacher.Teacher;
 import utilities.DataSingleton;
 import utilities.Mark;
 
-
-
-
 /**
  * The StudentMenu class is a menu interface for a student, allowing them to perform various actions
  * such as adding courses, viewing their transcript, changing their password, and accessing
  * research-related features.
  */
-public class StudentMenu {
+public class StudentMenu extends UserMenu{
 	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 	Student s;
 	
@@ -67,8 +66,14 @@ public class StudentMenu {
 	 */
 	private void addCourse() throws IOException {
 		System.out.println("Enter name of the course: ");
-		DataSingleton.INSTANCE.getCourse().add(new Course(bf.readLine()));
-		System.out.println("Course added! ");		
+		String str=bf.readLine();
+		for (Course course : DataSingleton.INSTANCE.getCourse()) {
+			if(course.getName().equals(str)){
+				System.out.println("Course added! ");
+				DataSingleton.INSTANCE.getCourse().add(new Course(bf.readLine()));
+				break;
+			}
+		}		
 	}
 	/**
 	 * The function is a menu-driven program that allows the user to perform various actions such as
@@ -77,9 +82,10 @@ public class StudentMenu {
 	 */
 	public void run() throws IOException {
 		try {
-			System.out.println("Welcome Student "+s.getName() + " " + s.getSurname());
+			welcomeMessage();
 			menu : while(true){
-				System.out.println("What do you want to do? \n 1) Add course \n 2) View transcript \n 3) Change password \n 4)Discover Hidden Talent of Researching \n 5)View news   \n 4) Exit");
+				System.out.println("What do you want to do? \n 1) Add course \n 2) View transcript \n 3) Change password \n 4)Discover Hidden Talent of Researching \n 5)View news  "
+						+ "\n 6)View teacher info \n 7) Exit");
 				int choice = Integer.parseInt(bf.readLine());
 					if (choice==1){
 					addCourse: while(true){
@@ -122,9 +128,19 @@ public class StudentMenu {
 						
 					}
 				else if (choice==6){
+					System.out.println("Print teacher name: ");
+					String strName=bf.readLine();
+					for (Map.Entry<Teacher, List<Lesson>> teachers : DataSingleton.INSTANCE.getLessonsOfTeachers().entrySet()) {
+						if(teachers.getKey().getName()==strName) {
+							teachers.getKey().toString();
+						}
+					}
+				}
+				else if (choice==7){
 					exit();
 					break menu;
 				}
+				
 				else if(choice == 5) {
 					// The line `Student.ResearcherStudent studentResearcher = s.new ResearcherStudent();` is creating
 					// a new instance of the inner class `ResearcherStudent` within the `Student` class. This inner
@@ -175,6 +191,14 @@ public class StudentMenu {
 			e.printStackTrace();
 			save();
 		}
+	}
+	@Override
+	// The `welcomeMessage()` method is overriding the `welcomeMessage()` method from the `UserMenu`
+	// class. It is responsible for printing a welcome message specific to the `StudentMenu` class. In
+	// this case, it prints "Welcome Student" followed by the name of the student.
+	public void welcomeMessage() {
+		System.out.println("Welcome Student "+s.getName());
+		
 	}
 
 }
