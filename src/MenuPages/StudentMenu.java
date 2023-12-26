@@ -7,11 +7,14 @@ import java.util.List;
 import java.util.Scanner;
 
 import course.Course;
+import researcher.ResearchPaper;
+import researcher.Researcher;
 import student.Student;
+import teacher.Teacher;
 import utilities.DataSingleton;
 import utilities.Mark;
 
-public class StudentMenu {
+public class StudentMenu extends UserMenu{
 	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 	Student s;
 	
@@ -25,11 +28,6 @@ public class StudentMenu {
 		}
 		utilities.Utils.printList(DataSingleton.INSTANCE.getCourse());
 		return true;
-	}
-	
-	public void welcomeMessage() {
-		System.out.println("Welcome Student "+s.getName());
-		
 	}
 	private void save() throws IOException {
 		DataSingleton.write();
@@ -47,20 +45,11 @@ public class StudentMenu {
 		DataSingleton.INSTANCE.getCourse().add(new Course(bf.readLine()));
 		System.out.println("Course added! ");		
 	}
-	private void addCourseToStudent(Student s) throws NumberFormatException, IOException {
-		int i = Integer.parseInt(bf.readLine())-1;
-		Course c = DataSingleton.INSTANCE.getCourse().get(i);
-		if(!s.getMarks().containsKey(c)) {
-			s.getMarks().put(c, new Mark());
-			System.out.println("Course "+DataSingleton.INSTANCE.getCourse().get(i) +" added to  "+s.getName());	
-		}
-		else System.out.println("Student " + s.getName()+ " already registered to "+c);
-	}
 	public void run() throws IOException {
 		try {
 			welcomeMessage();
 			menu : while(true){
-				System.out.println("What do you want to do? \n 1) Add course \n 2) View transcript \n 3) Change password  \n 4) Exit");
+				System.out.println("What do you want to do? \n 1) Add course \n 2) View transcript \n 3) Change password \n 4)Discover Hidden Talent of Researching \n 5)View news   \n 4) Exit");
 				int choice = Integer.parseInt(bf.readLine());
 					if (choice==1){
 					addCourse: while(true){
@@ -90,9 +79,53 @@ public class StudentMenu {
 						s.changePassword(pass);
 						System.out.println("Password succesfuly changed");
 					}
-				else if (choice==4){
+					else if(choice == 4) {
+						viewNews: while(true) {
+							
+							System.out.println(s.viewNews());
+							System.out.println("\n 1) Return back \n 2) Exit");
+							choice = Integer.parseInt(bf.readLine());
+							if(choice==1) continue menu;
+							if(choice==2) {exit();  break menu;}
+							break;
+						}
+						
+					}
+				else if (choice==6){
 					exit();
 					break menu;
+				}
+				else if(choice == 5) {
+					Student.ResearcherStudent studentResearcher = s.new ResearcherStudent();
+					discoverTalant: while(true) {
+						System.out.println("\n 1) Add Research Paper 2) Print Research Papers \n 3) Calculate H-index\n 4) Return back \n 5) Exit");
+						choice = Integer.parseInt(bf.readLine());
+						if(choice == 1) {
+							System.out.println("Name: ");
+							String name = bf.readLine();
+							System.out.println("Pages: ");
+							int pages = Integer.parseInt(bf.readLine());
+							System.out.println("Citations: ");
+							int cit = Integer.parseInt(bf.readLine());
+							System.out.println("Doi: ");
+							String doi = bf.readLine();
+							ResearchPaper rp = new ResearchPaper(name, pages, cit, doi);
+							DataSingleton.INSTANCE.addResearchPapers(rp);
+						}
+						if(choice == 2) {
+							for(ResearchPaper rp : DataSingleton.INSTANCE.getResearchPapers()) {
+								for(Researcher r: rp.getAuthors()) {
+									if(r.equals(studentResearcher)) System.out.println(studentResearcher.printPapers());
+									
+								}
+							}
+							
+						
+						}
+						if(choice == 3) System.out.println(studentResearcher.calculateHIndex());
+						if(choice == 4) continue menu;
+						if(choice == 5) {exit();  break menu;}
+			}
 				}
 			}
 		} catch (Exception e) {
@@ -101,7 +134,11 @@ public class StudentMenu {
 			save();
 		}
 	}
-	
+	@Override
+	public void welcomeMessage() {
+		System.out.println("Welcome Student "+s.getName());
+		
+	}
 
 }
 
