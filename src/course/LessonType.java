@@ -5,5 +5,5 @@ package course;
  * @author Code Symphony
  */
 public enum LessonType {
-	Lecture,Lab,Practise
+	LECTURE, LAB, PRACTICE
 }
