@@ -303,30 +303,32 @@ public class ManagerMenu {
 				}
 			}
 			
-//			else if(choice == 13) {
-//				sendRequest: while(true) {
-//					System.out.println("Enter a corparate email of a dean who will receive this request: ");
-//					String email = bf.readLine();
-//					Dean d = (Dean) findUserByEmail(email);
-//					System.out.println("Enter a text(body) of the request: ");
-//					String text = bf.readLine();
-//					Request r = new Request(d, text);
-//					m.sendRequest(r);
-//					System.out.println("Request sended!");
-//					System.out.println("1) Send another request \n 2) Return back \n 2) Exit");
-//					choice = Integer.parseInt(bf.readLine());
-//					if(choice==1) continue sendRequest;
-//					if(choice==2) continue menu;
-//					if(choice==3) {exit();  break menu;}
-//					break;
-//				}
-//			}
+			else if(choice == 13) {
+				sendRequest: while(true) {
+					System.out.println("Select a dean who will receive this request: ");
+					printList(DataSingleton.INSTANCE.getDeans());
+					choice = Integer.parseInt(bf.readLine());
+					Dean d = DataSingleton.INSTANCE.getDeans().get(choice-1);
+					System.out.println("Enter a text(body) of the request: ");
+					String text = bf.readLine();
+					Request r = new Request(d, text);
+					m.sendRequest(r);
+					System.out.println("Request sended!");
+					System.out.println("1) Send another request \n 2) Return back \n 2) Exit");
+					choice = Integer.parseInt(bf.readLine());
+					if(choice==1) continue sendRequest;
+					if(choice==2) continue menu;
+					if(choice==3) {exit();  break menu;}
+					break;
+				}
+			}
 			
 			else if(choice == 14) {
 				sendMessage: while(true) {
-					System.out.println("Enter a corparate email of a employee who will receive this message: ");
-					String email = bf.readLine();
-					Employee e = (Employee) findUserByEmail(email);
+					System.out.println("Select an employee who will receive this message: ");
+					printList(DataSingleton.INSTANCE.getEmployees());
+					choice = Integer.parseInt(bf.readLine());
+					Employee e = DataSingleton.INSTANCE.getEmployees().get(choice-1);
 					System.out.println("Enter a text(body) of the message: ");
 					String text = bf.readLine();
 					m.sendMessage(text, e);

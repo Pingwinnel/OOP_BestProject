@@ -56,6 +56,7 @@ public class DataSingleton implements Serializable{
     private HashMap<Student, List<Lesson>> lessonsOfStudents = new HashMap<Student, List<Lesson>>();
     private List<Lesson> lessons = new ArrayList<Lesson>();
     private Vector<Employee> employees = new Vector<Employee>();
+    private vector<Dean> deans = new Vector<Dean>();
 	
     static File dataFile = new File("data.ser");
 	
@@ -313,6 +314,7 @@ public class DataSingleton implements Serializable{
 	public HashMap<Student, List<Lesson>> getLessonsOfStudents() {
 		return lessonsOfStudents;
 	}
+	
 	public Vector<Employee> getEmployees(){
 		
 		for(User u : users) {
@@ -321,5 +323,15 @@ public class DataSingleton implements Serializable{
 			}
 		}
 		return employees;
+	}
+	
+	public Vector<Dean> getDeans(){
+		
+		for(User u : users) {
+			if(u instanceof Dean) {
+				deans.add((Dean)u);
+			}
+		}
+		return deans;
 	}
 }
