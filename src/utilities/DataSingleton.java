@@ -20,7 +20,7 @@ import course.Lesson;
 import researcher.EmployeeResearcher;
 import researcher.ResearchPaper;
 import researcher.ResearchProject;
-
+import staff.Employee;
 import staff.Manager;
 import staff.TechSupportSpecialist;
 import staff.User;
@@ -55,6 +55,7 @@ public class DataSingleton implements Serializable{
     private HashMap<Teacher, List<Lesson>> lessonsOfTeachers = new HashMap<Teacher, List<Lesson>>();
     private HashMap<Student, List<Lesson>> lessonsOfStudents = new HashMap<Student, List<Lesson>>();
     private List<Lesson> lessons = new ArrayList<Lesson>();
+    private Vector<Employee> employees = new Vector<Employee>();
 	
     static File dataFile = new File("data.ser");
 	
@@ -311,5 +312,14 @@ public class DataSingleton implements Serializable{
 
 	public HashMap<Student, List<Lesson>> getLessonsOfStudents() {
 		return lessonsOfStudents;
+	}
+	public Vector<Employee> getEmployees(){
+		
+		for(User u : users) {
+			if(u instanceof Employee) {
+				employees.add((Employee)u);
+			}
+		}
+		return employees;
 	}
 }

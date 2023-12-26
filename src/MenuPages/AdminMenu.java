@@ -37,6 +37,8 @@ public class AdminMenu {
 					System.out.println("Surname: ");
 					String userSurname = bf.readLine();
 					if(userType.equals("Teacher")) {
+						System.out.println("School: SAM/SITE/BS");
+						//Schools school = bf.readLine();
 						Teacher t = new Teacher(userSurname, userName);
 					}
 					

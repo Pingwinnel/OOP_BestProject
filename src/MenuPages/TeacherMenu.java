@@ -12,9 +12,11 @@ import course.Days;
 import course.Lesson;
 import course.LessonType;
 import course.Time;
+import researcher.EmployeeResearcher;
 import researcher.ResearchPaper;
 import researcher.Researcher;
 import staff.Admin;
+import staff.Employee;
 import staff.Manager;
 import student.Major;
 import student.Schools;
@@ -107,12 +109,21 @@ public class TeacherMenu {
 					Lesson l = t.getLessons().get(choice1-1);
 					System.out.println("Choose a student: ");
 					printList(t.viewStudentInfo(l));
-					int choice2 = Integer.parseInt(bf.readLine());
-					Student s = t.viewStudentInfo(l).get(choice2-1);
-					System.out.println("Double mark: ");
-					double choice3 = Double.parseDouble(bf.readLine());
-					t.putMark(l, s, choice3);
-					System.out.println("Mark is putted");
+					puttingMark: while(true) {
+						int choice2 = Integer.parseInt(bf.readLine());
+						Student s = t.viewStudentInfo(l).get(choice2-1);
+						System.out.println("Double mark: ");
+						double choice3 = Double.parseDouble(bf.readLine());
+						t.putMark(l, s, choice3);
+						System.out.println("Mark is putted");
+						System.out.println("\n 1)Put mark to another studen \n 2) Choose another lesson 3) Return back \n 4) Exit");
+						if(choice==1) continue puttingMark;
+						if(choice==2) continue putMark;
+						if(choice==3) continue menu;
+						if(choice==4) {exit();  break menu;}
+						break;
+						
+					}
 					System.out.println("\n 1) Return back \n 2) Exit");
 					choice = Integer.parseInt(bf.readLine());
 					if(choice==1) continue menu;
@@ -123,6 +134,21 @@ public class TeacherMenu {
 			else if(choice == 6) {
 				sendRequest: while(true) {
 					
+				}
+			}
+			else if(choice == 7) {
+				sendMessage: while(true) {
+					printList(DataSingleton.INSTANCE.getEmployees().stream().collect(Collectors.toList()));
+					choice = Integer.parseInt(bf.readLine());
+					Employee e = DataSingleton.INSTANCE.getEmployees().get(choice-1);
+					System.out.println("What do you want to write?");
+					String text = bf.readLine();
+					t.sendMessage(text, e);
+					System.out.println("\n 1) Return back \n 2) Exit");
+					choice = Integer.parseInt(bf.readLine());
+					if(choice==1) continue menu;
+					if(choice==2) {exit();  break menu;}
+					break;
 				}
 			}
 			else if(choice == 10) {
@@ -196,11 +222,12 @@ public class TeacherMenu {
 		Student s1 = new Student("OOP", "Pakn", Schools.SITE, Major.IS);
 		Student s2 = new Student("Algo", "Pakn", Schools.SITE, Major.IM);
 		Teacher t = new Teacher("T", "U", Schools.SITE);
+		EmployeeResearcher res = new EmployeeResearcher("I'm", "Researcher");
 //		Teacher t = DataSingleton.INSTANCE.getTeachers().get(0);
 		Lesson oopL1 = new Lesson(oop, Days.TUE, LessonType.PRACTICE, new Time(14,30));
 		Lesson adsL1 = new Lesson(algo, Days.MON, LessonType.LECTURE, new Time(11,00));
 //		a.addUser(t);
-//		a.addUser(s1);
+//		a.addUser(res);
 //		a.addUser(s2);
 //		a.removeUser(6);
 //		a.removeUser(5);
@@ -220,7 +247,7 @@ public class TeacherMenu {
 //		m.deleteLessonFromSystem(adsL1);
 		
 //		System.out.println(DataSingleton.INSTANCE.getCourse());
-		System.out.println(DataSingleton.INSTANCE.getLessons());
+//		System.out.println(DataSingleton.INSTANCE.getLessons());
 //		System.out.println(t.getLessons());	
 		
 //		System.out.println(s2.getMarks());
@@ -229,7 +256,7 @@ public class TeacherMenu {
 		
 		
 		
-//		System.out.println(DataSingleton.INSTANCE.getLessonsOfStudents());
+		System.out.println(DataSingleton.INSTANCE.getMessages());
 
 		
 
