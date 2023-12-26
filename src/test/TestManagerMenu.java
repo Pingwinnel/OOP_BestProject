@@ -12,6 +12,7 @@ import course.LessonType;
 import course.Time;
 import staff.Dean;
 import staff.Manager;
+import staff.ManagerType;
 import student.Schools;
 import teacher.Teacher;
 import utilities.DataSingleton;
@@ -20,7 +21,7 @@ public class TestManagerMenu {
 
 	public static void main(String[] args) throws Exception {
 		
-		Manager m = new Manager();
+		Manager m = new Manager("A", "B", ManagerType.OR);
 		ManagerMenu mm = new ManagerMenu(m);
 		Time t = new Time(13, 0);
 		Course c = new Course("OOP");

@@ -14,7 +14,7 @@ import teacher.Teacher;
 import utilities.DataSingleton;
 import utilities.Mark;
 
-public class StudentMenu extends UserMenu{
+public class StudentMenu {
 	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 	Student s;
 	
@@ -47,7 +47,7 @@ public class StudentMenu extends UserMenu{
 	}
 	public void run() throws IOException {
 		try {
-			welcomeMessage();
+			System.out.println("Welcome Student "+s.getName() + " " + s.getSurname());
 			menu : while(true){
 				System.out.println("What do you want to do? \n 1) Add course \n 2) View transcript \n 3) Change password \n 4)Discover Hidden Talent of Researching \n 5)View news   \n 4) Exit");
 				int choice = Integer.parseInt(bf.readLine());
@@ -134,11 +134,7 @@ public class StudentMenu extends UserMenu{
 			save();
 		}
 	}
-	@Override
-	public void welcomeMessage() {
-		System.out.println("Welcome Student "+s.getName());
-		
-	}
+
 
 }
 

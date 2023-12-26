@@ -14,7 +14,7 @@ public class TestEmployeeResearcherMenu {
 
 	public static void main(String[] args) throws Exception {
 		
-		EmployeeResearcher er = new EmployeeResearcher();
+		EmployeeResearcher er = new EmployeeResearcher("C", "D");
 		Manager m = new Manager();
 		Teacher tr = new Teacher("ghjk", "hfjk");
 		DataSingleton.INSTANCE.addUser(tr);
