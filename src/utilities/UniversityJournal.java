@@ -1,5 +1,8 @@
 package utilities;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +15,32 @@ import researcher.ResearchPaper;
  * @author Code Symphony
  */
 public class UniversityJournal implements Observable{
+<<<<<<< HEAD
 	
+=======
+	private List<Observer> observers = new ArrayList<Observer>(); 
+	static File papers = new File("papers.txt");
+	
+	
+	
+	static  {
+		if(!papers.exists()) {
+			try {
+				papers.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	/**
+	 * Constructor with an empty list of observers for the UniversityJournal class
+	 */
+>>>>>>> 3d980a05fb9e1c4157c68efed6337faa5198a967
     public UniversityJournal() {
 
     }
+    
 
     @Override
 	public String toString() {
@@ -55,14 +80,16 @@ public class UniversityJournal implements Observable{
 
     /**
      * Notifies all subscribed observers of updates in the journal
+     * @throws FileNotFoundException 
      */
     @Override
-    public void notifyObservers() {
-        for (Observer observer : observers) {
-            observer.update();
-        }
-//        System.out.println("New Research Paper!");
-    }
+	public void notifyObservers() throws FileNotFoundException {
+		for(Observer o: observers) {
+			o.update(papers);
+		}
+		
+	}
+   
 
     /**
      * Sets a new research paper in the journal and notifies observers
@@ -70,6 +97,9 @@ public class UniversityJournal implements Observable{
      * @throws IOException If an I/O error occurs while adding the research paper
      */
     public void setNewPapers(ResearchPaper newPaper) throws IOException {
+    	FileWriter myWriter = new FileWriter(papers); 
+    	myWriter.write(newPaper.toString());
+    	myWriter.close();
     	DataSingleton.INSTANCE.addResearchPapers(newPaper);
         notifyObservers();
     }
@@ -93,4 +123,7 @@ public class UniversityJournal implements Observable{
         
         return latest;
     }
+
+
+	
 }

@@ -1,5 +1,7 @@
 package utilities;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import researcher.ResearchPaper;
@@ -12,5 +14,5 @@ public interface Observer {
 	 /**
      * Updates the observer about changes in the observable object
      */
-	public void update();
+	public void update(File file) throws FileNotFoundException;
 }
