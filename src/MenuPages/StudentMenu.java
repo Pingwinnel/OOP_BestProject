@@ -11,11 +11,11 @@ import student.Student;
 import utilities.DataSingleton;
 import utilities.Mark;
 
-public class studentMenu extends UserMenu{
+public class StudentMenu extends UserMenu{
 	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 	Student s;
 	
-	public studentMenu(Student s) {
+	public StudentMenu(Student s) {
 		this.s=s;
 	}
 	public boolean showCourses(){

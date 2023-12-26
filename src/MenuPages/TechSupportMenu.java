@@ -9,12 +9,12 @@ import student.Student;
 import utilities.DataSingleton;
 import utilities.Mark;
 
-public class techSupportMenu {
+public class TechSupportMenu {
 
 	Scanner in = new Scanner(System.in);
 	TechSupportSpecialist tss;
 
-	public techSupportMenu(TechSupportSpecialist tss) {
+	public TechSupportMenu(TechSupportSpecialist tss) {
 		this.tss=tss;
 	}
 	private void save() throws IOException {
