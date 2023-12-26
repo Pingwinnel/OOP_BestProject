@@ -15,7 +15,7 @@ public class TestPutMark {
 		// for now doesnt work, because it was adapted to menu
 		Admin a = new Admin();
 		Student s = new Student("Akn", "Pakn");
-		Teacher t = new Teacher("T", "U", 100, Schools.SITE);
+		Teacher t = new Teacher("T", "U", Schools.SITE);
 //		a.addUser(t);
 //		System.out.println(a.getUsers());
 		Manager m = new Manager();

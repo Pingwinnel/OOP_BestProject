@@ -24,7 +24,7 @@ public class TestManagerMenu {
 		ManagerMenu mm = new ManagerMenu(m);
 		Time t = new Time(13, 0);
 		Course c = new Course("OOP");
-		Teacher tr = new Teacher("ghjk", "hfjk", 34567);
+		Teacher tr = new Teacher("ghjk", "hfjk");
 		Lesson l = new Lesson(c, Days.FRI, LessonType.LAB, t);
 		Lesson l2 = new Lesson(c, Days.MON, LessonType.PRACTICE, t);
 		HashMap<Teacher, Lesson> lessonsOfTeachers = new HashMap<Teacher, Lesson>();
@@ -35,7 +35,7 @@ public class TestManagerMenu {
 		//System.out.println(lessonsOfTeachers.get(tr));
 		//System.out.println(tr.getCorparateEmail());
 		//System.out.println(mm.findUserByEmail("h.ghjk@kbtu.kz"));
-		Dean d = new Dean("erty", "ergh", 567890, Schools.SITE);
+		Dean d = new Dean("erty", "ergh", Schools.SITE);
 		DataSingleton.INSTANCE.addUser(d);
 		//System.out.println(d.getCorparateEmail());
 		//System.out.println(mm.findUserByEmail("e.erty@kbtu.kz"));

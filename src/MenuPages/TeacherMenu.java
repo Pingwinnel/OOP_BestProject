@@ -195,7 +195,7 @@ public class TeacherMenu {
 //		Student s = DataSingleton.INSTANCE.getStudents().elementAt(0);
 		Student s1 = new Student("OOP", "Pakn", Schools.SITE, Major.IS);
 		Student s2 = new Student("Algo", "Pakn", Schools.SITE, Major.IM);
-		Teacher t = new Teacher("T", "U", 100, Schools.SITE);
+		Teacher t = new Teacher("T", "U", Schools.SITE);
 //		Teacher t = DataSingleton.INSTANCE.getTeachers().get(0);
 		Lesson oopL1 = new Lesson(oop, Days.TUE, LessonType.PRACTICE, new Time(14,30));
 		Lesson adsL1 = new Lesson(algo, Days.MON, LessonType.LECTURE, new Time(11,00));

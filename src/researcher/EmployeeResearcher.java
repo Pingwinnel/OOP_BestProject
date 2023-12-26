@@ -23,10 +23,9 @@ public class EmployeeResearcher extends Employee implements Researcher  {
 	 * Parameterized constructor for the Employeeresearcher class
 	 * @param name
 	 * @param surname
-	 * @param salary
 	 */
-	public EmployeeResearcher(String name, String surname, double salary) {
-		super(name, surname, salary);
+	public EmployeeResearcher(String name, String surname) {
+		super(name, surname);
 	}
 	
 	@Override

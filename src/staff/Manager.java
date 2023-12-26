@@ -37,11 +37,10 @@ public class Manager extends Employee{
 	 * Parameterized constructor for the Manager class
 	 * @param surname
 	 * @param name
-	 * @param salary
 	 * @param type
 	 */
-	public Manager(String surname, String name, double salary, ManagerType type) {
-		super(surname, name, salary);
+	public Manager(String surname, String name, ManagerType type) {
+		super(surname, name);
 		this.type = type;
 	}
 

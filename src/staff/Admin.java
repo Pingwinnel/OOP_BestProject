@@ -24,10 +24,9 @@ public class Admin extends Employee{
 	 * Parameterized constructor for the Admin class
 	 * @param surname
 	 * @param name
-	 * @param salary
 	 */
-	public Admin(String surname, String name, double salary) {
-		super(surname, name, salary);
+	public Admin(String surname, String name) {
+		super(surname, name);
 		
 	}
 	

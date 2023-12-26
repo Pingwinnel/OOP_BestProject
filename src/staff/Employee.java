@@ -27,11 +27,10 @@ public abstract class Employee extends User{
 	 * Parameterized constructor for the Employee class
 	 * @param surname
 	 * @param name
-	 * @param salary
 	 */
-	public Employee(String surname, String name, double salary) {
+	public Employee(String surname, String name) {
 		super(surname, name);
-		this.salary = salary;
+		this.salary = 100;
 		this.hireDate = new Date();
 	}
 	

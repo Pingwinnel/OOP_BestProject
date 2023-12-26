@@ -39,11 +39,10 @@ public class Teacher extends Employee{
      *
      * @param surname      The surname of the teacher.
      * @param name         The name of the teacher.
-     * @param salary       The salary of the teacher.
      * @param school       The school associated with the teacher.
      */
-	public Teacher(String surname, String name, double salary, Schools school) {
-		super(surname, name, salary);
+	public Teacher(String surname, String name, Schools school) {
+		super(surname, name);
 		this.academicDegree = Degree.TUTOR;
 		this.school = school;
 	}
@@ -52,12 +51,11 @@ public class Teacher extends Employee{
      *
      * @param surname       The surname of the teacher.
      * @param name          The name of the teacher.
-     * @param salary        The salary of the teacher.
      * @param school        The school associated with the teacher.
      * @param academicDegree The academic degree of the teacher.
      */
-	public Teacher(String surname, String name, double salary, Schools school, Degree academicDegree) {
-		super(surname, name, salary);
+	public Teacher(String surname, String name,  Schools school, Degree academicDegree) {
+		super(surname, name);
 		this.setAcademicDegree(academicDegree);
 		this.setSchool(school);
 	}
@@ -67,10 +65,9 @@ public class Teacher extends Employee{
      *
      * @param surname The surname of the teacher.
      * @param name    The name of the teacher.
-     * @param salary  The salary of the teacher.
      */
-	public Teacher(String surname, String name, double salary) {
-		super(surname, name, salary);
+	public Teacher(String surname, String name) {
+		super(surname, name);
 	}
     /**
      * Getter method to retrieve the school associated with the teacher.

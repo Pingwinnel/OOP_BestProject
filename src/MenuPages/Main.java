@@ -26,7 +26,7 @@ public class Main {
 //		s1.changePassword("Pok.pokova2005");
 //		a.addUser(s1);
 //		System.out.println(a.getUsers());
-		Teacher t1 = new Teacher("Shamoi", "Pakita", 250, Schools.SITE, Degree.PROFESSOR);
+		Teacher t1 = new Teacher("Shamoi", "Pakita", Schools.SITE, Degree.PROFESSOR);
 //		t1.changePassword("123");
 //		a.addUser(t1);
 		
@@ -37,7 +37,7 @@ public class Main {
 		Student s2 = new Student("Abdugapparova", "Tuba", Schools.SITE, Major.CSaS, 3);
 		Student s3 = new Student("Omirzhanov", "Yerassyl", Schools.SITE, Major.IS, 2);
 		Student s4 = new Student("Medelbay", "Adina", Schools.SITE, Major.IS, 2);
-		Teacher t2 = new Teacher("Amanov", "Alimzhan", 150, Schools.SITE, Degree.SENIOR_LECTURER);
+		Teacher t2 = new Teacher("Amanov", "Alimzhan", Schools.SITE, Degree.SENIOR_LECTURER);
 
 		Lesson oopL1 = new Lesson(oop, Days.WED, LessonType.PRACTICE, new Time(16,00));
 		Lesson oopL2 = new Lesson(oop, Days.TUE, LessonType.LECTURE, new Time(12,00));

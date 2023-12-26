@@ -13,9 +13,9 @@ import utilities.Request;
 public class TestRequest {
 
 	public static void main(String[] args) throws IOException{
-		Dean dean = new Dean("Azamat", "Imanbaev", 550000, Schools.SITE);
+		Dean dean = new Dean("Azamat", "Imanbaev", Schools.SITE);
 
-        Employee teacher = new Teacher("Pakita", "Shamoi", 530000);
+        Employee teacher = new Teacher("Pakita", "Shamoi");
         Request request = new Request(dean, "Vacation");
         
         teacher.sendRequest(request);

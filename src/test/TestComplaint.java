@@ -13,10 +13,10 @@ public class TestComplaint {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		DataSingleton db = DataSingleton.INSTANCE;
-		Teacher t1 = new Teacher("a1", "b1", 250000, Schools.SAM);
-		Dean deanSITE = new Dean("a2", "b2", 250000, Schools.SITE);
-		Teacher t2 = new Teacher("a2", "b2", 250000, Schools.BS);
-		Dean deanBS = new Dean("a2", "b2", 250000, Schools.BS);
+		Teacher t1 = new Teacher("a1", "b1", Schools.SAM);
+		Dean deanSITE = new Dean("a2", "b2", Schools.SITE);
+		Teacher t2 = new Teacher("a2", "b2",  Schools.BS);
+		Dean deanBS = new Dean("a2", "b2", Schools.BS);
 		t1.sendComplaint(Schools.SITE, "Complaint about SITE student 1", UrgencyLevel.HIGH);
 		t1.sendComplaint(Schools.SITE, "Complaint about SITE student 2", UrgencyLevel.LOW);
 		t1.sendComplaint(Schools.BS, "Complaint about BS student 3", UrgencyLevel.MEDIUM);

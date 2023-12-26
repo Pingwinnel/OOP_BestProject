@@ -12,10 +12,10 @@ import utilities.Request;
 public class testDeanMenu {
 
 	public static void main(String[] args) throws Exception {
-        Dean dean = new Dean("Imanbaev", "Azamat", 500000.0, Schools.SITE);
+        Dean dean = new Dean("Imanbaev", "Azamat", Schools.SITE);
         
         Request request = new Request(dean, "Vacation");
-        Employee teacher = new Teacher("Pakita", "Shamoi", 530000);
+        Employee teacher = new Teacher("Pakita", "Shamoi");
         teacher.sendRequest(request);
 
         DeanMenu deanMenu = new DeanMenu(dean, null);

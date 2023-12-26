@@ -23,11 +23,10 @@ public class Professor extends Teacher implements Researcher{
      *
      * @param surname The surname of the professor.
      * @param name    The name of the professor.
-     * @param salary  The salary of the professor.
      * @param school  The school associated with the professor.
      */
-	public Professor(String surname, String name, double salary, Schools school) {
-		super(surname, name, salary, school);
+	public Professor(String surname, String name, Schools school) {
+		super(surname, name, school);
 		this.setAcademicDegree(Degree.PROFESSOR);
 	}
 

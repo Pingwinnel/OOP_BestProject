@@ -11,8 +11,8 @@ import utilities.Orders;
 public class TestTechMenu {
 
 	public static void main(String[] args) throws Exception {
-		Teacher tc1=new Teacher("Yerasyil","Omirzhanov",1300);
-		TechSupportSpecialist tch1= new TechSupportSpecialist("Yerasyil","Omirzhanov",2400);
+		Teacher tc1=new Teacher("Yerasyil","Omirzhanov");
+		TechSupportSpecialist tch1= new TechSupportSpecialist("Yerasyil","Omirzhanov");
 		TechSupportMenu techMenu=new TechSupportMenu(tch1);
 		techMenu.run();
 		

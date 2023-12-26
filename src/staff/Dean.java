@@ -27,11 +27,10 @@ public class Dean extends Teacher {
 	 * Parameterized constructoe for the Dean class
 	 * @param surname
 	 * @param name
-	 * @param salary
 	 * @param faculty
 	 */
-	public Dean(String surname, String name, double salary, Schools faculty) {
-		super(surname, name, salary);
+	public Dean(String surname, String name, Schools faculty) {
+		super(surname, name);
 		this.faculty = faculty;
 	}
 	

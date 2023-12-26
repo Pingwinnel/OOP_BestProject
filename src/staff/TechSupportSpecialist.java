@@ -27,10 +27,9 @@ public class TechSupportSpecialist extends Employee {
 	 * Parameterized constructor for the TechSupportSpecialist class
 	 * @param surname
 	 * @param name
-	 * @param salary
 	 */
-	public TechSupportSpecialist(String surname, String name, double salary) {
-		super(surname, name, salary);
+	public TechSupportSpecialist(String surname, String name) {
+		super(surname, name);
 	}
 	
 	/**
