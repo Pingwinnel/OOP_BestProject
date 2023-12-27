@@ -12,7 +12,10 @@ public class MainMain {
 //		AdminMenu am = new AdminMenu(a);
 //		System.out.println(a.getUsers());
 		Manager m = new Manager("Manager", "Manager", ManagerType.SCHOOL);
+//		m.changePassword("123");
+		
 		ManagerMenu mm = new ManagerMenu(m);
+//		mm.run();
 //		mm.run();
 //		System.out.println(DataSingleton.INSTANCE.getLessons());
 //		System.out.println(DataSingleton.INSTANCE.getCourse());
@@ -20,7 +23,7 @@ public class MainMain {
 //		System.out.println(DataSingleton.INSTANCE.getLessonsOfTeachers());
 //		System.out.println(DataSingleton.INSTANCE.getResearchPapers());
 		
-//		LoginPage lp = new LoginPage();
+		LoginPage lp = new LoginPage();
 //		
 
 	}

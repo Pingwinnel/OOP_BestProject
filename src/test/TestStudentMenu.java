@@ -13,8 +13,8 @@ public class TestStudentMenu {
 //                Teacher atsushi =new Teacher("Atsushi","Ms",2300);
 //
 //		
-		StudentMenu stuMenu=new StudentMenu(s);
-		stuMenu.run();
+//		StudentMenu stuMenu=new StudentMenu(s);
+//		stuMenu.run();
 
 	}
 
