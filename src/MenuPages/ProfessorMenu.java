@@ -221,8 +221,8 @@ public class ProfessorMenu {
         String doi = bf.readLine();
 
         ResearchPaper researchPaper = new ResearchPaper(title, pages, citations , doi);
-
-        professor.addResearchPaper(researchPaper); // Assuming you have a method like this in your Professor class
+        
+        DataSingleton.INSTANCE.addResearchPapers(researchPaper);
 
         System.out.println("Research paper added successfully!");
     }

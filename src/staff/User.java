@@ -149,18 +149,8 @@ public abstract class User implements Serializable, Observer{
 	 * @throws FileNotFoundException 
      */
 	@Override
-<<<<<<< HEAD
 	public void update() {
 		System.out.println(this.corparateEmail + " Journal is updated!");
-=======
-	public void update(File file) throws FileNotFoundException {
-		 Scanner myReader = new Scanner(file);
-	      while (myReader.hasNextLine()) {
-	        String data = myReader.nextLine();
-	        System.out.println(this.corparateEmail + " gets a new research paper " + data);
-	      }
-	      myReader.close();
->>>>>>> 3d980a05fb9e1c4157c68efed6337faa5198a967
 	}
 	
 	/**

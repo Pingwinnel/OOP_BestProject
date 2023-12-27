@@ -15,28 +15,12 @@ import researcher.ResearchPaper;
  * @author Code Symphony
  */
 public class UniversityJournal implements Observable{
-<<<<<<< HEAD
-	
-=======
 	private List<Observer> observers = new ArrayList<Observer>(); 
-	static File papers = new File("papers.txt");
 	
 	
-	
-	static  {
-		if(!papers.exists()) {
-			try {
-				papers.createNewFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
 	/**
 	 * Constructor with an empty list of observers for the UniversityJournal class
 	 */
->>>>>>> 3d980a05fb9e1c4157c68efed6337faa5198a967
     public UniversityJournal() {
 
     }
@@ -46,19 +30,7 @@ public class UniversityJournal implements Observable{
 	public String toString() {
 		return "UniversityJournal " + "\nJournal observers:" + DataSingleton.INSTANCE.getObservers() + "\nAll Papers: " + DataSingleton.INSTANCE.getResearchPapers() + "\nLatest Paper: " + getLatest();
 	}
-    
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UniversityJournal that = (UniversityJournal) o;
-        return Objects.equals(DataSingleton.INSTANCE.getObservers(), that.DataSingleton.INSTANCE.getObservers());
-    }
-
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(observers);
-//    }
+  
 
     /**
      * Subscribes an observer to the journal
@@ -85,7 +57,7 @@ public class UniversityJournal implements Observable{
     @Override
 	public void notifyObservers() throws FileNotFoundException {
 		for(Observer o: observers) {
-			o.update(papers);
+			o.update();
 		}
 		
 	}
@@ -97,9 +69,6 @@ public class UniversityJournal implements Observable{
      * @throws IOException If an I/O error occurs while adding the research paper
      */
     public void setNewPapers(ResearchPaper newPaper) throws IOException {
-    	FileWriter myWriter = new FileWriter(papers); 
-    	myWriter.write(newPaper.toString());
-    	myWriter.close();
     	DataSingleton.INSTANCE.addResearchPapers(newPaper);
         notifyObservers();
     }

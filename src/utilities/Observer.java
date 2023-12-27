@@ -14,5 +14,5 @@ public interface Observer {
 	 /**
      * Updates the observer about changes in the observable object
      */
-	public void update(File file) throws FileNotFoundException;
+	public void update();
 }
