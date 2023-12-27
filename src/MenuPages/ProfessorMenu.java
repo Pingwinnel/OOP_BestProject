@@ -11,6 +11,7 @@ import teacher.Teacher.TeacherResearcher;
 import utilities.DataSingleton;
 import utilities.Message;
 import utilities.Request;
+import utilities.UniversityJournal;
 import researcher.ResearchPaper;
 import researcher.Researcher;
 import staff.Employee;
@@ -20,14 +21,13 @@ public class ProfessorMenu {
 
     BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     Professor professor;
-    DataSingleton db = DataSingleton.INSTANCE;
 
     public ProfessorMenu(Professor professor) {
         this.professor = professor;
     }
 
     private void write() throws IOException {
-        db.write();
+        DataSingleton.write();
     }
 
     private void exit() {
@@ -49,7 +49,7 @@ public class ProfessorMenu {
         System.out.println("Welcome, " + professor.getName() + " " + professor.getSurname() + "!");
         menu: while (true) {
             try {
-                System.out.println("What do you wanna do?\n 1) Change Password \n 2) View News \n 3) View Lessons \n 4) View Students' Info \n 5) Put Mark \n 6) Send Request \n 7) Send Message \n 8) Get Message \n 9) Send Complaint\n 10) Discover Hidden Talent of Researching \n 11) University journal \n 12) Exit");
+                System.out.println("What do you wanna do?\n 1) Change Password \n 2) View News \n 3) View Lessons \n 4) View Students' Info \n 5) Put Mark \n 6) Send Request \n 7) Send Message \n 8) Get Message \n 9) Send Complaint\n 10) Add Research Paper \n 11) University journal \n 12) Exit");
                 int choice = Integer.parseInt(bf.readLine());
 
                 switch (choice) {
@@ -101,14 +101,13 @@ public class ProfessorMenu {
                         break;
 
                     case 10:
-                        // Discover Hidden Talent of Researching
-                        discoverHiddenTalent();
+                        addResearchPaper();
                         break;
 
                     case 11:
                         // University journal
-//                        System.out.println(professor.getUniversityJournal());
-                        break;
+                    	viewUniversityJournal();
+                    	break;
 
                     case 12:
                         // Exit
@@ -121,7 +120,7 @@ public class ProfessorMenu {
         }
     }
 
-    private void viewStudentsInfo() throws IOException {
+	private void viewStudentsInfo() throws IOException {
         printList(professor.getLessons());
         int lessonChoice = Integer.parseInt(bf.readLine());
         List<Student> students = professor.viewStudentInfo(professor.getLessons().get(lessonChoice - 1));
@@ -156,7 +155,7 @@ public class ProfessorMenu {
         String requestContent = bf.readLine();
         Request request = new Request();
 
-        db.addRequests(request);
+        DataSingleton.INSTANCE.addRequests(request);
 
         System.out.println("Request sent successfully!");
     }
@@ -187,36 +186,45 @@ public class ProfessorMenu {
     private void sendComplaint() throws IOException {
         // Implement sendComplaint logic here
     }
-
-    private void discoverHiddenTalent() throws IOException {
-		Professor Researcher = new Professor();
-		System.out.println("\n 1) Add Research Paper 2) Print Research Papers \n 3) Calculate H-index\n 4) Return back \n 5) Exit");
-		int choice = Integer.parseInt(bf.readLine());
-		if(choice == 1) {
-			System.out.println("Name: ");
-			String name = bf.readLine();
-			System.out.println("Pages: ");
-			int pages = Integer.parseInt(bf.readLine());
-			System.out.println("Citations: ");
-			int cit = Integer.parseInt(bf.readLine());
-			System.out.println("Doi: ");
-			String doi = bf.readLine();
-			ResearchPaper rp = new ResearchPaper(name, pages, cit, doi);
-			DataSingleton.INSTANCE.addResearchPapers(rp);
-		}
-		if(choice == 2) {
-			for(ResearchPaper rp : DataSingleton.INSTANCE.getResearchPapers()) {
-				for(Researcher r: rp.getAuthors()) {
-					if(r.equals(professor)) System.out.println(professor.printPapers());
-					
-				}
-			}
-			
-		
-		}
-		if(choice == 3) System.out.println(professor.calculateHIndex());
-//		if(choice == 4) continue;
-//		if(choice == 5) {exit();  break;}
-//		break;    
+    
+    private void viewUniversityJournal() {
+//        UniversityJournal universityJournal = DataSingleton.INSTANCE.getUniversityJournal();
+//        System.out.println("University Journal:");
+//        System.out.println(universityJournal);
+//
+//        try {
+//            System.out.println("\n 1) Return back \n 2) Exit");
+//            int choice = Integer.parseInt(bf.readLine());
+//
+//            if (choice == 1) {
+//                return;
+//            } else if (choice == 2) {
+//                exit();
+////                break menu;
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
+    
+    private void addResearchPaper() throws IOException {
+        System.out.println("Enter the title of the research paper: ");
+        String title = bf.readLine();
+
+        System.out.println("Enter the pages of the research paper: ");
+        int pages = Integer.parseInt(bf.readLine());
+
+        System.out.println("Enter the publication citations of the research paper: ");
+        int citations = Integer.parseInt(bf.readLine());
+        
+        System.out.println("Enter the publication doi of the research paper: ");
+        String doi = bf.readLine();
+
+        ResearchPaper researchPaper = new ResearchPaper(title, pages, citations , doi);
+
+        professor.addResearchPaper(researchPaper); // Assuming you have a method like this in your Professor class
+
+        System.out.println("Research paper added successfully!");
+    }
+
 }

@@ -28,14 +28,13 @@ public class DeanMenu {
 
     BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     Dean dean;
-    DataSingleton db = DataSingleton.INSTANCE;
 
     public DeanMenu(Dean dean) {
         this.dean = dean;
     }
 
     private void write() throws IOException {
-        db.write();
+        DataSingleton.write();
     }
 
     private void exit() {
@@ -88,11 +87,6 @@ public class DeanMenu {
                         approveStudentOrganization();
                         break;
 
-//                    case 6:
-//                        // Approve Request
-//                        approveRequest();
-//                        break;
-                        
                     case 6:
                         // Approve Request
                         viewRequests();
