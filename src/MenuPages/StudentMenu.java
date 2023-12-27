@@ -21,7 +21,7 @@ import utilities.Mark;
  * such as adding courses, viewing their transcript, changing their password, and accessing
  * research-related features.
  */
-public class StudentMenu extends UserMenu{
+public class StudentMenu {
 	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 	Student s;
 	
@@ -82,8 +82,8 @@ public class StudentMenu extends UserMenu{
 	 */
 	public void run() throws IOException {
 		try {
-			welcomeMessage();
 			menu : while(true){
+				System.out.println("Welcome Student "+s.getName());
 				System.out.println("What do you want to do? \n 1) Add course \n 2) View transcript \n 3) Change password \n 4)Discover Hidden Talent of Researching \n 5)View news  "
 						+ "\n 6)View teacher info \n 7) Exit");
 				int choice = Integer.parseInt(bf.readLine());
@@ -192,14 +192,6 @@ public class StudentMenu extends UserMenu{
 			save();
 		}
 	}
-	@Override
-	// The `welcomeMessage()` method is overriding the `welcomeMessage()` method from the `UserMenu`
-	// class. It is responsible for printing a welcome message specific to the `StudentMenu` class. In
-	// this case, it prints "Welcome Student" followed by the name of the student.
-	public void welcomeMessage() {
-		System.out.println("Welcome Student "+s.getName());
-		
-	}
-
+	
 }
 
