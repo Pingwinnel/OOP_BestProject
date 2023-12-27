@@ -51,7 +51,7 @@ public class Main {
 //		a.addUser(s4);
 //		a.removeUser(1);
 
-		System.out.println(a.getUsers());
+//		System.out.println(a.getUsers());
 		Manager m = new Manager();
 		// m.addNews(new News("Examination days", UrgencyLevel.HIGH, "examination dates are in the system now, check your schedule"));
 //		m.addCoursesForRegis(oop);
@@ -89,18 +89,21 @@ public class Main {
 //		System.out.println(DataSingleton.INSTANCE.getLessonsOfStudents());
 		
 //		
-		for(Student s: DataSingleton.INSTANCE.getStudents()) {
-			if(s.equals(s1)) {
-				System.out.println(s.getMarks());
-			}
-		}
+//		for(Student s: DataSingleton.INSTANCE.getStudents()) {
+//			if(s.equals(s1)) {
+//				System.out.println(s.getMarks());
+//			}
+//		}
 //		System.out.println(s1.getMarks());
 
 //		TeacherMenu tm = new TeacherMenu(t1);
 //		System.out.println(t1.viewStudentInfo(oopL1));
 		
-		LoginPage loginPage = new LoginPage();
+//		LoginPage loginPage = new LoginPage();
 		
+		Admin a1 = new Admin();
+//		AdminMenu am = new AdminMenu(a);
+		System.out.println(a1.getUsers());
 		
 
 	}

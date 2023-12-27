@@ -125,9 +125,6 @@ public class LoginPage implements ActionListener{
 								if(u instanceof Teacher) {
 									TeacherMenu tm = new TeacherMenu((Teacher)u);
 								}
-								if(u instanceof Admin) {
-									AdminMenu am = new AdminMenu((Admin)u);
-								}
 								if(u instanceof Student) {
 									StudentMenu sm = new StudentMenu((Student)u);
 									sm.run();
