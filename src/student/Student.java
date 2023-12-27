@@ -1,6 +1,7 @@
 package student;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -223,7 +224,7 @@ public class Student extends User {
     /**
      * Inner class representing a student who is also a researcher
      */
-	public class ResearcherStudent implements Researcher{
+	public class ResearcherStudent implements Researcher, Serializable{
 		public String toString() {
 			return "and I am a student researcher";
 		}

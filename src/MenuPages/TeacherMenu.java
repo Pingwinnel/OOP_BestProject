@@ -15,6 +15,7 @@ import course.Time;
 import researcher.EmployeeResearcher;
 import researcher.ResearchPaper;
 import researcher.Researcher;
+import researcher.ResearcherUtils;
 import staff.Admin;
 import staff.Employee;
 import staff.Manager;
@@ -166,12 +167,16 @@ public class TeacherMenu {
 						System.out.println("Doi: ");
 						String doi = bf.readLine();
 						ResearchPaper rp = new ResearchPaper(name, pages, cit, doi);
+						rp.getAuthors().add(teacherResearcher);
 						DataSingleton.INSTANCE.addResearchPapers(rp);
 					}
 					if(choice == 2) {
 						for(ResearchPaper rp : DataSingleton.INSTANCE.getResearchPapers()) {
 							for(Researcher r: rp.getAuthors()) {
-								if(r.equals(teacherResearcher)) System.out.println(teacherResearcher.printPapers());
+								if(r.equals(teacherResearcher)) {
+									System.out.println(teacherResearcher.printPapers());
+								
+								}
 								
 							}
 						}

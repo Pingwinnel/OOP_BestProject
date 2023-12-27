@@ -3,6 +3,7 @@ package teacher;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -166,7 +167,7 @@ public class Teacher extends Employee{
     /**
      * The TeacherResearcher class represents a researcher associated with a teacher
      */
-	public class TeacherResearcher implements Researcher{
+	public class TeacherResearcher implements Researcher, Serializable{
 
         /**
          * Delegates the printing of research papers to the ResearcherUtils class
@@ -186,6 +187,34 @@ public class Teacher extends Employee{
 			return ResearcherUtils.calculateHIndex(this);
 			
 		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + getEnclosingInstance().hashCode();
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			TeacherResearcher other = (TeacherResearcher) obj;
+			if (!getEnclosingInstance().equals(other.getEnclosingInstance()))
+				return false;
+			return true;
+		}
+
+		private Teacher getEnclosingInstance() {
+			return Teacher.this;
+		}
+		
+		
 		
 	}
 	
