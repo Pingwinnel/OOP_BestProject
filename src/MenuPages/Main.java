@@ -99,7 +99,7 @@ public class Main {
 //		TeacherMenu tm = new TeacherMenu(t1);
 //		System.out.println(t1.viewStudentInfo(oopL1));
 		
-//		LoginPage loginPage = new LoginPage();
+		LoginPage loginPage = new LoginPage();
 		
 		Admin a1 = new Admin();
 //		AdminMenu am = new AdminMenu(a);
