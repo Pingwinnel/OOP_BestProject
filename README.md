@@ -4,5 +4,9 @@ Welcome to the repository for the Object-Oriented Programming (OOP) final projec
 ![screenshot](class-diagram.jpeg)
 ## Use case diagram
 ![screenshot](use-case.jpeg)
+## Login page
+![screenshot](loginpage.png)
+## Menu of users
+![screenshot](menu.png)
 ## Certificate
 ![cer](CERTIFICATE.png)
